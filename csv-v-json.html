@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конвертировать CSV в JSON онлайн — DataTool</title>
+    <meta name="description" content="Бесплатный онлайн конвертер CSV в JSON. Загрузите файл и получите JSON за секунды. Быстро, безопасно, без регистрации и без лимитов.">
+    <meta name="keywords" content="конвертировать csv в json, csv to json, онлайн конвертер, конвертер csv, csv в json бесплатно, convert csv to json">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://dolinin236-hash.github.io/data-tool-app/csv-v-json.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Конвертировать CSV в JSON онлайн — DataTool">
+    <meta property="og:description" content="Бесплатный онлайн конвертер CSV в JSON. Работает в браузере.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dolinin236-hash.github.io/data-tool-app/">
+    <meta property="og:locale" content="ru_RU">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Конвертировать CSV в JSON онлайн">
+    <meta name="twitter:description" content="Бесплатный конвертер CSV в JSON за секунды">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "DataTool — CSV в JSON",
+        "url": "https://dolinin236-hash.github.io/data-tool-app/csv-v-json.html",
+        "description": "Бесплатный онлайн конвертер CSV в JSON",
+        "applicationCategory": "Utility",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "RUB"
+        }
+    }
+    </script>
+    
+    <style>
+        :root {
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --success: #10b981;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
+        header { padding: 1.5rem 2rem; text-align: center; border-bottom: 1px solid var(--border); }
+        h1 { font-size: 1.8rem; margin-bottom: 0.5rem; background: linear-gradient(135deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        p { color: var(--text-muted); font-size: 0.95rem; }
+        main { flex: 1; max-width: 900px; margin: 0 auto; padding: 2rem 1rem; width: 100%; }
+        .drop-zone {
+            border: 2px dashed var(--border);
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .drop-zone:hover, .drop-zone.dragover { border-color: var(--primary); background: #1e293b; }
+        .drop-zone input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+        .icon { font-size: 3rem; margin-bottom: 1rem; }
+        .controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        button:hover { background: var(--primary-hover); transform: translateY(-1px); }
+        button:disabled { background: var(--border); cursor: not-allowed; transform: none; }
+        button.secondary { background: transparent; border: 1px solid var(--border); color: var(--text-muted); }
+        button.secondary:hover { border-color: var(--text-muted); color: var(--text); }
+        .output-area { margin-top: 1.5rem; background: var(--surface); border-radius: 12px; padding: 1rem; display: none; border: 1px solid var(--border); }
+        textarea {
+            width: 100%;
+            height: 300px;
+            background: #0f172a;
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            font-family: monospace;
+            font-size: 0.9rem;
+            resize: vertical;
+        }
+        .status { margin-top: 1rem; padding: 0.8rem; border-radius: 8px; font-size: 0.9rem; display: none; }
+        .status.error { background: #fef2f2; color: #dc2626; display: block; }
+        .status.success { background: #f0fdf4; color: #16a34a; display: block; }
+        .seo-content { margin-top: 2rem; padding: 1.5rem; background: var(--surface); border-radius: 12px; border: 1px solid var(--border); }
+        .seo-content h2 { font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--text); }
+        .seo-content h3 { font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--text); }
+        .seo-content p { font-size: 0.9rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 0.5rem; }
+        .seo-content ul { padding-left: 1.2rem; margin: 0.5rem 0; }
+        .seo-content li { font-size: 0.9rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 0.3rem; }
+        footer { text-align: center; padding: 1.5rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.8rem; margin-top: auto; }
+        .support-box { background: var(--surface); padding: 1rem; border-radius: 8px; margin-top: 2rem; text-align: center; border: 1px solid var(--border); }
+        .support-box h3 { margin-bottom: 0.5rem; color: var(--text); }
+        .wallet { font-family: monospace; background: #0f172a; padding: 0.5rem; border-radius: 6px; word-break: break-all; font-size: 0.85rem; color: var(--success); margin-top: 0.5rem; }
+        .nav-links { display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
+        .nav-links a { color: var(--primary); text-decoration: none; font-size: 0.9rem; padding: 0.3rem 0.8rem; border: 1px solid var(--border); border-radius: 6px; }
+        .nav-links a:hover { border-color: var(--primary); }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Конвертировать CSV в JSON</h1>
+        <p>Бесплатный онлайн-конвертер. Загрузите файл — получите результат за секунды.</p>
+        <div class="nav-links">
+            <a href="index.html">Главная</a>
+            <a href="json-v-csv.html">JSON в CSV</a>
+            <a href="json-v-table.html">JSON в таблицу</a>
+        </div>
+    </header>
+    <main>
+        <div class="drop-zone" id="dropZone">
+            <input type="file" id="fileInput" accept=".csv,.json,.txt">
+            <div class="icon">📁</div>
+            <h3>Перетащите CSV-файл сюда или кликните для выбора</h3>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem;">Файлы .csv, .txt</p>
+        </div>
+        <div class="controls">
+            <button id="btnCsvToJson" disabled>Конвертировать в JSON</button>
+            <button id="btnClear" class="secondary">Очистить</button>
+        </div>
+        <div class="status" id="status"></div>
+        <div class="output-area" id="outputArea">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                <h3>Результат (JSON):</h3>
+                <div style="display:flex; gap:0.5rem;">
+                    <button id="btnCopy" class="secondary" style="padding:0.4rem 0.8rem; font-size:0.85rem;">Копировать</button>
+                    <button id="btnDownload" style="padding:0.4rem 0.8rem; font-size:0.85rem;">Скачать .json</button>
+                </div>
+            </div>
+            <textarea id="output" readonly></textarea>
+        </div>
+        
+        <div class="seo-content">
+            <h2>Как конвертировать CSV в JSON онлайн?</h2>
+            <ol style="padding-left:1.2rem; margin:0.5rem 0;">
+                <li style="font-size:0.9rem; line-height:1.6; color:var(--text-muted); margin-bottom:0.3rem;">Загрузите CSV-файл (перетащите или выберите)</li>
+                <li style="font-size:0.9rem; line-height:1.6; color:var(--text-muted); margin-bottom:0.3rem;">Нажмите кнопку «Конвертировать в JSON»</li>
+                <li style="font-size:0.9rem; line-height:1.6; color:var(--text-muted); margin-bottom:0.3rem;">Скопируйте результат или скачайте файл</li>
+            </ol>
+            
+            <h3>Зачем конвертировать CSV в JSON?</h3>
+            <p>JSON (JavaScript Object Notation) — универсальный формат данных, который используется в веб-разработке, API, базах данных и аналитике. CSV удобен для таблиц, но JSON更适合 для иерархических данных и встраивания в приложения.</p>
+            
+            <h3>Преимущества нашего конвертера</h3>
+            <ul>
+                <li>Работает в браузере — файлы не отправляются на сервер</li>
+                <li>Без регистрации и ограничений по размеру</li>
+                <li>Мгновенная конвертация</li>
+                <li>Поддержка CSV с разделителями и кавычками</li>
+                <li>Полностью бесплатно</li>
+            </ul>
+            
+            <h3>Поддерживаемые форматы</h3>
+            <p>CSV (разделитель — запятая), TSV (табуляция), JSON-массивы объектов [{...}]. Для сложных CSV с разными разделителями — используйте параметр «Настройки» в будущем.</p>
+        </div>
+        
+        <div class="support-box">
+            <h3>Поддержите проект</h3>
+            <p>Если инструмент был полезен, вы можете сделать донат в USDT (TRC20):</p>
+            <div class="wallet">T9yDq43jFWkR5g8vZ1mN2pL7xHbS6cA9wE</div>
+            <p style="margin-top:0.5rem; font-size:0.8rem;">Благодарность помогает развивать проект дальше 🙏</p>
+        </div>
+    </main>
+    <footer>
+        DataTool &copy; 2026 | CSV в JSON онлайн. Все вычисления в браузере. Сервер не используется.
+    </footer>
+
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const status = document.getElementById('status');
+        const outputArea = document.getElementById('outputArea');
+        const output = document.getElementById('output');
+        const btnCsvToJson = document.getElementById('btnCsvToJson');
+        const btnCopy = document.getElementById('btnCopy');
+        const btnDownload = document.getElementById('btnDownload');
+        const btnClear = document.getElementById('btnClear');
+
+        let rawData = null;
+        let originalFile = null;
+
+        ['dragenter', 'dragover'].forEach(e => dropZone.addEventListener(e, (ev) => { ev.preventDefault(); dropZone.classList.add('dragover'); }));
+        ['dragleave', 'drop'].forEach(e => dropZone.addEventListener(e, (ev) => { ev.preventDefault(); dropZone.classList.remove('dragover'); }));
+
+        dropZone.addEventListener('drop', (e) => {
+            const files = e.dataTransfer.files;
+            if (files.length) handleFile(files[0]);
+        });
+        fileInput.addEventListener('change', (e) => { if (e.target.files.length) handleFile(e.target.files[0]); });
+
+        function handleFile(file) {
+            const ext = file.name.split('.').pop().toLowerCase();
+            if (!['csv', 'txt'].includes(ext)) return showStatus('error', 'Поддерживаются только .csv и .txt файлы');
+            
+            originalFile = file;
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    rawData = parseCSV(e.target.result);
+                    showStatus('success', `Файл "${file.name}" загружен. ${rawData.length} строк.`, true);
+                    btnCsvToJson.disabled = false;
+                } catch (err) {
+                    showStatus('error', 'Ошибка чтения файла: ' + err.message);
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function parseCSV(text) {
+            const lines = text.trim().split('\n');
+            const headers = lines[0].split(',').map(h => h.trim().replace(/^"|"$/g, ''));
+            return lines.slice(1).filter(l => l.trim()).map(line => {
+                const values = line.split(',').map(v => v.trim().replace(/^"|"$/g, ''));
+                const obj = {};
+                headers.forEach((h, i) => obj[h] = values[i] || '');
+                return obj;
+            });
+        }
+
+        btnCsvToJson.addEventListener('click', () => {
+            output.value = JSON.stringify(rawData, null, 2);
+            outputArea.style.display = 'block';
+            status.style.display = 'none';
+        });
+
+        btnCopy.addEventListener('click', () => {
+            navigator.clipboard.writeText(output.value).then(() => showStatus('success', 'Скопировано!', true));
+        });
+
+        btnDownload.addEventListener('click', () => {
+            const blob = new Blob([output.value], { type: 'application/json' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'converted.json';
+            a.click();
+        });
+
+        btnClear.addEventListener('click', () => {
+            rawData = null; originalFile = null;
+            output.value = ''; outputArea.style.display = 'none';
+            status.style.display = 'none';
+            btnCsvToJson.disabled = true;
+            fileInput.value = '';
+        });
+
+        function showStatus(type, msg, keep = false) {
+            status.className = 'status ' + type;
+            status.textContent = msg;
+            status.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
