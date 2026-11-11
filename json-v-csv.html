@@ -3,138 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Конвертировать JSON в CSV онлайн — DataTool</title>
-    <meta name="description" content="Бесплатный онлайн конвертер JSON в CSV. Превратите JSON-массив в таблицу за секунды. Работает в браузере, без регистрации.">
-    <meta name="keywords" content="конвертировать json в csv, json to csv, конвертер json, json в csv онлайн, json to csv converter">
-    <meta name="robots" content="index, follow">
+    <title>Конвертировать JSON в CSV онлайн — бесплатный конвертер данных</title>
+    <meta name="description" content="Бесплатный онлайн конвертер JSON в CSV. Превратите JSON-массив в таблицу за секунды. Работает в браузере, без регистрации и лимитов. Подходит для Excel.">
+    <meta name="keywords" content="json в csv, конвертировать json в csv, json to csv, конвертер json, json в csv онлайн, json to csv converter, json в excel, csv из json, преобразование json, json csv online, бесплатно, без регистрации, json array to csv, json to spreadsheet, csv generator">
+    <meta name="robots" content="index, follow, max-snippet:-1">
     <link rel="canonical" href="https://dolinin236-hash.github.io/data-tool-app/json-v-csv.html">
-    <meta property="og:title" content="Конвертировать JSON в CSV онлайн — DataTool">
-    <meta property="og:description" content="Бесплатный онлайн конвертер JSON в CSV. Работает в браузере.">
+    <meta property="og:title" content="JSON в CSV онлайн — DataTool">
+    <meta property="og:description" content="Бесплатный конвертер JSON в CSV за секунды">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://dolinin236-hash.github.io/data-tool-app/">
+    <meta property="og:url" content="https://dolinin236-hash.github.io/data-tool-app/json-v-csv.html">
     <meta property="og:locale" content="ru_RU">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Конвертировать JSON в CSV онлайн">
-    <meta name="twitter:description" content="Бесплатный конвертер JSON в CSV за секунды">
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "DataTool — JSON в CSV",
-        "url": "https://dolinin236-hash.github.io/data-tool-app/json-v-csv.html",
-        "description": "Бесплатный онлайн конвертер JSON в CSV",
-        "applicationCategory": "Utility",
-        "operatingSystem": "Any",
-        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "RUB"}
-    }
+    {"@context":"https://schema.org","@type":"WebApplication","name":"DataTool — JSON в CSV","url":"https://dolinin236-hash.github.io/data-tool-app/json-v-csv.html","description":"Бесплатный онлайн конвертер JSON в CSV. Мгновенная конвертация.","applicationCategory":"Utility","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"RUB"}}
     </script>
     <style>
-        :root { --bg:#0f172a; --surface:#1e293b; --primary:#3b82f6; --primary-hover:#2563eb; --text:#f8fafc; --text-muted:#94a3b8; --border:#334155; --success:#10b981; }
-        * { box-sizing:border-box; margin:0; padding:0; font-family:'Segoe UI',system-ui,sans-serif; }
-        body { background:var(--bg); color:var(--text); min-height:100vh; display:flex; flex-direction:column; }
-        header { padding:1.5rem 2rem; text-align:center; border-bottom:1px solid var(--border); }
-        h1 { font-size:1.8rem; margin-bottom:0.5rem; background:linear-gradient(135deg,#3b82f6,#8b5cf6); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-        p { color:var(--text-muted); font-size:0.95rem; }
-        main { flex:1; max-width:900px; margin:0 auto; padding:2rem 1rem; width:100%; }
-        .drop-zone { border:2px dashed var(--border); background:var(--surface); border-radius:12px; padding:3rem 1.5rem; text-align:center; cursor:pointer; transition:all 0.2s; position:relative; }
-        .drop-zone:hover, .drop-zone.dragover { border-color:var(--primary); background:#1e293b; }
-        .drop-zone input { position:absolute; inset:0; opacity:0; cursor:pointer; }
-        .icon { font-size:3rem; margin-bottom:1rem; }
-        .controls { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:1rem; margin-top:1.5rem; }
-        button { background:var(--primary); color:white; border:none; padding:0.8rem 1.2rem; border-radius:8px; font-weight:600; cursor:pointer; transition:0.2s; }
-        button:hover { background:var(--primary-hover); transform:translateY(-1px); }
-        button:disabled { background:var(--border); cursor:not-allowed; transform:none; }
-        button.secondary { background:transparent; border:1px solid var(--border); color:var(--text-muted); }
-        button.secondary:hover { border-color:var(--text-muted); color:var(--text); }
-        .output-area { margin-top:1.5rem; background:var(--surface); border-radius:12px; padding:1rem; display:none; border:1px solid var(--border); }
-        textarea { width:100%; height:300px; background:#0f172a; color:var(--text); border:1px solid var(--border); border-radius:8px; padding:1rem; font-family:monospace; font-size:0.9rem; resize:vertical; }
-        .status { margin-top:1rem; padding:0.8rem; border-radius:8px; font-size:0.9rem; display:none; }
-        .status.error { background:#fef2f2; color:#dc2626; display:block; }
-        .status.success { background:#f0fdf4; color:#16a34a; display:block; }
-        .seo-content { margin-top:2rem; padding:1.5rem; background:var(--surface); border-radius:12px; border:1px solid var(--border); }
-        .seo-content h2 { font-size:1.2rem; margin-bottom:0.5rem; color:var(--text); }
-        .seo-content h3 { font-size:1rem; margin:1rem 0 0.5rem; color:var(--text); }
-        .seo-content p { font-size:0.9rem; line-height:1.6; color:var(--text-muted); margin-bottom:0.5rem; }
-        .seo-content ul { padding-left:1.2rem; margin:0.5rem 0; }
-        .seo-content li { font-size:0.9rem; line-height:1.6; color:var(--text-muted); margin-bottom:0.3rem; }
-        footer { text-align:center; padding:1.5rem; border-top:1px solid var(--border); color:var(--text-muted); font-size:0.8rem; margin-top:auto; }
-        .support-box { background:var(--surface); padding:1rem; border-radius:8px; margin-top:2rem; text-align:center; border:1px solid var(--border); }
-        .support-box h3 { margin-bottom:0.5rem; color:var(--text); }
-        .wallet { font-family:monospace; background:#0f172a; padding:0.5rem; border-radius:6px; word-break:break-all; font-size:0.85rem; color:var(--success); margin-top:0.5rem; }
-        .nav-links { display:flex; justify-content:center; gap:1rem; margin-top:1rem; flex-wrap:wrap; }
-        .nav-links a { color:var(--primary); text-decoration:none; font-size:0.9rem; padding:0.3rem 0.8rem; border:1px solid var(--border); border-radius:6px; }
-        .nav-links a:hover { border-color:var(--primary); }
+        *{box-sizing:border-box;margin:0;padding:0}
+        :root{--bg:#0a0e1a;--surface:#111827;--primary:#3b82f6;--primary-hover:#60a5fa;--text:#f1f5f9;--text-muted:#94a3b8;--border:#1e293b;--gradient:linear-gradient(135deg,#3b82f6,#8b5cf6);--success:#10b981}
+        body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column}
+        header{padding:1.5rem 2rem;text-align:center;border-bottom:1px solid var(--border)}
+        .logo{font-size:1.6rem;font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        nav{display:flex;justify-content:center;gap:0.5rem;margin-top:1rem;flex-wrap:wrap}
+        nav a{color:var(--text-muted);text-decoration:none;font-size:0.85rem;padding:0.3rem 0.8rem;border-radius:6px;border:1px solid var(--border);transition:0.3s}
+        nav a:hover{color:var(--primary-hover);border-color:var(--primary)}
+        main{flex:1;max-width:900px;margin:0 auto;padding:2rem 1.5rem;width:100%}
+        h1{font-size:1.8rem;margin-bottom:0.5rem;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .subtitle{color:var(--text-muted);margin-bottom:2rem}
+        .drop-zone{border:2px dashed var(--border);background:var(--surface);border-radius:12px;padding:3rem;text-align:center;cursor:pointer;transition:0.3s;position:relative}
+        .drop-zone:hover,.drop-zone.dragover{border-color:var(--primary)}
+        .drop-zone input{position:absolute;inset:0;opacity:0;cursor:pointer}
+        .icon{font-size:3rem;margin-bottom:1rem}
+        .controls{display:flex;gap:0.8rem;margin-top:1.5rem;flex-wrap:wrap}
+        button{background:var(--gradient);color:white;border:none;padding:0.8rem 1.5rem;border-radius:10px;font-weight:600;cursor:pointer;transition:0.3s}
+        button:hover{transform:translateY(-2px);box-shadow:0 0 20px rgba(59,130,246,0.3)}
+        button:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+        button.secondary{background:transparent;border:1px solid var(--border);color:var(--text-muted)}
+        button.secondary:hover{border-color:var(--primary)}
+        .output{margin-top:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.2rem;display:none}
+        .out-header{display:flex;justify-content:space-between;margin-bottom:0.8rem;flex-wrap:wrap;gap:0.5rem}
+        textarea{width:100%;height:300px;background:#0a0e1a;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:monospace;font-size:0.9rem;resize:vertical}
+        .status{margin-top:1rem;padding:0.8rem;border-radius:8px;font-size:0.9rem;display:none}
+        .status.error{background:rgba(239,68,68,0.1);color:#fca5a5;display:block}
+        .status.success{background:rgba(16,185,129,0.1);color:#6ee7b7;display:block}
+        .seo{margin-top:3rem;padding:2rem;background:var(--surface);border-radius:12px;border:1px solid var(--border)}
+        .seo h2{font-size:1.3rem;margin-bottom:1rem;color:var(--text);padding-left:1rem;position:relative}
+        .seo h2::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gradient);border-radius:2px}
+        .seo h3{font-size:1.1rem;margin:1.2rem 0 0.6rem;color:var(--text)}
+        .seo p,.seo li{font-size:0.95rem;line-height:1.7;color:var(--text-muted);margin-bottom:0.5rem}
+        .seo ul,.seo ol{padding-left:1.3rem;margin:0.5rem 0}
+        .seo li{margin-bottom:0.4rem}
+        .support{background:var(--surface);padding:1.5rem;border-radius:12px;margin-top:2rem;text-align:center;border:1px solid var(--border)}
+        .wallet{font-family:monospace;background:#0a0e1a;padding:0.7rem;border-radius:8px;word-break:break-all;font-size:0.8rem;color:var(--success);margin-top:0.5rem;border:1px solid var(--border)}
+        footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--text-muted);font-size:0.8rem}
     </style>
 </head>
 <body>
     <header>
-        <h1>Конвертировать JSON в CSV</h1>
-        <p>Бесплатный онлайн-конвертер. Загрузите JSON-файл — получите CSV за секунды.</p>
-        <div class="nav-links">
+        <div class="logo">DataTool</div>
+        <nav>
             <a href="index.html">Главная</a>
             <a href="csv-v-json.html">CSV в JSON</a>
             <a href="json-v-table.html">JSON в таблицу</a>
-        </div>
+            <a href="base64.html">Base64</a>
+            <a href="password.html">Пароли</a>
+        </nav>
     </header>
     <main>
-        <div class="drop-zone" id="dropZone">
-            <input type="file" id="fileInput" accept=".json,.txt">
+        <h1>Конвертировать JSON в CSV</h1>
+        <p class="subtitle">Бесплатный онлайн-конвертер. Загрузите JSON — получите CSV за секунды.</p>
+        
+        <div class="drop-zone" id="dz">
+            <input type="file" id="fi" accept=".json,.txt">
             <div class="icon">📁</div>
-            <h3>Перетащите JSON-файл сюда или кликните для выбора</h3>
-            <p style="margin-top:0.5rem; font-size:0.85rem;">Файлы .json, .txt</p>
+            <h3>Перетащите JSON-файл или кликните</h3>
         </div>
+        
         <div class="controls">
-            <button id="btnJsonToCsv" disabled>Конвертировать в CSV</button>
-            <button id="btnClear" class="secondary">Очистить</button>
+            <button id="btn" disabled>Конвертировать в CSV</button>
+            <button id="clr" class="secondary">Очистить</button>
         </div>
-        <div class="status" id="status"></div>
-        <div class="output-area" id="outputArea">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+        
+        <div class="status" id="st"></div>
+        
+        <div class="output" id="oa">
+            <div class="out-header">
                 <h3>Результат (CSV):</h3>
-                <div style="display:flex; gap:0.5rem;">
-                    <button id="btnCopy" class="secondary" style="padding:0.4rem 0.8rem; font-size:0.85rem;">Копировать</button>
-                    <button id="btnDownload" style="padding:0.4rem 0.8rem; font-size:0.85rem;">Скачать .csv</button>
+                <div style="display:flex;gap:0.5rem">
+                    <button id="cpy" class="secondary" style="padding:0.5rem 1rem;font-size:0.85rem">Копировать</button>
+                    <button id="dl" style="padding:0.5rem 1rem;font-size:0.85rem">Скачать .csv</button>
                 </div>
             </div>
-            <textarea id="output" readonly></textarea>
+            <textarea id="op" readonly></textarea>
         </div>
-        <div class="seo-content">
-            <h2>Как конвертировать JSON в CSV онлайн?</h2>
-            <ol style="padding-left:1.2rem; margin:0.5rem 0;">
-                <li style="font-size:0.9rem; line-height:1.6; color:var(--text-muted); margin-bottom:0.3rem;">Загрузите JSON-файл (перетащите или выберите)</li>
-                <li style="font-size:0.9rem; line-height:1.6; color:var(--text-muted); margin-bottom:0.3rem;">Нажмите кнопку «Конвертировать в CSV»</li>
-                <li style="font-size:0.9rem; line-height:1.6; color:var(--text-muted); margin-bottom:0.3rem;">Скопируйте результат или скачайте CSV-файл</li>
+        
+        <section class="seo">
+            <h2>Конвертер JSON в CSV — зачем нужен?</h2>
+            <p>JSON (JavaScript Object Notation) — это формат для хранения и передачи структурированных данных, широко используемый в API и веб-приложениях. CSV (Comma Separated Values) — табличный формат, который открывают Excel, Google Sheets и LibreOffice. Конвертация JSON в CSV позволяет легко работать с данными из API в обычных таблицах.</p>
+            
+            <h3>Как работает конвертер JSON в CSV?</h3>
+            <p>Наш конвертер обрабатывает JSON-массив следующим образом:</p>
+            <ol>
+                <li>Первый объект в массиве определяет заголовки столбцов (все ключи)</li>
+                <li>Каждый следующий объект — это строка таблицы</li>
+                <li>Пустые значения заменяются на пустые строки</li>
+                <li>Результат — CSV-строка, готовая для импорта в Excel</li>
             </ol>
-            <h3>Зачем конвертировать JSON в CSV?</h3>
-            <p>CSV (Comma Separated Values) — формат таблиц, который открывают Excel, Google Sheets и любые программы для работы с данными. Если у вас JSON-данные (например, из API), конвертация в CSV позволит легко работать с ними в таблицах.</p>
-            <h3>Преимущества</h3>
+            
+            <h3>Кому подойдёт этот инструмент?</h3>
             <ul>
-                <li>Работает в браузере — файлы не уходят на сервер</li>
-                <li>Без регистрации и лимитов</li>
-                <li>Мгновенная конвертация JSON-массива в CSV</li>
-                <li>Полностью бесплатно</li>
+                <li><strong>Аналитикам данных</strong> — для экспорта данных из API в Excel</li>
+                <li><strong>Разработчикам</strong> — для быстрого преобразования тестовых данных</li>
+                <li><strong>Маркетологам</strong> — для работы с экспортными файлами из CRM</li>
+                <li><strong>Студентам</strong> — для обработки данных из открытых источников</li>
             </ul>
-        </div>
-        <div class="support-box">
-            <h3>Поддержите проект</h3>
-            <p>Донат в USDT (TRC20):</p>
+            
+            <h3>Преимущества DataTool</h3>
+            <p>Все вычисления происходят в вашем браузере. Файлы не загружаются на сервер — полная конфиденциальность. Бесплатно, без регистрации, без лимитов.</p>
+        </section>
+        
+        <div class="support">
+            <h3>💙 Поддержите проект</h3>
             <div class="wallet">T9yDq43jFWkR5g8vZ1mN2pL7xHbS6cA9wE</div>
         </div>
     </main>
-    <footer>DataTool &copy; 2026 | JSON в CSV онлайн. Все вычисления в браузере.</footer>
+    <footer>DataTool &copy; 2026 | JSON в CSV онлайн. Безопасно в браузере.</footer>
     <script>
-        const dropZone=document.getElementById('dropZone'), fileInput=document.getElementById('fileInput'), status=document.getElementById('status'), outputArea=document.getElementById('outputArea'), output=document.getElementById('output'), btnJsonToCsv=document.getElementById('btnJsonToCsv'), btnCopy=document.getElementById('btnCopy'), btnDownload=document.getElementById('btnDownload'), btnClear=document.getElementById('btnClear');
-        let rawData=null;
-        ['dragenter','dragover'].forEach(e=>dropZone.addEventListener(e,(ev)=>{ev.preventDefault();dropZone.classList.add('dragover')}));
-        ['dragleave','drop'].forEach(e=>dropZone.addEventListener(e,(ev)=>{ev.preventDefault();dropZone.classList.remove('dragover')}));
-        dropZone.addEventListener('drop',(e)=>{const f=e.dataTransfer.files;if(f.length)handleFile(f[0])});
-        fileInput.addEventListener('change',(e)=>{if(e.target.files.length)handleFile(e.target.files[0])});
-        function handleFile(file){const ext=file.name.split('.').pop().toLowerCase();if(ext!=='json'&&ext!=='txt')return showStatus('error','Поддерживаются .json и .txt');const reader=new FileReader();reader.onload=(e)=>{try{rawData=JSON.parse(e.target.result);if(!Array.isArray(rawData))return showStatus('error','JSON должен быть массивом [{...}]');showStatus('success',`Файл "${file.name}" загружен. ${rawData.length} строк.`,true);btnJsonToCsv.disabled=false}catch(err){showStatus('error','Ошибка: '+err.message)}};reader.readAsText(file)}
-        btnJsonToCsv.addEventListener('click',()=>{if(!Array.isArray(rawData))return;const headers=Object.keys(rawData[0]);const csv=[headers.join(','),...rawData.map(r=>headers.map(h=>`"${r[h]||''}"`).join(','))].join('\n');output.value=csv;outputArea.style.display='block';status.style.display='none'});
-        btnCopy.addEventListener('click',()=>{navigator.clipboard.writeText(output.value).then(()=>showStatus('success','Скопировано!',true))});
-        btnDownload.addEventListener('click',()=>{const blob=new Blob([output.value],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='converted.csv';a.click()});
-        btnClear.addEventListener('click',()=>{rawData=null;output.value='';outputArea.style.display='none';status.style.display='none';btnJsonToCsv.disabled=true;fileInput.value=''});
-        function showStatus(type,msg,keep=false){status.className='status '+type;status.textContent=msg;status.style.display='block'}
+        const dz=document.getElementById('dz'),fi=document.getElementById('fi'),st=document.getElementById('st'),oa=document.getElementById('oa'),op=document.getElementById('op'),btn=document.getElementById('btn'),clr=document.getElementById('clr'),cpy=document.getElementById('cpy'),dl=document.getElementById('dl');
+        let data=null;
+        ['dragenter','dragover'].forEach(e=>dz.addEventListener(e,ev=>{ev.preventDefault();dz.classList.add('dragover')}));
+        ['dragleave','drop'].forEach(e=>dz.addEventListener(e,ev=>{ev.preventDefault();dz.classList.remove('dragover')}));
+        dz.addEventListener('drop',e=>{if(e.dataTransfer.files.length)hf(e.dataTransfer.files[0])});
+        fi.addEventListener('change',e=>{if(e.target.files.length)hf(e.target.files[0])});
+        function hf(f){const ext=f.name.split('.').pop().toLowerCase();if(ext!=='json'&&ext!=='txt')return showStatus('error','Только .json и .txt');const r=new FileReader();r.onload=e=>{try{data=JSON.parse(e.target.result);if(!Array.isArray(data))return showStatus('error','JSON должен быть массивом');showStatus('success','Файл «'+f.name+'». '+data.length+' строк.',true);btn.disabled=false}catch(err){showStatus('error','Ошибка: '+err.message)}};r.readAsText(f)}
+        btn.addEventListener('click',()=>{if(!Array.isArray(data))return;const h=Object.keys(data[0]);const csv=[h.join(','),...data.map(r=>h.map(k=>'"'+(r[k]||'')+'"').join(','))].join('\n');op.value=csv;oa.style.display='block';st.style.display='none'});
+        cpy.addEventListener('click',()=>{navigator.clipboard.writeText(op.value).then(()=>showStatus('success','Скопировано!',true))});
+        dl.addEventListener('click',()=>{const b=new Blob([op.value],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='converted.csv';a.click()});
+        clr.addEventListener('click',()=>{data=null;op.value='';oa.style.display='none';st.style.display='none';btn.disabled=true;fi.value=''});
+        function showStatus(t,m){st.className='status '+t;st.textContent=m;st.style.display='block'}
     </script>
 </body>
 </html>
