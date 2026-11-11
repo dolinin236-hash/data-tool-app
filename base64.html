@@ -3,112 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Конвертировать Base64 онлайн — кодирование и декодирование — DataTool</title>
-    <meta name="description" content="Бесплатный онлайн конвертер Base64. Кодирование и декодирование Base64 прямо в браузере. Быстро, безопасно, без регистрации.">
-    <meta name="keywords" content="base64 онлайн, base64 кодирование, base64 декодирование, base64 encode decode, конвертер base64">
-    <meta name="robots" content="index, follow">
+    <title>Конвертировать Base64 онлайн — кодирование и декодирование бесплатно</title>
+    <meta name="description" content="Бесплатный онлайн конвертер Base64. Кодирование и декодирование Base64 прямо в браузере. Быстро, безопасно, без регистрации. Поддержка текстовых строк.">
+    <meta name="keywords" content="base64 онлайн, base64 кодирование, base64 декодирование, base64 encode decode, конвертер base64, base64 to text, text to base64, base64 encoder, base64 decoder, base64 converter, кодировщик base64, декодировщик base64, base64 string, декодировать base64, base64 онлайн бесплатно">
+    <meta name="robots" content="index, follow, max-snippet:-1">
     <link rel="canonical" href="https://dolinin236-hash.github.io/data-tool-app/base64.html">
-    <meta property="og:title" content="Конвертировать Base64 онлайн — DataTool">
-    <meta property="og:description" content="Бесплатный онлайн кодирование и декодирование Base64">
+    <meta property="og:title" content="Base64 Конвертер онлайн — DataTool">
+    <meta property="og:description" content="Бесплатное кодирование и декодирование Base64">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://dolinin236-hash.github.io/data-tool-app/">
+    <meta property="og:url" content="https://dolinin236-hash.github.io/data-tool-app/base64.html">
     <meta property="og:locale" content="ru_RU">
     <meta name="twitter:card" content="summary">
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebApplication","name":"DataTool — Base64 Конвертер","url":"https://dolinin236-hash.github.io/data-tool-app/base64.html","description":"Бесплатный онлайн конвертер Base64","applicationCategory":"Utility","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"RUB"}}
+    {"@context":"https://schema.org","@type":"WebApplication","name":"DataTool — Base64 Конвертер","url":"https://dolinin236-hash.github.io/data-tool-app/base64.html","description":"Бесплатный онлайн кодирование и декодирование Base64","applicationCategory":"Utility","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"RUB"}}
     </script>
     <style>
-        :root{--bg:#0f172a;--surface:#1e293b;--primary:#3b82f6;--primary-hover:#2563eb;--text:#f8fafc;--text-muted:#94a3b8;--border:#334155;--success:#10b981}
-        *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',system-ui,sans-serif}
-        body{background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
+        *{box-sizing:border-box;margin:0;padding:0}
+        :root{--bg:#0a0e1a;--surface:#111827;--primary:#3b82f6;--primary-hover:#60a5fa;--text:#f1f5f9;--text-muted:#94a3b8;--border:#1e293b;--gradient:linear-gradient(135deg,#3b82f6,#8b5cf6);--success:#10b981}
+        body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column}
         header{padding:1.5rem 2rem;text-align:center;border-bottom:1px solid var(--border)}
-        h1{font-size:1.8rem;margin-bottom:.5rem;background:linear-gradient(135deg,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        p{color:var(--text-muted);font-size:.95rem}
-        main{flex:1;max-width:900px;margin:0 auto;padding:2rem 1rem;width:100%}
-        .input-group{margin-bottom:1.5rem}
-        .input-group label{display:block;margin-bottom:.5rem;font-weight:600;font-size:.9rem}
-        textarea{width:100%;height:200px;background:#0f172a;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:monospace;font-size:.9rem;resize:vertical}
+        .logo{font-size:1.6rem;font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        nav{display:flex;justify-content:center;gap:0.5rem;margin-top:1rem;flex-wrap:wrap}
+        nav a{color:var(--text-muted);text-decoration:none;font-size:0.85rem;padding:0.3rem 0.8rem;border-radius:6px;border:1px solid var(--border);transition:0.3s}
+        nav a:hover{color:var(--primary-hover);border-color:var(--primary)}
+        main{flex:1;max-width:900px;margin:0 auto;padding:2rem 1.5rem;width:100%}
+        h1{font-size:1.8rem;margin-bottom:0.5rem;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .subtitle{color:var(--text-muted);margin-bottom:2rem}
+        label{display:block;margin-bottom:0.5rem;font-weight:600;font-size:0.9rem}
+        textarea{width:100%;height:200px;background:#0a0e1a;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:monospace;font-size:0.9rem;resize:vertical;margin-bottom:1.5rem}
         textarea:focus{outline:none;border-color:var(--primary)}
-        .controls{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
-        button{background:var(--primary);color:white;border:none;padding:.8rem 1.2rem;border-radius:8px;font-weight:600;cursor:pointer;transition:.2s}
-        button:hover{background:var(--primary-hover);transform:translateY(-1px)}
+        .btns{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+        button{background:var(--gradient);color:white;border:none;padding:0.8rem 1.5rem;border-radius:10px;font-weight:600;cursor:pointer;transition:0.3s}
+        button:hover{transform:translateY(-2px);box-shadow:0 0 20px rgba(59,130,246,0.3)}
         button.secondary{background:transparent;border:1px solid var(--border);color:var(--text-muted)}
-        button.secondary:hover{border-color:var(--text-muted);color:var(--text)}
-        .output-area{background:var(--surface);border-radius:12px;padding:1rem;border:1px solid var(--border)}
-        .output-area h3{margin-bottom:.5rem}
-        .status{margin-top:1rem;padding:.8rem;border-radius:8px;font-size:.9rem;display:none}
-        .status.error{background:#fef2f2;color:#dc2626;display:block}
-        .status.success{background:#f0fdf4;color:#16a34a;display:block}
-        .seo-content{margin-top:2rem;padding:1.5rem;background:var(--surface);border-radius:12px;border:1px solid var(--border)}
-        .seo-content h2{font-size:1.2rem;margin-bottom:.5rem;color:var(--text)}
-        .seo-content h3{font-size:1rem;margin:1rem 0 .5rem;color:var(--text)}
-        .seo-content p,.seo-content li{font-size:.9rem;line-height:1.6;color:var(--text-muted);margin-bottom:.5rem}
-        .seo-content ul{padding-left:1.2rem;margin:.5rem 0}
-        .seo-content ol{padding-left:1.2rem;margin:.5rem 0}
-        footer{text-align:center;padding:1.5rem;border-top:1px solid var(--border);color:var(--text-muted);font-size:.8rem;margin-top:auto}
-        .support-box{background:var(--surface);padding:1rem;border-radius:8px;margin-top:2rem;text-align:center;border:1px solid var(--border)}
-        .support-box h3{margin-bottom:.5rem;color:var(--text)}
-        .wallet{font-family:monospace;background:#0f172a;padding:.5rem;border-radius:6px;word-break:break-all;font-size:.85rem;color:var(--success);margin-top:.5rem}
-        .nav-links{display:flex;justify-content:center;gap:1rem;margin-top:1rem;flex-wrap:wrap}
-        .nav-links a{color:var(--primary);text-decoration:none;font-size:.9rem;padding:.3rem .8rem;border:1px solid var(--border);border-radius:6px}
-        .nav-links a:hover{border-color:var(--primary)}
+        button.secondary:hover{border-color:var(--primary)}
+        .out-area{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.2rem}
+        .out-header{display:flex;justify-content:space-between;margin-bottom:0.8rem;flex-wrap:wrap;gap:0.5rem}
+        .status{margin-top:1rem;padding:0.8rem;border-radius:8px;font-size:0.9rem;display:none}
+        .status.error{background:rgba(239,68,68,0.1);color:#fca5a5;display:block}
+        .status.success{background:rgba(16,185,129,0.1);color:#6ee7b7;display:block}
+        .seo{margin-top:3rem;padding:2rem;background:var(--surface);border-radius:12px;border:1px solid var(--border)}
+        .seo h2{font-size:1.3rem;margin-bottom:1rem;color:var(--text);padding-left:1rem;position:relative}
+        .seo h2::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gradient);border-radius:2px}
+        .seo h3{font-size:1.1rem;margin:1.2rem 0 0.6rem;color:var(--text)}
+        .seo p,.seo li{font-size:0.95rem;line-height:1.7;color:var(--text-muted);margin-bottom:0.5rem}
+        .seo ul,.seo ol{padding-left:1.3rem;margin:0.5rem 0}
+        .seo li{margin-bottom:0.4rem}
+        .support{background:var(--surface);padding:1.5rem;border-radius:12px;margin-top:2rem;text-align:center;border:1px solid var(--border)}
+        .wallet{font-family:monospace;background:#0a0e1a;padding:0.7rem;border-radius:8px;word-break:break-all;font-size:0.8rem;color:var(--success);margin-top:0.5rem;border:1px solid var(--border)}
+        footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--text-muted);font-size:0.8rem}
     </style>
 </head>
 <body>
     <header>
-        <h1>Конвертер Base64 онлайн</h1>
-        <p>Кодирование и декодирование Base64 прямо в браузере</p>
-        <div class="nav-links">
+        <div class="logo">DataTool</div>
+        <nav>
             <a href="index.html">Главная</a>
             <a href="csv-v-json.html">CSV в JSON</a>
             <a href="json-v-csv.html">JSON в CSV</a>
-            <a href="base64.html">Base64</a>
-        </div>
+            <a href="json-v-table.html">JSON в таблицу</a>
+            <a href="password.html">Пароли</a>
+        </nav>
     </header>
     <main>
-        <div class="input-group">
-            <label>Входные данные:</label>
-            <textarea id="input" placeholder="Введите текст для кодирования или Base64 для декодирования..."></textarea>
+        <h1>Base64 Конвертер онлайн</h1>
+        <p class="subtitle">Кодирование и декодирование Base64 прямо в браузере</p>
+        
+        <label>Входные данные:</label>
+        <textarea id="inp" placeholder="Введите текст для кодирования или Base64 для декодирования..."></textarea>
+        
+        <div class="btns">
+            <button id="enc">Кодировать Base64</button>
+            <button id="dec">Декодировать</button>
         </div>
-        <div class="controls">
-            <button id="btnEncode">Кодировать Base64</button>
-            <button id="btnDecode">Декодировать</button>
-        </div>
-        <div class="output-area">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem">
+        
+        <div class="out-area">
+            <div class="out-header">
                 <h3>Результат:</h3>
-                <div style="display:flex;gap:.5rem">
-                    <button id="btnCopy" class="secondary" style="padding:.4rem .8rem;font-size:.85rem">Копировать</button>
-                </div>
+                <button id="cpy" class="secondary" style="padding:0.5rem 1rem;font-size:0.85rem">Копировать</button>
             </div>
-            <textarea id="output" readonly style="height:200px"></textarea>
+            <textarea id="out" readonly style="margin:0"></textarea>
         </div>
-        <div class="seo-content">
+        
+        <div class="status" id="st"></div>
+        
+        <section class="seo">
             <h2>Что такое Base64?</h2>
-            <p>Base64 — это способ кодирования бинарных данных в текстовый формат. Используется для вложения данных в email, HTML, JSON и другие текстовые форматы.</p>
-            <h3>Когда используется Base64?</h3>
+            <p>Base64 — это бинарно-текстовый кодировщик, преобразующий бинарные данные в текстовый формат ASCII. Название происходит от 64 основных символов, используемых в коде: A-Z, a-z, 0-9, +, /.</p>
+            
+            <h3>Где используется Base64?</h3>
             <ul>
-                <li>Встраивание изображений в HTML/CSS</li>
-                <li>Передача данных через API</li>
-                <li>Кодирование файлов в email</li>
-                <li>Хранение бинарных данных в базах</li>
+                <li><strong>Email (MIME)</strong> — вложение бинарных файлов в текстовые письма</li>
+                <li><strong>HTML/CSS</strong> — встраивание изображений (data URI)</li>
+                <li><strong>JSON API</strong> — передача бинарных данных через текстовые протоколы</li>
+                <li><strong>localStorage</strong> — хранение бинарных данных в браузере</li>
+                <li><strong>JWT токены</strong> — кодирование заголовков и полезной нагрузки</li>
             </ul>
-            <h3>Как работает конвертер?</h3>
-            <p>Введите текст или Base64-строку, нажмите «Кодировать» или «Декодировать». Всё происходит в вашем браузере — данные никуда не отправляются.</p>
-        </div>
-        <div class="support-box">
-            <h3>Поддержите проект</h3>
-            <p>Донат в USDT (TRC20):</p>
+            
+            <h3>Как работает Base64 кодирование?</h3>
+            <p>Base64 преобразует каждые 3 байта входных данных в 4 символа из 64-символьного набора. Это означает, что закодированные данные на 33% больше исходных. Для декодирования применяется обратный алгоритм.</p>
+            
+            <h3>Почему DataTool безопасен?</h3>
+            <p>Все операции кодирования и декодирования происходят в вашем браузере. Данные никуда не отправляются — полная конфиденциальность.</p>
+        </section>
+        
+        <div class="support">
+            <h3>💙 Поддержите проект</h3>
             <div class="wallet">T9yDq43jFWkR5g8vZ1mN2pL7xHbS6cA9wE</div>
         </div>
     </main>
-    <footer>DataTool &copy; 2026 | Base64 онлайн. Все вычисления в браузере.</footer>
+    <footer>DataTool &copy; 2026 | Base64 онлайн. Безопасно в браузере.</footer>
     <script>
-        const input=document.getElementById('input'),output=document.getElementById('output'),btnEncode=document.getElementById('btnEncode'),btnDecode=document.getElementById('btnDecode'),btnCopy=document.getElementById('btnCopy');
-        btnEncode.addEventListener(()=>{try{output.value=btoa(unescape(encodeURIComponent(input.value)));showStatus('success','Закодировано!',true)}catch(e){showStatus('error','Ошибка: '+e.message)}});
-        btnDecode.addEventListener(()=>{try{output.value=decodeURIComponent(escape(atob(input.value)));showStatus('success','Декодировано!',true)}catch(e){showStatus('error','Ошибка: '+e.message)}});
-        btnCopy.addEventListener(()=>{navigator.clipboard.writeText(output.value).then(()=>showStatus('success','Скопировано!',true))});
-        function showStatus(type,msg){const s=document.querySelector('.status');if(!s){const div=document.createElement('div');div.className='status '+type;div.textContent=msg;document.querySelector('main').appendChild(div);return}s.className='status '+type;s.textContent=msg;s.style.display='block'}
+        const inp=document.getElementById('inp'),out=document.getElementById('out'),enc=document.getElementById('enc'),dec=document.getElementById('dec'),cpy=document.getElementById('cpy'),st=document.getElementById('st');
+        enc.addEventListener('click',()=>{try{out.value=btoa(unescape(encodeURIComponent(inp.value)));showStatus('success','Закодировано!',true)}catch(e){showStatus('error','Ошибка: '+e.message)}});
+        dec.addEventListener('click',()=>{try{out.value=decodeURIComponent(escape(atob(inp.value)));showStatus('success','Декодировано!',true)}catch(e){showStatus('error','Ошибка: '+e.message)}});
+        cpy.addEventListener('click',()=>{navigator.clipboard.writeText(out.value).then(()=>showStatus('success','Скопировано!',true))});
+        function showStatus(t,m){st.className='status '+t;st.textContent=m;st.style.display='block'}
     </script>
 </body>
 </html>
