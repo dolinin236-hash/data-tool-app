@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataTool — CSV/JSON Конвертер</title>
+    <meta name="description" content="Бесплатный онлайн конвертер CSV в JSON, JSON в таблицу и обратно. Быстро, безопасно, без регистрации.">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --success: #10b981;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
+        header { padding: 1.5rem 2rem; text-align: center; border-bottom: 1px solid var(--border); }
+        h1 { font-size: 1.8rem; margin-bottom: 0.5rem; background: linear-gradient(135deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        p { color: var(--text-muted); font-size: 0.95rem; }
+        main { flex: 1; max-width: 900px; margin: 0 auto; padding: 2rem 1rem; width: 100%; }
+        .drop-zone {
+            border: 2px dashed var(--border);
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .drop-zone:hover, .drop-zone.dragover { border-color: var(--primary); background: #1e293b; }
+        .drop-zone input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+        .icon { font-size: 3rem; margin-bottom: 1rem; }
+        .controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        button:hover { background: var(--primary-hover); transform: translateY(-1px); }
+        button:disabled { background: var(--border); cursor: not-allowed; transform: none; }
+        button.secondary { background: transparent; border: 1px solid var(--border); color: var(--text-muted); }
+        button.secondary:hover { border-color: var(--text-muted); color: var(--text); }
+        .output-area { margin-top: 1.5rem; background: var(--surface); border-radius: 12px; padding: 1rem; display: none; border: 1px solid var(--border); }
+        textarea {
+            width: 100%;
+            height: 300px;
+            background: #0f172a;
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            font-family: monospace;
+            font-size: 0.9rem;
+            resize: vertical;
+        }
+        .status { margin-top: 1rem; padding: 0.8rem; border-radius: 8px; font-size: 0.9rem; display: none; }
+        .status.error { background: #fef2f2; color: #dc2626; display: block; }
+        .status.success { background: #f0fdf4; color: #16a34a; display: block; }
+        footer { text-align: center; padding: 1.5rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.8rem; margin-top: auto; }
+        .support-box { background: var(--surface); padding: 1rem; border-radius: 8px; margin-top: 2rem; text-align: center; border: 1px solid var(--border); }
+        .support-box h3 { margin-bottom: 0.5rem; color: var(--text); }
+        .wallet { font-family: monospace; background: #0f172a; padding: 0.5rem; border-radius: 6px; word-break: break-all; font-size: 0.85rem; color: var(--success); margin-top: 0.5rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>DataTool</h1>
+        <p>Мгновенный конвертер данных. Работает в браузере. Ваши данные никуда не отправляются.</p>
+    </header>
+    <main>
+        <div class="drop-zone" id="dropZone">
+            <input type="file" id="fileInput" accept=".csv,.json,.txt">
+            <div class="icon">📁</div>
+            <h3>Перетащите файл сюда или кликните для выбора</h3>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem;">Поддерживаемые форматы: .csv, .json</p>
+        </div>
+        <div class="controls">
+            <button id="btnCsvToJson" disabled>CSV → JSON</button>
+            <button id="btnJsonToCsv" disabled>JSON → CSV</button>
+            <button id="btnJsonToTable" disabled>JSON → Таблица</button>
+            <button id="btnClear" class="secondary">Очистить</button>
+        </div>
+        <div class="status" id="status"></div>
+        <div class="output-area" id="outputArea">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                <h3>Результат:</h3>
+                <div style="display:flex; gap:0.5rem;">
+                    <button id="btnCopy" class="secondary" style="padding:0.4rem 0.8rem; font-size:0.85rem;">Копировать</button>
+                    <button id="btnDownload" style="padding:0.4rem 0.8rem; font-size:0.85rem;">Скачать</button>
+                </div>
+            </div>
+            <textarea id="output" readonly></textarea>
+        </div>
+        <div class="support-box">
+            <h3>Поддержите проект</h3>
+            <p>Если инструмент был полезен, вы можете сделать донат в USDT (TRC20):</p>
+            <div class="wallet">T9yDq43jFWkR5g8vZ1mN2pL7xHbS6cA9wE</div>
+            <p style="margin-top:0.5rem; font-size:0.8rem;">Благодарность помогает развивать проект дальше 🙏</p>
+        </div>
+    </main>
+    <footer>
+        DataTool &copy; 2024 | Все вычисления происходят локально в вашем браузере. Сервер не используется.
+    </footer>
+
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const status = document.getElementById('status');
+        const outputArea = document.getElementById('outputArea');
+        const output = document.getElementById('output');
+        const btnCsvToJson = document.getElementById('btnCsvToJson');
+        const btnJsonToCsv = document.getElementById('btnJsonToCsv');
+        const btnJsonToTable = document.getElementById('btnJsonToTable');
+        const btnCopy = document.getElementById('btnCopy');
+        const btnDownload = document.getElementById('btnDownload');
+        const btnClear = document.getElementById('btnClear');
+
+        let currentFile = null;
+        let rawData = null;
+        let fileType = '';
+
+        ['dragenter', 'dragover'].forEach(e => dropZone.addEventListener(e, (ev) => { ev.preventDefault(); dropZone.classList.add('dragover'); }));
+        ['dragleave', 'drop'].forEach(e => dropZone.addEventListener(e, (ev) => { ev.preventDefault(); dropZone.classList.remove('dragover'); }));
+
+        dropZone.addEventListener('drop', (e) => {
+            const files = e.dataTransfer.files;
+            if (files.length) handleFile(files[0]);
+        });
+        fileInput.addEventListener('change', (e) => { if (e.target.files.length) handleFile(e.target.files[0]); });
+
+        function handleFile(file) {
+            const ext = file.name.split('.').pop().toLowerCase();
+            if (!['csv', 'json'].includes(ext)) return showStatus('error', 'Поддерживаются только .csv и .json файлы');
+            
+            currentFile = file;
+            fileType = ext;
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    rawData = fileType === 'json' ? JSON.parse(e.target.result) : parseCSV(e.target.result);
+                    showStatus('success', `Файл "${file.name}" загружен. (${rawData.length} строк)`, true);
+                    enableButtons();
+                } catch (err) {
+                    showStatus('error', 'Ошибка чтения файла: ' + err.message);
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function parseCSV(text) {
+            const lines = text.trim().split('\n');
+            const headers = lines[0].split(',').map(h => h.trim().replace(/^"|"$/g, ''));
+            return lines.slice(1).map(line => {
+                const values = line.split(',').map(v => v.trim().replace(/^"|"$/g, ''));
+                const obj = {};
+                headers.forEach((h, i) => obj[h] = values[i] || '');
+                return obj;
+            });
+        }
+
+        function enableButtons() {
+            if (fileType === 'csv') {
+                btnCsvToJson.disabled = false;
+                btnJsonToCsv.disabled = true;
+                btnJsonToTable.disabled = true;
+            } else {
+                btnCsvToJson.disabled = true;
+                btnJsonToCsv.disabled = false;
+                btnJsonToTable.disabled = false;
+            }
+        }
+
+        btnCsvToJson.addEventListener('click', () => {
+            output.value = JSON.stringify(rawData, null, 2);
+            outputArea.style.display = 'block';
+            status.style.display = 'none';
+        });
+
+        btnJsonToCsv.addEventListener('click', () => {
+            if (!Array.isArray(rawData)) return showStatus('error', 'JSON должен быть массивом объектов [{...}]');
+            const headers = Object.keys(rawData[0]);
+            const csv = [headers.join(','), ...rawData.map(row => headers.map(h => `"${row[h] || ''}"`).join(','))].join('\n');
+            output.value = csv;
+            outputArea.style.display = 'block';
+            status.style.display = 'none';
+        });
+
+        btnJsonToTable.addEventListener('click', () => {
+            if (!Array.isArray(rawData)) return showStatus('error', 'JSON должен быть массивом объектов [{...}]');
+            const headers = Object.keys(rawData[0]);
+            let html = '<table border="1" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse;"><thead><tr>' + headers.map(h => `<th>${h}</th>`).join('') + '</tr></thead><tbody>';
+            rawData.forEach(row => { html += '<tr>' + headers.map(h => `<td>${row[h] || ''}</td>`).join('') + '</tr>'; });
+            html += '</tbody></table>';
+            output.value = html;
+            outputArea.style.display = 'block';
+            status.style.display = 'none';
+        });
+
+        btnCopy.addEventListener('click', () => {
+            navigator.clipboard.writeText(output.value).then(() => showStatus('success', 'Скопировано в буфер обмена', true));
+        });
+
+        btnDownload.addEventListener('click', () => {
+            const ext = output.value.includes('<table') ? 'html' : (fileType === 'csv' ? 'json' : 'csv');
+            const blob = new Blob([output.value], { type: 'text/plain' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = `converted_data.${ext}`;
+            a.click();
+        });
+
+        btnClear.addEventListener('click', () => {
+            currentFile = null; rawData = null; fileType = '';
+            output.value = ''; outputArea.style.display = 'none';
+            status.style.display = 'none';
+            [btnCsvToJson, btnJsonToCsv, btnJsonToTable].forEach(b => b.disabled = true);
+            fileInput.value = '';
+            dropZone.querySelector('h3').textContent = 'Перетащите файл сюда или кликните для выбора';
+        });
+
+        function showStatus(type, msg, keep = false) {
+            status.className = 'status ' + type;
+            status.textContent = msg;
+            status.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
