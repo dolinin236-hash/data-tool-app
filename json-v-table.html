@@ -3,132 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Конвертировать JSON в таблицу HTML онлайн — DataTool</title>
-    <meta name="description" content="Бесплатный онлайн конвертер JSON в HTML-таблицу. Визуализация JSON-массивов в красивых таблицах. Работает в браузере.">
-    <meta name="keywords" content="json в таблицу, json to table, json в html таблицу, конвертер json в таблицу">
-    <meta name="robots" content="index, follow">
+    <title>JSON в HTML таблицу онлайн — визуализация JSON данных бесплатно</title>
+    <meta name="description" content="Бесплатный онлайн конвертер JSON в HTML-таблицу. Визуализация JSON-массивов в красивых таблицах с экспортом. Работает в браузере.">
+    <meta name="keywords" content="json в таблицу, json to table, json в html таблицу, конвертер json в таблицу, json to html table, визуализация json, json table generator, json to table converter, json array to table, json html, таблица из json, преобразовать json в таблицу, json table viewer">
+    <meta name="robots" content="index, follow, max-snippet:-1">
     <link rel="canonical" href="https://dolinin236-hash.github.io/data-tool-app/json-v-table.html">
-    <meta property="og:title" content="Конвертировать JSON в таблицу HTML онлайн">
-    <meta property="og:description" content="Бесплатный конвертер JSON в HTML-таблицу за секунды">
+    <meta property="og:title" content="JSON в HTML-таблицу онлайн — DataTool">
+    <meta property="og:description" content="Бесплатный конвертер JSON в HTML-таблицу">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://dolinin236-hash.github.io/data-tool-app/">
+    <meta property="og:url" content="https://dolinin236-hash.github.io/data-tool-app/json-v-table.html">
     <meta property="og:locale" content="ru_RU">
     <meta name="twitter:card" content="summary">
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"WebApplication","name":"DataTool — JSON в таблицу","url":"https://dolinin236-hash.github.io/data-tool-app/json-v-table.html","description":"Бесплатный онлайн конвертер JSON в HTML-таблицу","applicationCategory":"Utility","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"RUB"}}
     </script>
     <style>
-        :root{--bg:#0f172a;--surface:#1e293b;--primary:#3b82f6;--primary-hover:#2563eb;--text:#f8fafc;--text-muted:#94a3b8;--border:#334155;--success:#10b981}
-        *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',system-ui,sans-serif}
-        body{background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
+        *{box-sizing:border-box;margin:0;padding:0}
+        :root{--bg:#0a0e1a;--surface:#111827;--primary:#3b82f6;--primary-hover:#60a5fa;--text:#f1f5f9;--text-muted:#94a3b8;--border:#1e293b;--gradient:linear-gradient(135deg,#3b82f6,#8b5cf6);--success:#10b981}
+        body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column}
         header{padding:1.5rem 2rem;text-align:center;border-bottom:1px solid var(--border)}
-        h1{font-size:1.8rem;margin-bottom:0.5rem;background:linear-gradient(135deg,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        p{color:var(--text-muted);font-size:0.95rem}
-        main{flex:1;max-width:900px;margin:0 auto;padding:2rem 1rem;width:100%}
-        .drop-zone{border:2px dashed var(--border);background:var(--surface);border-radius:12px;padding:3rem 1.5rem;text-align:center;cursor:pointer;transition:all .2s;position:relative}
-        .drop-zone:hover,.drop-zone.dragover{border-color:var(--primary);background:#1e293b}
+        .logo{font-size:1.6rem;font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        nav{display:flex;justify-content:center;gap:0.5rem;margin-top:1rem;flex-wrap:wrap}
+        nav a{color:var(--text-muted);text-decoration:none;font-size:0.85rem;padding:0.3rem 0.8rem;border-radius:6px;border:1px solid var(--border);transition:0.3s}
+        nav a:hover{color:var(--primary-hover);border-color:var(--primary)}
+        main{flex:1;max-width:900px;margin:0 auto;padding:2rem 1.5rem;width:100%}
+        h1{font-size:1.8rem;margin-bottom:0.5rem;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .subtitle{color:var(--text-muted);margin-bottom:2rem}
+        .drop-zone{border:2px dashed var(--border);background:var(--surface);border-radius:12px;padding:3rem;text-align:center;cursor:pointer;transition:0.3s;position:relative}
+        .drop-zone:hover,.drop-zone.dragover{border-color:var(--primary)}
         .drop-zone input{position:absolute;inset:0;opacity:0;cursor:pointer}
         .icon{font-size:3rem;margin-bottom:1rem}
-        .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-top:1.5rem}
-        button{background:var(--primary);color:white;border:none;padding:.8rem 1.2rem;border-radius:8px;font-weight:600;cursor:pointer;transition:.2s}
-        button:hover{background:var(--primary-hover);transform:translateY(-1px)}
-        button:disabled{background:var(--border);cursor:not-allowed;transform:none}
+        .controls{display:flex;gap:0.8rem;margin-top:1.5rem;flex-wrap:wrap}
+        button{background:var(--gradient);color:white;border:none;padding:0.8rem 1.5rem;border-radius:10px;font-weight:600;cursor:pointer;transition:0.3s}
+        button:hover{transform:translateY(-2px);box-shadow:0 0 20px rgba(59,130,246,0.3)}
+        button:disabled{opacity:0.5;cursor:not-allowed;transform:none}
         button.secondary{background:transparent;border:1px solid var(--border);color:var(--text-muted)}
-        button.secondary:hover{border-color:var(--text-muted);color:var(--text)}
-        .output-area{margin-top:1.5rem;background:var(--surface);border-radius:12px;padding:1rem;display:none;border:1px solid var(--border)}
-        .table-container{overflow-x:auto;padding:1rem}
+        button.secondary:hover{border-color:var(--primary)}
+        .out-area{margin-top:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.2rem;display:none}
+        .out-header{display:flex;justify-content:space-between;margin-bottom:0.8rem;flex-wrap:wrap;gap:0.5rem}
+        .table-wrap{overflow-x:auto;padding:1rem}
         table{width:100%;border-collapse:collapse}
         th{background:#1e293b;padding:.75rem;text-align:left;font-size:.85rem;text-transform:uppercase;color:var(--text-muted);border-bottom:2px solid var(--border)}
         td{padding:.6rem .75rem;border-bottom:1px solid var(--border);font-size:.9rem}
         tr:hover td{background:#0f172a}
-        .status{margin-top:1rem;padding:.8rem;border-radius:8px;font-size:.9rem;display:none}
-        .status.error{background:#fef2f2;color:#dc2626;display:block}
-        .status.success{background:#f0fdf4;color:#16a34a;display:block}
-        .seo-content{margin-top:2rem;padding:1.5rem;background:var(--surface);border-radius:12px;border:1px solid var(--border)}
-        .seo-content h2{font-size:1.2rem;margin-bottom:.5rem;color:var(--text)}
-        .seo-content h3{font-size:1rem;margin:1rem 0 .5rem;color:var(--text)}
-        .seo-content p,.seo-content li{font-size:.9rem;line-height:1.6;color:var(--text-muted);margin-bottom:.5rem}
-        .seo-content ul{padding-left:1.2rem;margin:.5rem 0}
-        .seo-content ol{padding-left:1.2rem;margin:.5rem 0}
-        .seo-content li{margin-bottom:.3rem}
-        footer{text-align:center;padding:1.5rem;border-top:1px solid var(--border);color:var(--text-muted);font-size:.8rem;margin-top:auto}
-        .support-box{background:var(--surface);padding:1rem;border-radius:8px;margin-top:2rem;text-align:center;border:1px solid var(--border)}
-        .support-box h3{margin-bottom:.5rem;color:var(--text)}
-        .wallet{font-family:monospace;background:#0f172a;padding:.5rem;border-radius:6px;word-break:break-all;font-size:.85rem;color:var(--success);margin-top:.5rem}
-        .nav-links{display:flex;justify-content:center;gap:1rem;margin-top:1rem;flex-wrap:wrap}
-        .nav-links a{color:var(--primary);text-decoration:none;font-size:.9rem;padding:.3rem .8rem;border:1px solid var(--border);border-radius:6px}
-        .nav-links a:hover{border-color:var(--primary)}
-        .count{font-size:.85rem;color:var(--text-muted);margin-left:.5rem}
+        .status{margin-top:1rem;padding:0.8rem;border-radius:8px;font-size:0.9rem;display:none}
+        .status.error{background:rgba(239,68,68,0.1);color:#fca5a5;display:block}
+        .status.success{background:rgba(16,185,129,0.1);color:#6ee7b7;display:block}
+        .seo{margin-top:3rem;padding:2rem;background:var(--surface);border-radius:12px;border:1px solid var(--border)}
+        .seo h2{font-size:1.3rem;margin-bottom:1rem;color:var(--text);padding-left:1rem;position:relative}
+        .seo h2::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gradient);border-radius:2px}
+        .seo h3{font-size:1.1rem;margin:1.2rem 0 0.6rem;color:var(--text)}
+        .seo p,.seo li{font-size:0.95rem;line-height:1.7;color:var(--text-muted);margin-bottom:0.5rem}
+        .seo ul,.seo ol{padding-left:1.3rem;margin:0.5rem 0}
+        .seo li{margin-bottom:0.4rem}
+        .support{background:var(--surface);padding:1.5rem;border-radius:12px;margin-top:2rem;text-align:center;border:1px solid var(--border)}
+        .wallet{font-family:monospace;background:#0a0e1a;padding:0.7rem;border-radius:8px;word-break:break-all;font-size:0.8rem;color:var(--success);margin-top:0.5rem;border:1px solid var(--border)}
+        footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--text-muted);font-size:0.8rem}
     </style>
 </head>
 <body>
     <header>
-        <h1>Конвертировать JSON в HTML-таблицу</h1>
-        <p>Визуализация JSON-массивов в красивых таблицах онлайн</p>
-        <div class="nav-links">
+        <div class="logo">DataTool</div>
+        <nav>
             <a href="index.html">Главная</a>
             <a href="csv-v-json.html">CSV в JSON</a>
             <a href="json-v-csv.html">JSON в CSV</a>
-        </div>
+            <a href="base64.html">Base64</a>
+            <a href="password.html">Пароли</a>
+        </nav>
     </header>
     <main>
-        <div class="drop-zone" id="dropZone">
-            <input type="file" id="fileInput" accept=".json,.txt">
+        <h1>JSON в HTML-таблицу</h1>
+        <p class="subtitle">Визуализация JSON-массивов в красивых таблицах онлайн</p>
+        
+        <div class="drop-zone" id="dz">
+            <input type="file" id="fi" accept=".json,.txt">
             <div class="icon">📁</div>
             <h3>Перетащите JSON-файл или кликните</h3>
         </div>
+        
         <div class="controls">
-            <button id="btnJsonToTable" disabled>Создать таблицу</button>
-            <button id="btnClear" class="secondary">Очистить</button>
+            <button id="btn" disabled>Создать таблицу</button>
+            <button id="clr" class="secondary">Очистить</button>
         </div>
-        <div class="status" id="status"></div>
-        <div class="output-area" id="outputArea">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem">
-                <h3>Таблица: <span id="rowCount" class="count"></span></h3>
-                <div style="display:flex;gap:.5rem">
-                    <button id="btnCopyHtml" class="secondary" style="padding:.4rem .8rem;font-size:.85rem">Копировать HTML</button>
-                    <button id="btnDownloadHtml" style="padding:.4rem .8rem;font-size:.85rem">Скачать .html</button>
+        
+        <div class="status" id="st"></div>
+        
+        <div class="out-area" id="oa">
+            <div class="out-header">
+                <h3>Таблица: <span id="rc"></span></h3>
+                <div style="display:flex;gap:0.5rem">
+                    <button id="cpy" class="secondary" style="padding:0.5rem 1rem;font-size:0.85rem">Копировать HTML</button>
+                    <button id="dl" style="padding:0.5rem 1rem;font-size:0.85rem">Скачать .html</button>
                 </div>
             </div>
-            <div class="table-container" id="tableContainer"></div>
+            <div class="table-wrap" id="tc"></div>
         </div>
-        <div class="seo-content">
-            <h2>Как конвертировать JSON в таблицу онлайн?</h2>
-            <ol style="padding-left:1.2rem;margin:.5rem 0">
-                <li style="font-size:.9rem;line-height:1.6;color:var(--text-muted);margin-bottom:.3rem">Загрузите JSON-файл (массив объектов [{...}])</li>
-                <li style="font-size:.9rem;line-height:1.6;color:var(--text-muted);margin-bottom:.3rem">Нажмите кнопку «Создать таблицу»</li>
-                <li style="font-size:.9rem;line-height:1.6;color:var(--text-muted);margin-bottom:.3rem">Скопируйте HTML или скачайте готовую страницу</li>
-            </ol>
-            <h3>Зачем конвертировать JSON в таблицу?</h3>
-            <p>JSON-данные из API часто сложно читать. Конвертация в таблицу позволяет быстро просмотреть, проанализировать и экспортировать данные. HTML-таблицу можно встроить на сайт, в документацию или просто открыть в браузере.</p>
-            <h3>Преимущества</h3>
+        
+        <section class="seo">
+            <h2>Конвертер JSON в HTML-таблицу — зачем нужен?</h2>
+            <p>JSON-данные из API часто сложно читать и анализировать. Конвертация в HTML-таблицу позволяет визуализировать данные в наглядном формате, который можно открыть в браузере, встроить на сайт или сохранить как отдельную страницу.</p>
+            
+            <h3>Преимущества JSON в таблицу</h3>
             <ul>
-                <li>Визуальное представление JSON-массивов</li>
-                <li>Экспорт в HTML для использования на сайтах</li>
-                <li>Работает полностью в браузере</li>
-                <li>Без регистрации и лимитов</li>
+                <li><strong>Наглядность</strong> — данные видны в структурированном виде</li>
+                <li><strong>Экспорт</strong> — скачайте готовую HTML-страницу с таблицей</li>
+                <li><strong>Встраивание</strong> — используйте HTML-таблицу на своём сайте</li>
+                <li><strong>Безопасность</strong> — всё работает в вашем браузере</li>
             </ul>
-        </div>
-        <div class="support-box">
-            <h3>Поддержите проект</h3>
-            <p>Донат в USDT (TRC20):</p>
+            
+            <h3>Как работает конвертер?</h3>
+            <ol>
+                <li>Загрузите JSON-файл с массивом объектов [{...}]</li>
+                <li>Первый объект определяет заголовки столбцов</li>
+                <li>Каждый последующий объект — строка таблицы</li>
+                <li>Результат — готовая HTML-таблица с возможностью скачивания</li>
+            </ol>
+            
+            <h3>Кому подходит?</h3>
+            <p>Веб-разработчикам для быстрой визуализации API-ответов, аналитикам для обзора данных, всем, кому нужно быстро превратить JSON в читаемую таблицу.</p>
+        </section>
+        
+        <div class="support">
+            <h3>💙 Поддержите проект</h3>
             <div class="wallet">T9yDq43jFWkR5g8vZ1mN2pL7xHbS6cA9wE</div>
         </div>
     </main>
-    <footer>DataTool &copy; 2026 | JSON в HTML-таблицу онлайн. Все вычисления в браузере.</footer>
+    <footer>DataTool &copy; 2026 | JSON в HTML-таблицу онлайн. Безопасно в браузере.</footer>
     <script>
-        const dropZone=document.getElementById('dropZone'),fileInput=document.getElementById('fileInput'),status=document.getElementById('status'),outputArea=document.getElementById('outputArea'),btnJsonToTable=document.getElementById('btnJsonToTable'),btnCopyHtml=document.getElementById('btnCopyHtml'),btnDownloadHtml=document.getElementById('btnDownloadHtml'),btnClear=document.getElementById('btnClear'),tableContainer=document.getElementById('tableContainer'),rowCount=document.getElementById('rowCount');
-        let rawData=null;
-        ['dragenter','dragover'].forEach(e=>dropZone.addEventListener(e,ev=>{ev.preventDefault();dropZone.classList.add('dragover')}));
-        ['dragleave','drop'].forEach(e=>dropZone.addEventListener(e,ev=>{ev.preventDefault();dropZone.classList.remove('dragover')}));
-        dropZone.addEventListener('drop',e=>{const f=e.dataTransfer.files;if(f.length)handleFile(f[0])});
-        fileInput.addEventListener('change',e=>{if(e.target.files.length)handleFile(e.target.files[0])});
-        function handleFile(file){const ext=file.name.split('.').pop().toLowerCase();if(ext!=='json'&&ext!=='txt')return showStatus('error','Поддерживаются .json и .txt');const reader=new FileReader();reader.onload=e=>{try{rawData=JSON.parse(e.target.result);if(!Array.isArray(rawData))return showStatus('error','JSON должен быть массивом [{...}]');showStatus('success',`Файл "${file.name}". ${rawData.length} строк.`,true);btnJsonToTable.disabled=false}catch(err){showStatus('error','Ошибка: '+err.message)}};reader.readAsText(file)}
-        btnJsonToTable.addEventListener(()=>{if(!Array.isArray(rawData))return;const headers=Object.keys(rawData[0]);let html='<table><thead><tr>'+headers.map(h=>'<th>'+h+'</th>').join('')+'</tr></thead><tbody>';rawData.forEach(r=>{html+='<tr>'+headers.map(h=>'<td>'+((r[h]||'')+'').replace(/</g,'&lt;')+'</td>').join('')+'</tr>';});html+='</tbody></table>';tableContainer.innerHTML=html;rowCount.textContent=rawData.length+' строк, '+headers.length+' столбцов';outputArea.style.display='block';status.style.display='none'});
-        btnCopyHtml.addEventListener(()=>{navigator.clipboard.writeText(tableContainer.innerHTML).then(()=>showStatus('success','HTML скопирован!',true))});
-        btnDownloadHtml.addEventListener(()=>{const page='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>JSON Table</title><style>body{font-family:sans-serif;padding:2rem}table{width:100%;border-collapse:collapse}th,td{padding:.75rem;text-align:left;border-bottom:1px solid #ddd}th{background:#f5f5f5}</style></head><body>'+tableContainer.innerHTML+'</body></html>';const blob=new Blob([page],{type:'text/html'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='table.html';a.click()});
-        btnClear.addEventListener(()=>{rawData=null;outputArea.style.display='none';status.style.display='none';btnJsonToTable.disabled=true;fileInput.value=''});
-        function showStatus(type,msg){status.className='status '+type;status.textContent=msg;status.style.display='block'}
+        const dz=document.getElementById('dz'),fi=document.getElementById('fi'),st=document.getElementById('st'),oa=document.getElementById('oa'),tc=document.getElementById('tc'),rc=document.getElementById('rc'),btn=document.getElementById('btn'),clr=document.getElementById('clr'),cpy=document.getElementById('cpy'),dl=document.getElementById('dl');
+        let data=null;
+        ['dragenter','dragover'].forEach(e=>dz.addEventListener(e,ev=>{ev.preventDefault();dz.classList.add('dragover')}));
+        ['dragleave','drop'].forEach(e=>dz.addEventListener(e,ev=>{ev.preventDefault();dz.classList.remove('dragover')}));
+        dz.addEventListener('drop',e=>{if(e.dataTransfer.files.length)hf(e.dataTransfer.files[0])});
+        fi.addEventListener('change',e=>{if(e.target.files.length)hf(e.target.files[0])});
+        function hf(f){const ext=f.name.split('.').pop().toLowerCase();if(ext!=='json'&&ext!=='txt')return showStatus('error','Только .json и .txt');const r=new FileReader();r.onload=e=>{try{data=JSON.parse(e.target.result);if(!Array.isArray(data))return showStatus('error','JSON должен быть массивом');showStatus('success','Файл «'+f.name+'». '+data.length+' строк.',true);btn.disabled=false}catch(err){showStatus('error','Ошибка: '+err.message)}};r.readAsText(f)}
+        btn.addEventListener('click',()=>{if(!Array.isArray(data))return;const h=Object.keys(data[0]);let ht='<table><thead><tr>'+h.map(x=>'<th>'+x+'</th>').join('')+'</tr></thead><tbody>';data.forEach(r=>{ht+='<tr>'+h.map(x=>'<td>'+((r[x]||'')+'').replace(/</g,'&lt;')+'</td>').join('')+'</tr>';});ht+='</tbody></table>';tc.innerHTML=ht;rc.textContent=data.length+' строк, '+h.length+' столбцов';oa.style.display='block';st.style.display='none'});
+        cpy.addEventListener('click',()=>{navigator.clipboard.writeText(tc.innerHTML).then(()=>showStatus('success','HTML скопирован!',true))});
+        dl.addEventListener('click',()=>{const p='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>JSON Table</title><style>body{font-family:sans-serif;padding:2rem}table{width:100%;border-collapse:collapse}th,td{padding:.75rem;text-align:left;border-bottom:1px solid #ddd}th{background:#f5f5f5}</style></head><body>'+tc.innerHTML+'</body></html>';const b=new Blob([p],{type:'text/html'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='table.html';a.click()});
+        clr.addEventListener('click',()=>{data=null;oa.style.display='none';st.style.display='none';btn.disabled=true;fi.value=''});
+        function showStatus(t,m){st.className='status '+t;st.textContent=m;st.style.display='block'}
     </script>
 </body>
 </html>
