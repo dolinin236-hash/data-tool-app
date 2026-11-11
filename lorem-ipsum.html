@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор Lorem Ipsum — случайный текст для макетов бесплатно</title>
+    <meta name="description" content="Генератор Lorem Ipsum для дизайнеров и разработчиков. Создайте заглушечный текст: абзацы, предложения, слова. Настройка количества и формата.">
+    <meta name="keywords" content="lorem ipsum, генератор lorem ipsum, lorem ipsum текст, заглушечный текст, filler text, lorem ipsum generator, placeholder text, текст заглушка, lorem ipsum generator online, lorem ipsum paragraphs, generate lorem ipsum, текстовая заглушка, макет текста, генератор текста для макетов">
+    <meta name="robots" content="index, follow, max-snippet:-1">
+    <link rel="canonical" href="https://dolinin236-hash.github.io/data-tool-app/lorem-ipsum.html">
+    <meta property="og:title" content="Генератор Lorem Ipsum — DataTool">
+    <meta property="og:description" content="Бесплатный генератор Lorem Ipsum">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dolinin236-hash.github.io/data-tool-app/lorem-ipsum.html">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebApplication","name":"DataTool — Lorem Ipsum Генератор","url":"https://dolinin236-hash.github.io/data-tool-app/lorem-ipsum.html","description":"Бесплатный генератор Lorem Ipsum для дизайнеров","applicationCategory":"Utility","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"RUB"}}
+    </script>
+    <style>
+        *{box-sizing:border-box;margin:0;padding:0}
+        :root{--bg:#0a0e1a;--surface:#111827;--primary:#3b82f6;--primary-hover:#60a5fa;--text:#f1f5f9;--text-muted:#94a3b8;--border:#1e293b;--gradient:linear-gradient(135deg,#3b82f6,#8b5cf6);--success:#10b981}
+        body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column}
+        header{padding:1.5rem 2rem;text-align:center;border-bottom:1px solid var(--border)}
+        .logo{font-size:1.6rem;font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        nav{display:flex;justify-content:center;gap:0.5rem;margin-top:1rem;flex-wrap:wrap}
+        nav a{color:var(--text-muted);text-decoration:none;font-size:0.85rem;padding:0.3rem 0.8rem;border-radius:6px;border:1px solid var(--border);transition:0.3s}
+        nav a:hover{color:var(--primary-hover);border-color:var(--primary)}
+        main{flex:1;max-width:900px;margin:0 auto;padding:2rem 1.5rem;width:100%}
+        h1{font-size:1.8rem;margin-bottom:0.5rem;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .subtitle{color:var(--text-muted);margin-bottom:2rem}
+        .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin-bottom:1.5rem;background:var(--surface);padding:1.5rem;border-radius:12px;border:1px solid var(--border)}
+        .controls label{display:block;margin-bottom:0.5rem;font-weight:600;font-size:0.9rem}
+        .controls select,.controls input{width:100%;background:#0a0e1a;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:0.8rem;font-size:1rem}
+        .controls select:focus,.controls input:focus{outline:none;border-color:var(--primary)}
+        button{background:var(--gradient);color:white;border:none;padding:0.8rem 1.5rem;border-radius:10px;font-weight:600;cursor:pointer;transition:0.3s}
+        button:hover{transform:translateY(-2px);box-shadow:0 0 20px rgba(59,130,246,0.3)}
+        button.secondary{background:transparent;border:1px solid var(--border);color:var(--text-muted)}
+        button.secondary:hover{border-color:var(--primary)}
+        .btns{display:flex;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap}
+        .output{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;max-height:500px;overflow-y:auto;line-height:1.8;font-size:0.95rem}
+        .output p{margin-bottom:1rem}
+        .status{margin-top:1rem;padding:0.8rem;border-radius:8px;font-size:0.9rem;display:none}
+        .status.success{background:rgba(16,185,129,0.1);color:#6ee7b7;display:block}
+        .seo{margin-top:2rem;padding:2rem;background:var(--surface);border-radius:12px;border:1px solid var(--border)}
+        .seo h2{font-size:1.3rem;margin-bottom:1rem;color:var(--text);padding-left:1rem;position:relative}
+        .seo h2::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gradient);border-radius:2px}
+        .seo h3{font-size:1.1rem;margin:1.2rem 0 0.6rem;color:var(--text)}
+        .seo p,.seo li{font-size:0.95rem;line-height:1.7;color:var(--text-muted);margin-bottom:0.5rem}
+        .seo ul,.seo ol{padding-left:1.3rem;margin:0.5rem 0}
+        .seo li{margin-bottom:0.4rem}
+        .support{background:var(--surface);padding:1.5rem;border-radius:12px;margin-top:2rem;text-align:center;border:1px solid var(--border)}
+        .wallet{font-family:monospace;background:#0a0e1a;padding:0.7rem;border-radius:8px;word-break:break-all;font-size:0.8rem;color:var(--success);margin-top:0.5rem;border:1px solid var(--border)}
+        footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--text-muted);font-size:0.8rem}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">DataTool</div>
+        <nav>
+            <a href="index.html">Главная</a>
+            <a href="csv-v-json.html">CSV в JSON</a>
+            <a href="json-v-csv.html">JSON в CSV</a>
+            <a href="temp-converter.html">Температура</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Генератор Lorem Ipsum</h1>
+        <p class="subtitle">Создайте заглушечный текст для макетов и дизайнов</p>
+        
+        <div class="controls">
+            <div>
+                <label>Количество:</label>
+                <input type="number" id="qty" value="3" min="1" max="100">
+            </div>
+            <div>
+                <label>Тип:</label>
+                <select id="type">
+                    <option value="paragraphs">Абзацы</option>
+                    <option value="sentences">Предложения</option>
+                    <option value="words">Слова</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="btns">
+            <button id="gen">Сгенерировать</button>
+            <button id="cpy" class="secondary">Копировать</button>
+        </div>
+        
+        <div class="output" id="output"></div>
+        
+        <section class="seo">
+            <h2>Что такое Lorem Ipsum?</h2>
+            <p> Lorem Ipsum — это стандартный заглушечный текст, используемый в полиграфии и веб-дизайне с XVI века. Он основан на произведении Цицерона «О границах благ и зла» (45 г. до н.э.).</p>
+            
+            <h3>Зачем нужен Lorem Ipsum?</h3>
+            <ul>
+                <li><strong>Веб-дизайн</strong> — заполнение макетов до создания реального контента</li>
+                <li><strong>Полиграфия</strong> — тестирование типографики и вёрстки</li>
+                <li><strong>UI/UX тестирование</strong> — проверка адаптивности без отвлекающего текста</li>
+                <li><strong>Демонстрация</strong> — показ клиенту макета с реалистичным объёмом текста</li>
+            </ul>
+            
+            <h3>Как работает наш генератор?</h3>
+            <p>Наш генератор создаёт вариации классического текста Lorem Ipsum с возможностью выбора количества абзацев, предложений или слов. Результат можно скопировать одним кликом и вставить в свой макет.</p>
+        </section>
+        
+        <div class="support">
+            <h3>💙 Поддержите проект</h3>
+            <div class="wallet">T9yDq43jFWkR5g8vZ1mN2pL7xHbS6cA9wE</div>
+        </div>
+    </main>
+    <footer>DataTool &copy; 2026 | Генератор Lorem Ipsum онлайн.</footer>
+    <script>
+        const words='lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum'.split(' ');
+        function genWords(n){let r=[];for(let i=0;i<n;i++)r.push(words[Math.floor(Math.random()*words.length)]);r[0]=r[0][0].toUpperCase()+r[0].slice(1);return r.join(' ')+'. '}
+        document.getElementById('gen').addEventListener('click',()=>{const qty=parseInt(document.getElementById('qty').value)||3,type=document.getElementById('type').value;let r;if(type==='paragraphs'){for(let i=0;i<qty;i++){let p='';for(let s=0;s<4+Math.floor(Math.random()*4);s++)p+=genWords(15+Math.floor(Math.random()*15));r+='<p>'+p+'</p>'}}else if(type==='sentences'){for(let i=0;i<qty;i++)r+='<p>'+genWords(10+Math.floor(Math.random()*15))+'</p>'}else{r+='<p>'+genWords(qty)+'</p>'}document.getElementById('output').innerHTML=r});
+        document.getElementById('cpy').addEventListener('click',()=>{navigator.clipboard.writeText(document.getElementById('output').innerText).then(()=>showStatus('Скопировано!'))});
+        function showStatus(m){const s=document.querySelector('.status');s.className='status success';s.textContent=m;s.style.display='block';setTimeout(()=>s.style.display='none',2000)}
+    </script>
+</body>
+</html>
