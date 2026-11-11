@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dolinin236-hash.github.io/data-tool-app/sitemap.xml
