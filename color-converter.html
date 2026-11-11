@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конвертер цветов — HEX в RGB, RGB в HEX, палитра онлайн</title>
+    <meta name="description" content="Бесплатный онлайн конвертер цветов. HEX в RGB, RGB в HEX, HSL. Подбор палитры. Визуальный предпросмотр.">
+    <meta name="keywords" content="конвертер цветов, hex в rgb, rgb в hex, конвертер цвета, color converter, hex color code, rgb color picker, hsl color, палитра цветов, выбор цвета, color palette, hex to rgb, rgb to hex, конвертация цветов онлайн, онлайн палитра, генератор цветов">
+    <meta name="robots" content="index, follow, max-snippet:-1">
+    <link rel="canonical" href="https://dolinin236-hash.github.io/data-tool-app/color-converter.html">
+    <meta property="og:title" content="Конвертер цветов — DataTool">
+    <meta property="og:description" content="Бесплатный конвертер цветов онлайн">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dolinin236-hash.github.io/data-tool-app/color-converter.html">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebApplication","name":"DataTool — Конвертер цветов","url":"https://dolinin236-hash.github.io/data-tool-app/color-converter.html","description":"Бесплатный онлайн конвертер цветов. HEX, RGB, HSL.","applicationCategory":"Utility","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"RUB"}}
+    </script>
+    <style>
+        *{box-sizing:border-box;margin:0;padding:0}
+        :root{--bg:#0a0e1a;--surface:#111827;--primary:#3b82f6;--text:#f1f5f9;--text-muted:#94a3b8;--border:#1e293b;--gradient:linear-gradient(135deg,#3b82f6,#8b5cf6);--success:#10b981}
+        body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column}
+        header{padding:1.5rem 2rem;text-align:center;border-bottom:1px solid var(--border)}
+        .logo{font-size:1.6rem;font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        nav{display:flex;justify-content:center;gap:0.5rem;margin-top:1rem;flex-wrap:wrap}
+        nav a{color:var(--text-muted);text-decoration:none;font-size:0.85rem;padding:0.3rem 0.8rem;border-radius:6px;border:1px solid var(--border);transition:0.3s}
+        nav a:hover{color:var(--primary);border-color:var(--primary)}
+        main{flex:1;max-width:900px;margin:0 auto;padding:2rem 1.5rem;width:100%}
+        h1{font-size:1.8rem;margin-bottom:0.5rem;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .preview{height:120px;border-radius:12px;border:1px solid var(--border);margin-bottom:2rem;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:600}
+        .grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem}
+        .card{background:var(--surface);padding:1.5rem;border-radius:12px;border:1px solid var(--border)}
+        .card h3{margin-bottom:1rem;font-size:1.1rem;padding-left:1rem;position:relative}
+        .card h3::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gradient);border-radius:2px}
+        label{display:block;margin-bottom:0.5rem;font-weight:600;font-size:0.9rem}
+        input{width:100%;background:#0a0e1a;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:0.8rem;font-size:1rem;font-family:monospace}
+        input:focus{outline:none;border-color:var(--primary)}
+        .val{background:#0a0e1a;padding:0.8rem;border-radius:8px;text-align:center;font-family:monospace;font-size:1rem;margin-top:0.5rem;cursor:pointer;transition:0.3s}
+        .val:hover{border-color:var(--success)}
+        .btns{display:flex;gap:1rem;margin-bottom:2rem;flex-wrap:wrap}
+        button{background:var(--gradient);color:white;border:none;padding:0.8rem 1.5rem;border-radius:10px;font-weight:600;cursor:pointer;transition:0.3s}
+        button:hover{transform:translateY(-2px);box-shadow:0 0 20px rgba(59,130,246,0.3)}
+        button.secondary{background:transparent;border:1px solid var(--border);color:var(--text-muted)}
+        button.secondary:hover{border-color:var(--primary)}
+        .seo{margin-top:2rem;padding:2rem;background:var(--surface);border-radius:12px;border:1px solid var(--border)}
+        .seo h2{font-size:1.3rem;margin-bottom:1rem;color:var(--text);padding-left:1rem;position:relative}
+        .seo h2::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gradient);border-radius:2px}
+        .seo h3{font-size:1.1rem;margin:1.2rem 0 0.6rem;color:var(--text)}
+        .seo p,.seo li{font-size:0.95rem;line-height:1.7;color:var(--text-muted);margin-bottom:0.5rem}
+        .seo ul,.seo ol{padding-left:1.3rem;margin:0.5rem 0}
+        .support{background:var(--surface);padding:1.5rem;border-radius:12px;margin-top:2rem;text-align:center;border:1px solid var(--border)}
+        .wallet{font-family:monospace;background:#0a0e1a;padding:0.7rem;border-radius:8px;word-break:break-all;font-size:0.8rem;color:var(--success);margin-top:0.5rem;border:1px solid var(--border)}
+        footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--text-muted);font-size:0.8rem}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">DataTool</div>
+        <nav>
+            <a href="index.html">Главная</a>
+            <a href="csv-v-json.html">CSV в JSON</a>
+            <a href="json-v-csv.html">JSON в CSV</a>
+            <a href="temp-converter.html">Температура</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Конвертер цветов</h1>
+        <div class="preview" id="preview" style="background:#3b82f6;color:white">Введите цвет</div>
+        
+        <div class="grid">
+            <div class="card">
+                <h3>HEX код</h3>
+                <input type="text" id="hex" placeholder="#3B82F6" maxlength="7">
+                <div class="val" id="hexVal" title="Нажмите чтобы скопировать">#3B82F6</div>
+            </div>
+            <div class="card">
+                <h3>RGB</h3>
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem">
+                    <div><label>R</label><input type="number" id="r" min="0" max="255" value="59"></div>
+                    <div><label>G</label><input type="number" id="g" min="0" max="255" value="130"></div>
+                    <div><label>B</label><input type="number" id="b" min="0" max="255" value="246"></div>
+                </div>
+                <div class="val" id="rgbVal" title="Нажмите чтобы скопировать">rgb(59, 130, 246)</div>
+            </div>
+        </div>
+        
+        <section class="seo">
+            <h2>Конвертер цветов онлайн — HEX, RGB, HSL</h2>
+            <p>Конвертер цветов позволяет мгновенно переводить между форматами HEX и RGB. Введите HEX-код цвета (например, #FF0000) или значения RGB (0-255) — результат появится автоматически.</p>
+            
+            <h3>Форматы цветов</h3>
+            <ul>
+                <li><strong>HEX (#RRGGBB)</strong> — шестнадцатеричный формат, используется в CSS и HTML. Пример: #FF0000 — красный.</li>
+                <li><strong>RGB (0-255, 0-255, 0-255)</strong> —红绿蓝 компоненты. Идеален для программирования.</li>
+            </ul>
+        </section>
+        
+        <div class="support">
+            <h3>💙 Поддержите проект</h3>
+            <div class="wallet">T9yDq43jFWkR5g8vZ1mN2pL7xHbS6cA9wE</div>
+        </div>
+    </main>
+    <footer>DataTool &copy; 2026 | Конвертер цветов онлайн.</footer>
+    <script>
+        const hex=document.getElementById('hex'),r=document.getElementById('r'),g=document.getElementById('g'),b=document.getElementById('b'),preview=document.getElementById('preview'),hexVal=document.getElementById('hexVal'),rgbVal=document.getElementById('rgbVal');
+        function hexToRgb(h){h=h.replace('#','');return[parseInt(h.substring(0,2),16),parseInt(h.substring(2,4),16),parseInt(h.substring(4,6),16)]}
+        function rgbToHex(r,g,b){return'#'+[r,g,b].map(x=>x.toString(16).padStart(2,'0')).join('').toUpperCase()}
+        function lighten(hex,amt){let r=hexToRgb(hex);return'#'+[r,g,b].map(x=>Math.min(255,x+amt).toString(16).padStart(2,'0')).join('')}
+        function update(hex){try{const[rr,gg,bb]=hexToRgb(hex);r.value=rr;g.value=gg;b.value=bb;preview.style.background=hex;preview.textContent=hex;hexVal.textContent=hex.toUpperCase();rgbVal.textContent='rgb('+rr+', '+gg+', '+bb+')'}catch(e){}}
+        function updateFromRGB(){const rr=parseInt(r.value)||0,gg=parseInt(g.value)||0,bb=parseInt(b.value)||0;const hex=rgbToHex(rr,gg,bb);hex.value=hex;preview.style.background=hex;preview.style.color=getLuminance(rr,gg,gg)>0.5?'#000':'#fff';hexVal.textContent=hex;rgbVal.textContent='rgb('+rr+', '+gg+', '+bb+')'}
+        function getLuminance(r,g,b){return(0.299*r+0.587*g+0.114*b)/255}
+        hex.addEventListener('input',()=>update(hex.value));
+        [r,g,b].forEach(el=>el.addEventListener('input',updateFromRGB));
+        hexVal.addEventListener('click',()=>{navigator.clipboard.writeText(hexVal.textContent)});
+        rgbVal.addEventListener('click',()=>{navigator.clipboard.writeText(rgbVal.textContent)});
+        update('#3B82F6');
+    </script>
+</body>
+</html>
