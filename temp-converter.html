@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конвертер температуры — Цельсий, Фаренгейт, Кельвин онлайн бесплатно</title>
+    <meta name="description" content="Бесплатный онлайн конвертер температуры. Перевод Цельсий в Фаренгейт, Кельвин, Реомюр. Мгновенные вычисления.">
+    <meta name="keywords" content="конвертер температуры, цельсий в фаренгейт, температура конвертер, celsius to fahrenheit, кельвин, реомюр, перевод температуры, как перевести цельсии в фаренгейты, температура онлайн, конвертер градусов, celsius fahrenheit kelvin, температура в градусах, конвертер градусов онлайн, как перевести фаренгейты в цельсии">
+    <meta name="robots" content="index, follow, max-snippet:-1">
+    <link rel="canonical" href="https://dolinin236-hash.github.io/data-tool-app/temp-converter.html">
+    <meta property="og:title" content="Конвертер температуры — DataTool">
+    <meta property="og:description" content="Бесплатный конвертер температур">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dolinin236-hash.github.io/data-tool-app/temp-converter.html">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebApplication","name":"DataTool — Конвертер температуры","url":"https://dolinin236-hash.github.io/data-tool-app/temp-converter.html","description":"Бесплатный онлайн конвертер температуры. Цельсий, Фаренгейт, Кельвин.","applicationCategory":"Utility","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"RUB"}}
+    </script>
+    <style>
+        *{box-sizing:border-box;margin:0;padding:0}
+        :root{--bg:#0a0e1a;--surface:#111827;--primary:#3b82f6;--primary-hover:#60a5fa;--text:#f1f5f9;--text-muted:#94a3b8;--border:#1e293b;--gradient:linear-gradient(135deg,#3b82f6,#8b5cf6);--success:#10b981;--warning:#f59e0b}
+        body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column}
+        header{padding:1.5rem 2rem;text-align:center;border-bottom:1px solid var(--border)}
+        .logo{font-size:1.6rem;font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        nav{display:flex;justify-content:center;gap:0.5rem;margin-top:1rem;flex-wrap:wrap}
+        nav a{color:var(--text-muted);text-decoration:none;font-size:0.85rem;padding:0.3rem 0.8rem;border-radius:6px;border:1px solid var(--border);transition:0.3s}
+        nav a:hover{color:var(--primary-hover);border-color:var(--primary)}
+        main{flex:1;max-width:900px;margin:0 auto;padding:2rem 1.5rem;width:100%}
+        h1{font-size:1.8rem;margin-bottom:0.5rem;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .subtitle{color:var(--text-muted);margin-bottom:2rem}
+        .input-group{margin-bottom:1.5rem}
+        .input-group label{display:block;margin-bottom:0.5rem;font-weight:600;font-size:0.9rem}
+        .input-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+        input,select{width:100%;background:#0a0e1a;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:0.8rem 1rem;font-size:1rem;font-family:monospace}
+        input:focus,select:focus{outline:none;border-color:var(--primary)}
+        .results{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin:2rem 0}
+        .result-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center}
+        .result-card h3{font-size:0.85rem;color:var(--text-muted);margin-bottom:0.5rem;text-transform:uppercase}
+        .result-card .value{font-size:1.8rem;font-family:monospace;color:var(--primary-hover);font-weight:700}
+        .status{margin-top:1rem;padding:0.8rem;border-radius:8px;font-size:0.9rem;display:none}
+        .status.success{background:rgba(16,185,129,0.1);color:#6ee7b7;display:block}
+        .seo{margin-top:3rem;padding:2rem;background:var(--surface);border-radius:12px;border:1px solid var(--border)}
+        .seo h2{font-size:1.3rem;margin-bottom:1rem;color:var(--text);padding-left:1rem;position:relative}
+        .seo h2::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gradient);border-radius:2px}
+        .seo h3{font-size:1.1rem;margin:1.2rem 0 0.6rem;color:var(--text)}
+        .seo p,.seo li{font-size:0.95rem;line-height:1.7;color:var(--text-muted);margin-bottom:0.5rem}
+        .seo ul,.seo ol{padding-left:1.3rem;margin:0.5rem 0}
+        .seo li{margin-bottom:0.4rem}
+        .support{background:var(--surface);padding:1.5rem;border-radius:12px;margin-top:2rem;text-align:center;border:1px solid var(--border)}
+        .wallet{font-family:monospace;background:#0a0e1a;padding:0.7rem;border-radius:8px;word-break:break-all;font-size:0.8rem;color:var(--success);margin-top:0.5rem;border:1px solid var(--border)}
+        footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--text-muted);font-size:0.8rem}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">DataTool</div>
+        <nav>
+            <a href="index.html">Главная</a>
+            <a href="csv-v-json.html">CSV в JSON</a>
+            <a href="json-v-csv.html">JSON в CSV</a>
+            <a href="json-v-table.html">JSON в таблицу</a>
+            <a href="base64.html">Base64</a>
+            <a href="password.html">Пароли</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Конвертер температуры</h1>
+        <p class="subtitle">Мгновенный перевод между Цельсием, Фаренгейтом и Кельвином</p>
+        
+        <div class="input-group">
+            <label>Введите значение:</label>
+            <input type="number" id="input" placeholder="Например: 100" step="any">
+        </div>
+        <div class="input-group">
+            <label>Единица измерения:</label>
+            <select id="unit">
+                <option value="c">°C Цельсий (Celsius)</option>
+                <option value="f">°F Фаренгейт (Fahrenheit)</option>
+                <option value="k">K Кельвин (Kelvin)</option>
+            </select>
+        </div>
+        
+        <div class="results" id="results">
+            <div class="result-card">
+                <h3>Цельсий °C</h3>
+                <div class="value" id="rC">—</div>
+            </div>
+            <div class="result-card">
+                <h3>Фаренгейт °F</h3>
+                <div class="value" id="rF">—</div>
+            </div>
+            <div class="result-card">
+                <h3>Кельвин K</h3>
+                <div class="value" id="rK">—</div>
+            </div>
+            <div class="result-card">
+                <h3>Реомюр °Ré</h3>
+                <div class="value" id="rR">—</div>
+            </div>
+        </div>
+        
+        <div class="status success" id="st"></div>
+        
+        <section class="seo">
+            <h2>Онлайн конвертер температуры — как пользоваться?</h2>
+            <p>Конвертер температуры DataTool позволяет мгновенно перевести значения между четырьмя температурными шкалами: Цельсий, Фаренгейт, Кельвин и Реомюр. Введите значение и выберите единицу измерения — результат появится автоматически.</p>
+            
+            <h3>Формулы конвертации температуры</h3>
+            <ul>
+                <li><strong>Celsius → Fahrenheit:</strong> °F = °C × 9/5 + 32</li>
+                <li><strong>Fahrenheit → Celsius:</strong> °C = (°F − 32) × 5/9</li>
+                <li><strong>Celsius → Kelvin:</strong> K = °C + 273.15</li>
+                <li><strong>Celsius → Réaumur:</strong> °Ré = °C × 4/5</li>
+            </ul>
+            
+            <h3>Шкалы температуры</h3>
+            <p><strong>Цельсий (°C)</strong> — метрическая шкала, где 0°C — точка замерзания воды, 100°C — кипение. Используется в большинстве стран мира и в науке.</p>
+            <p><strong>Фаренгейт (°F)</strong> — используется в США. 32°F — замерзание воды, 212°F — кипение. Разница между точками 180 градусов.</p>
+            <p><strong>Кельвин (K)</strong> — абсолютная шкала в термодинамике. 0 K — абсолютный ноль. Не используется «°» — просто Кельвин.</p>
+            <p><strong>Реомюр (°Ré)</strong> — историческая шкала. 0°Ré — замерзание, 80°Ré — кипение. Сейчас практически не используется.</p>
+            
+            <h3>Где применяется конвертер температуры?</h3>
+            <ul>
+                <li>Повседневное использование — температура воздуха, тела, духовки</li>
+                <li>Кулинария — рецепты из разных стран</li>
+                <li>Наука и инженерия — лабораторные расчёты</li>
+                <li>Путешествия — понимание погоды в других странах</li>
+            </ul>
+        </section>
+        
+        <div class="support">
+            <h3>💙 Поддержите проект</h3>
+            <div class="wallet">T9yDq43jFWkR5g8vZ1mN2pL7xHbS6cA9wE</div>
+        </div>
+    </main>
+    <footer>DataTool &copy; 2026 | Конвертер температуры онлайн.</footer>
+    <script>
+        const inp=document.getElementById('input'),unit=document.getElementById('unit'),rC=document.getElementById('rC'),rF=document.getElementById('rF'),rK=document.getElementById('rK'),rR=document.getElementById('rR');
+        inp.addEventListener('input',convert);unit.addEventListener('change',convert);
+        function convert(){const v=parseFloat(inp.value);if(isNaN(v)){rC.textContent=rF.textContent=rK.textContent=rR.textContent='—';return}let c;if(unit.value==='c')c=v;else if(unit.value==='f')c=(v-32)*5/9;else if(unit.value==='k')c=v-273.15;rC.textContent=round(c);rF.textContent=round(c*9/5+32);rK.textContent=round(c+273.15);rR.textContent=round(c*0.8)}
+        function round(n){return Math.round(n*100)/100}
+    </script>
+</body>
+</html>
