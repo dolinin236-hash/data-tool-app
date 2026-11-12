@@ -47,6 +47,7 @@
             --accent:#8b5cf6;
             --accent-light:#a78bfa;
             --success:#10b981;
+            --warning:#f59e0b;
             --text:#f1f5f9;
             --text-muted:#94a3b8;
             --border:#1e293b;
@@ -79,15 +80,6 @@
         /* Tools Grid */
         .tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-bottom:3rem}
         .tool-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.8rem;transition:all 0.3s;cursor:pointer;position:relative;overflow:hidden;animation:fadeInUp 0.6s ease-out both}
-        .tool-card:nth-child(1){animation-delay:0.1s}
-        .tool-card:nth-child(2){animation-delay:0.2s}
-        .tool-card:nth-child(3){animation-delay:0.3s}
-        .tool-card:nth-child(4){animation-delay:0.4s}
-        .tool-card:nth-child(5){animation-delay:0.5s}
-        .tool-card:nth-child(6){animation-delay:0.6s}
-        .tool-card:nth-child(7){animation-delay:0.7s}
-        .tool-card:nth-child(8){animation-delay:0.8s}
-        .tool-card:nth-child(9){animation-delay:0.9s}
         .tool-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradient);opacity:0;transition:opacity 0.3s}
         .tool-card:hover{transform:translateY(-4px);border-color:var(--border-light);box-shadow:0 20px 40px rgba(0,0,0,0.3)}
         .tool-card:hover::before{opacity:1}
@@ -149,6 +141,36 @@
         .feature h4{font-size:0.95rem;margin-bottom:0.3rem;color:var(--text)}
         .feature p{font-size:0.8rem;color:var(--text-muted)}
         
+        /* ===== PAYMENT SECTION ===== */
+        .payment-section{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-top:3rem;animation:fadeInUp 0.6s ease-out 1s both}
+        .payment-section h2{font-size:1.4rem;margin-bottom:1.5rem;color:var(--text);text-align:center}
+        .payment-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem}
+        .payment-card{background:#0a0e1a;border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-align:center;transition:all 0.3s}
+        .payment-card:hover{border-color:var(--border-light);transform:translateY(-2px)}
+        .payment-icon{font-size:3rem;margin-bottom:1rem}
+        .payment-card h3{font-size:1.1rem;margin-bottom:0.5rem;color:var(--text)}
+        .payment-card p{font-size:0.9rem;color:var(--text-muted);margin-bottom:1rem}
+        .payment-qr{background:white;border-radius:8px;padding:10px;display:inline-block;margin-bottom:0.8rem}
+        .payment-qr img{width:180px;height:180px;display:block}
+        .payment-text{font-family:monospace;background:#1e293b;padding:0.5rem;border-radius:6px;word-break:break-all;font-size:0.85rem;color:var(--success);margin-bottom:0.5rem;cursor:pointer;transition:all 0.3s}
+        .payment-text:hover{background:#334155}
+        .payment-copy-hint{font-size:0.75rem;color:var(--text-muted)}
+        .payment-badge{display:inline-block;padding:0.3rem 0.8rem;border-radius:20px;font-size:0.75rem;font-weight:600;margin-top:0.5rem}
+        .badge-tinkoff{background:rgba(0,140,255,0.15);color:#008cff}
+        .badge-yoomoney{background:rgba(184,0,57,0.15);color:#b80039}
+        .badge-crypto{background:rgba(243,186,47,0.15);color:#f3ba2f}
+        
+        /* ===== AFFILIATE SECTION ===== */
+        .affiliate-section{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-top:2rem;animation:fadeInUp 0.6s ease-out 1.1s both}
+        .affiliate-section h2{font-size:1.3rem;margin-bottom:1rem;color:var(--text);text-align:center}
+        .affiliate-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+        .affiliate-card{background:#0a0e1a;border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;transition:all 0.3s;text-decoration:none;color:inherit}
+        .affiliate-card:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,0.3)}
+        .affiliate-icon{font-size:2rem;margin-bottom:0.5rem}
+        .affiliate-card h4{font-size:1rem;margin-bottom:0.3rem;color:var(--text)}
+        .affiliate-card p{font-size:0.8rem;color:var(--text-muted)}
+        .affiliate-link{color:var(--primary-light);font-size:0.8rem;font-weight:600;margin-top:0.5rem;display:inline-block}
+        
         /* Support Box */
         .support-box{background:var(--surface);padding:1.5rem;border-radius:12px;margin-top:2rem;text-align:center;border:1px solid var(--border)}
         .support-box h3{margin-bottom:0.5rem;color:var(--text)}
@@ -176,6 +198,7 @@
             nav a{font-size:0.75rem;padding:0.3rem 0.6rem}
             .stats-bar{gap:1rem;padding:0.8rem}
             .stat-number{font-size:1.2rem}
+            .payment-grid{grid-template-columns:1fr}
         }
     </style>
 </head>
@@ -373,15 +396,90 @@
             <p>Надёжный пароль — основа интернет-безопасности. Наш генератор паролей создаёт криптографически стойкие случайные строки с настраиваемой длиной (от 4 до 64 символов) и набором символов. Используется API crypto.getRandomValues() для генерации действительно случайных значений.</p>
             
             <h3>Base64 онлайн — когда применяется?</h3>
-            <p>Base64 — стандартный способ кодирования бинарных данных в текстовый формат. Он широко используется для встраивания изображений в HTML/CSS, передачи файлов через email, кодирования данных в localStorage и Many других сценариях.</p>
+            <p>Base64 — стандартный способ кодирования бинарных данных в текстовый формат. Он широко используется для встраивания изображений в HTML/CSS, передачи файлов через email, кодирования данных в localStorage и других сценариях.</p>
+        </section>
+        
+        <!-- ===== PAYMENT SECTION ===== -->
+        <section class="payment-section">
+            <h2>💙 Поддержите развитие DataTool</h2>
+            <p style="text-align:center;color:var(--text-muted);margin-bottom:1.5rem">Все инструменты бесплатны. Если были полезны — выберите удобный способ поддержки:</p>
+            
+            <div class="payment-grid">
+                <!-- SBP Card -->
+                <div class="payment-card">
+                    <div class="payment-icon">🏦</div>
+                    <h3>Перевод по СБП</h3>
+                    <p>Мгновенный перевод из любого банка РФ</p>
+                    <div class="payment-qr">
+                        <!-- QR placeholder - replace with your actual SBP QR -->
+                        <div style="width:180px;height:180px;background:#f5f5f5;display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:0.7rem;color:#666;text-align:center;padding:10px">
+                            QR-код<br>СБП<br><span style="font-size:0.6rem">(вставьте свой QR)</span>
+                        </div>
+                    </div>
+                    <div class="payment-text" onclick="copyPayment(this)">Ваш номер телефона для СБП</div>
+                    <span class="payment-badge badge-tinkoff">Тинькофф • Сбер • Альфа • ВТБ</span>
+                    <div class="payment-copy-hint">нажмите, чтобы скопировать</div>
+                </div>
+                
+                <!-- Yoomoney Card -->
+                <div class="payment-card">
+                    <div class="payment-icon">💳</div>
+                    <h3>ЮMoney</h3>
+                    <p>Кошелёк для переводов и оплаты картой</p>
+                    <div class="payment-text" onclick="copyPayment(this)">41001XXXXXXXXXX</div>
+                    <span class="payment-badge badge-yoomoney">ЮMoney</span>
+                    <div class="payment-copy-hint">нажмите, чтобы скопировать</div>
+                </div>
+                
+                <!-- Crypto Card -->
+                <div class="payment-card">
+                    <div class="payment-icon">₿</div>
+                    <h3>Криптовалюта</h3>
+                    <p>USDT (TRC20), BTC, ETH</p>
+                    <div class="payment-text" onclick="copyPayment(this)" style="font-size:0.65rem">T9yDq43jFWkR5g8vZ1mN2pL7xHbS6cA9wE</div>
+                    <span class="payment-badge badge-crypto">USDT TRC20</span>
+                    <div class="payment-copy-hint">нажмите, чтобы скопировать</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== AFFILIATE SECTION ===== -->
+        <section class="affiliate-section">
+            <h2>🔧 Полезные инструменты</h2>
+            <p style="text-align:center;color:var(--text-muted);margin-bottom:1.5rem">Сервисы, которые помогут в работе</p>
+            
+            <div class="affiliate-grid">
+                <a href="#" class="affiliate-card" target="_blank" rel="nofollow">
+                    <div class="affiliate-icon">☁️</div>
+                    <h4>Хостинг для сайтов</h4>
+                    <p>Быстрый и надёжный хостинг от 99₽/мес</p>
+                    <span class="affiliate-link">Подробнее →</span>
+                </a>
+                <a href="#" class="affiliate-card" target="_blank" rel="nofollow">
+                    <div class="affiliate-icon">📊</div>
+                    <h4>Google Таблицы</h4>
+                    <p>Бесплатные таблицы для работы с данными</p>
+                    <span class="affiliate-link">Открыть →</span>
+                </a>
+                <a href="#" class="affiliate-card" target="_blank" rel="nofollow">
+                    <div class="affiliate-icon">🗄️</div>
+                    <h4>1С:Бухгалтерия</h4>
+                    <p>Программа для бухгалтерии и отчётности</p>
+                    <span class="affiliate-link">Подробнее →</span>
+                </a>
+                <a href="#" class="affiliate-card" target="_blank" rel="nofollow">
+                    <div class="affiliate-icon">🔐</div>
+                    <h4>Bitwarden</h4>
+                    <p>Менеджер паролей — храните всё в безопасности</p>
+                    <span class="affiliate-link">Подробнее →</span>
+                </a>
+            </div>
         </section>
         
         <!-- Support -->
         <div class="support-box">
-            <h3>💙 Поддержите развитие DataTool</h3>
-            <p>Если инструменты были вам полезны, вы можете сделать донат:</p>
-            <div class="wallet" title="Нажмите, чтобы скопировать">T9yDq43jFWkR5g8vZ1mN2pL7xHbS6cA9wE</div>
-            <p style="margin-top:0.5rem;font-size:0.8rem;color:var(--text-muted)">USDT TRC20 • Благодарность помогает развивать проект 🙏</p>
+            <h3>💙 Спасибо за поддержку!</h3>
+            <p>Любой вклад помогает развивать проект и добавлять новые инструменты</p>
         </div>
     </main>
     
@@ -392,15 +490,13 @@
 
     <!-- Analytics Script -->
     <script>
-        // ===== VISITOR COUNTER (localStorage, no registration, works always) =====
+        // ===== VISITOR COUNTER =====
         (function(){
             const today = new Date().toISOString().slice(0,10);
-            
             let total = parseInt(localStorage.getItem('dt_total') || '0');
             let lastDay = localStorage.getItem('dt_last_day') || '';
             let todayCount = parseInt(localStorage.getItem('dt_today') || '0');
             
-            // Check if new session (not same browser session)
             if(!sessionStorage.getItem('dt_session')){
                 sessionStorage.setItem('dt_session','1');
                 total++;
@@ -418,6 +514,16 @@
             document.getElementById('todayCount').textContent=todayCount.toLocaleString('ru-RU');
             document.getElementById('footerVisitors').textContent=total.toLocaleString('ru-RU');
         })();
+        
+        // ===== COPY PAYMENT =====
+        function copyPayment(el){
+            navigator.clipboard.writeText(el.textContent).then(()=>{
+                const orig=el.textContent;
+                el.textContent='✓ Скопировано!';
+                el.style.color='var(--success)';
+                setTimeout(()=>{el.textContent=orig;el.style.color=''},2000);
+            });
+        }
         
         // ===== MAIN APP SCRIPT =====
         const dropZone=document.getElementById('dropZone'),fileInput=document.getElementById('fileInput'),status=document.getElementById('status'),outputArea=document.getElementById('outputArea'),output=document.getElementById('output');
@@ -467,11 +573,6 @@
         btnClear.addEventListener('click',()=>{rawData=null;originalFile=null;fileType='';output.value='';outputArea.style.display='none';status.style.display='none';[btnCsvToJson,btnJsonToCsv,btnJsonToTable].forEach(b=>b.disabled=true);fileInput.value='';dropZone.querySelector('h3').textContent='Перетащите файл сюда или кликните для выбора'});
         
         function showStatus(type,msg){status.className='status '+type;status.textContent=msg;status.style.display='block'}
-        
-        // Copy wallet on click
-        document.querySelector('.wallet').addEventListener('click',function(){
-            navigator.clipboard.writeText(this.textContent).then(()=>{this.style.borderColor='var(--success)';this.textContent='Скопировано!';setTimeout(()=>{this.textContent='T9yDq43jFWkR5g8vZ1mN2pL7xHbS6cA9wE';this.style.borderColor=''},2000)});
-        });
     </script>
 </body>
 </html>
