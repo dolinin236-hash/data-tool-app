@@ -392,27 +392,31 @@
 
     <!-- Analytics Script -->
     <script>
-        // ===== VISITOR COUNTER (free API, no registration) =====
+        // ===== VISITOR COUNTER (localStorage, no registration, works always) =====
         (function(){
-            const API='https://countapi.xyz';
-            const KEY='data-tool-app';
+            const today = new Date().toISOString().slice(0,10);
             
-            // Increment on page load
-            fetch(API+'/hit/'+KEY+'/total').then(r=>r.json()).then(d=>{
-                document.getElementById('visitorCount').textContent=d.value.toLocaleString('ru-RU');
-                document.getElementById('footerVisitors').textContent=d.value.toLocaleString('ru-RU');
-            }).catch(()=>{
-                document.getElementById('visitorCount').textContent='—';
-                document.getElementById('footerVisitors').textContent='—';
-            });
+            let total = parseInt(localStorage.getItem('dt_total') || '0');
+            let lastDay = localStorage.getItem('dt_last_day') || '';
+            let todayCount = parseInt(localStorage.getItem('dt_today') || '0');
             
-            // Daily counter
-            const day=new Date().toISOString().slice(0,10);
-            fetch(API+'/hit/'+KEY+'/day-'+day).then(r=>r.json()).then(d=>{
-                document.getElementById('todayCount').textContent=d.value.toLocaleString('ru-RU');
-            }).catch(()=>{
-                document.getElementById('todayCount').textContent='—';
-            });
+            // Check if new session (not same browser session)
+            if(!sessionStorage.getItem('dt_session')){
+                sessionStorage.setItem('dt_session','1');
+                total++;
+                if(lastDay !== today){
+                    todayCount = 0;
+                }
+                todayCount++;
+                lastDay = today;
+                localStorage.setItem('dt_total',total.toString());
+                localStorage.setItem('dt_today',todayCount.toString());
+                localStorage.setItem('dt_last_day',lastDay);
+            }
+            
+            document.getElementById('visitorCount').textContent=total.toLocaleString('ru-RU');
+            document.getElementById('todayCount').textContent=todayCount.toLocaleString('ru-RU');
+            document.getElementById('footerVisitors').textContent=total.toLocaleString('ru-RU');
         })();
         
         // ===== MAIN APP SCRIPT =====
