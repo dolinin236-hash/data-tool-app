@@ -11,7 +11,6 @@
     <meta name="revisit-after" content="3 days">
     <meta name="rating" content="general">
     <meta name="language" content="Russian">
-    <meta name="geo.region" content="RU">
     <link rel="canonical" href="https://dolinin236-hash.github.io/data-tool-app/">
     
     <!-- Open Graph -->
@@ -21,55 +20,18 @@
     <meta property="og:url" content="https://dolinin236-hash.github.io/data-tool-app/">
     <meta property="og:locale" content="ru_RU">
     <meta property="og:site_name" content="DataTool">
-    <meta property="og:image" content="https://dolinin236-hash.github.io/data-tool-app/og-image.png">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="DataTool — Бесплатный конвертер данных">
     <meta name="twitter:description" content="CSV, JSON, Base64, пароли — всё в одном инструменте">
     
-    <!-- JSON-LD Structured Data -->
+    <!-- JSON-LD -->
     <script type="application/ld+json">
     [
-        {
-            "@context": "https://schema.org",
-            "@type": "WebApplication",
-            "name": "DataTool — Конвертер CSV в JSON",
-            "url": "https://dolinin236-hash.github.io/data-tool-app/csv-v-json.html",
-            "description": "Бесплатный онлайн конвертер CSV в JSON. Работает в браузере, без регистрации.",
-            "applicationCategory": "Utility",
-            "operatingSystem": "Any",
-            "offers": {"@type": "Offer", "price": "0", "priceCurrency": "RUB"}
-        },
-        {
-            "@context": "https://schema.org",
-            "@type": "WebApplication",
-            "name": "DataTool — Конвертер JSON в CSV",
-            "url": "https://dolinin236-hash.github.io/data-tool-app/json-v-csv.html",
-            "description": "Бесплатный онлайн конвертер JSON в CSV. Мгновенная конвертация.",
-            "applicationCategory": "Utility",
-            "operatingSystem": "Any",
-            "offers": {"@type": "Offer", "price": "0", "priceCurrency": "RUB"}
-        },
-        {
-            "@context": "https://schema.org",
-            "@type": "WebApplication",
-            "name": "DataTool — Генератор паролей",
-            "url": "https://dolinin236-hash.github.io/data-tool-app/password.html",
-            "description": "Бесплатный генератор надёжных паролей онлайн.",
-            "applicationCategory": "Utility",
-            "operatingSystem": "Any",
-            "offers": {"@type": "Offer", "price": "0", "priceCurrency": "RUB"}
-        },
-        {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-                {"@type": "Question", "name": "Как конвертировать CSV в JSON?", "acceptedAnswer": {"@type": "Answer", "text": "Загрузите CSV-файл на DataTool, нажмите «Конвертировать в JSON» и скачайте результат. Всё работает в браузере бесплатно."}},
-                {"@type": "Question", "name": "Безопасно ли использовать онлайн-конвертер CSV?", "acceptedAnswer": {"@type": "Answer", "text": "Да, DataTool работает полностью в вашем браузере. Файлы не отправляются на сервер — все вычисления происходят локально."}},
-                {"@type": "Question", "name": "Как сгенерировать надёжный пароль?", "acceptedAnswer": {"@type": "Answer", "text": "Используйте генератор паролей DataTool: установите длину 16+ символов, включите все типы символов для максимальной безопасности."}}
-            ]
-        }
+        {"@context":"https://schema.org","@type":"WebApplication","name":"DataTool — Конвертер CSV в JSON","url":"https://dolinin236-hash.github.io/data-tool-app/csv-v-json.html","description":"Бесплатный онлайн конвертер CSV в JSON. Работает в браузере, без регистрации.","applicationCategory":"Utility","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"RUB"}},
+        {"@context":"https://schema.org","@type":"WebApplication","name":"DataTool — Конвертер JSON в CSV","url":"https://dolinin236-hash.github.io/data-tool-app/json-v-csv.html","description":"Бесплатный онлайн конвертер JSON в CSV. Мгновенная конвертация.","applicationCategory":"Utility","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"RUB"}},
+        {"@context":"https://schema.org","@type":"WebApplication","name":"DataTool — Генератор паролей","url":"https://dolinin236-hash.github.io/data-tool-app/password.html","description":"Бесплатный генератор надёжных паролей онлайн.","applicationCategory":"Utility","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"RUB"}}
     ]
     </script>
     
@@ -93,8 +55,6 @@
             --glow:0 0 30px rgba(59,130,246,0.3);
         }
         body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
-        
-        /* Background animation */
         body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 20% 20%,rgba(59,130,246,0.08) 0%,transparent 50%),radial-gradient(circle at 80% 80%,rgba(139,92,246,0.08) 0%,transparent 50%);pointer-events:none;z-index:0}
         
         /* Header */
@@ -110,8 +70,14 @@
         /* Main */
         main{flex:1;position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:2rem 1.5rem;width:100%}
         
-        /* Tool Cards Grid */
-        .tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-bottom:3rem}
+        /* Stats Bar */
+        .stats-bar{display:flex;justify-content:center;gap:2rem;margin:1.5rem 0;padding:1rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;animation:fadeIn 0.6s ease-out 0.5s both}
+        .stat{text-align:center}
+        .stat-number{font-size:1.5rem;font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-family:monospace}
+        .stat-label{font-size:0.8rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:0.3rem}
+        
+        /* Tools Grid */
+        .tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-bottom:3rem}
         .tool-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.8rem;transition:all 0.3s;cursor:pointer;position:relative;overflow:hidden;animation:fadeInUp 0.6s ease-out both}
         .tool-card:nth-child(1){animation-delay:0.1s}
         .tool-card:nth-child(2){animation-delay:0.2s}
@@ -119,6 +85,9 @@
         .tool-card:nth-child(4){animation-delay:0.4s}
         .tool-card:nth-child(5){animation-delay:0.5s}
         .tool-card:nth-child(6){animation-delay:0.6s}
+        .tool-card:nth-child(7){animation-delay:0.7s}
+        .tool-card:nth-child(8){animation-delay:0.8s}
+        .tool-card:nth-child(9){animation-delay:0.9s}
         .tool-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradient);opacity:0;transition:opacity 0.3s}
         .tool-card:hover{transform:translateY(-4px);border-color:var(--border-light);box-shadow:0 20px 40px rgba(0,0,0,0.3)}
         .tool-card:hover::before{opacity:1}
@@ -189,6 +158,7 @@
         
         /* Footer */
         footer{position:relative;z-index:1;text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--text-muted);font-size:0.8rem;margin-top:auto;background:rgba(10,14,26,0.8)}
+        .footer-stats{margin-top:0.5rem;font-size:0.75rem;color:var(--text-muted);opacity:0.6}
         
         /* Animations */
         @keyframes fadeIn{from{opacity:0}to{opacity:1}}
@@ -204,6 +174,8 @@
             .drop-zone{padding:2rem 1rem}
             nav{gap:0.3rem}
             nav a{font-size:0.75rem;padding:0.3rem 0.6rem}
+            .stats-bar{gap:1rem;padding:0.8rem}
+            .stat-number{font-size:1.2rem}
         }
     </style>
 </head>
@@ -223,6 +195,22 @@
             <a href="color-converter.html">Цвета</a>
         </nav>
     </header>
+    
+    <!-- Visitor Stats -->
+    <div class="stats-bar" id="statsBar">
+        <div class="stat">
+            <div class="stat-number" id="visitorCount">...</div>
+            <div class="stat-label">Посетителей</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number" id="todayCount">...</div>
+            <div class="stat-label">Сегодня</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number" id="toolsCount">9</div>
+            <div class="stat-label">Инструментов</div>
+        </div>
+    </div>
     
     <main>
         <!-- Tools Grid -->
@@ -399,9 +387,35 @@
     
     <footer>
         <p>DataTool &copy; 2026 — Бесплатный онлайн конвертер данных. CSV в JSON, JSON в CSV, Base64, генератор паролей. Все вычисления в браузере. Сервер не используется.</p>
+        <div class="footer-stats">Посетителей: <span id="footerVisitors">...</span> | Загружено: 2026-11-11</div>
     </footer>
 
+    <!-- Analytics Script -->
     <script>
+        // ===== VISITOR COUNTER (free API, no registration) =====
+        (function(){
+            const API='https://countapi.xyz';
+            const KEY='data-tool-app';
+            
+            // Increment on page load
+            fetch(API+'/hit/'+KEY+'/total').then(r=>r.json()).then(d=>{
+                document.getElementById('visitorCount').textContent=d.value.toLocaleString('ru-RU');
+                document.getElementById('footerVisitors').textContent=d.value.toLocaleString('ru-RU');
+            }).catch(()=>{
+                document.getElementById('visitorCount').textContent='—';
+                document.getElementById('footerVisitors').textContent='—';
+            });
+            
+            // Daily counter
+            const day=new Date().toISOString().slice(0,10);
+            fetch(API+'/hit/'+KEY+'/day-'+day).then(r=>r.json()).then(d=>{
+                document.getElementById('todayCount').textContent=d.value.toLocaleString('ru-RU');
+            }).catch(()=>{
+                document.getElementById('todayCount').textContent='—';
+            });
+        })();
+        
+        // ===== MAIN APP SCRIPT =====
         const dropZone=document.getElementById('dropZone'),fileInput=document.getElementById('fileInput'),status=document.getElementById('status'),outputArea=document.getElementById('outputArea'),output=document.getElementById('output');
         const btnCsvToJson=document.getElementById('btnCsvToJson'),btnJsonToCsv=document.getElementById('btnJsonToCsv'),btnJsonToTable=document.getElementById('btnJsonToTable'),btnCopy=document.getElementById('btnCopy'),btnDownload=document.getElementById('btnDownload'),btnClear=document.getElementById('btnClear');
         let rawData=null,originalFile=null,fileType='';
