@@ -78,4 +78,34 @@
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
+    <url>
+        <loc>https://dolinin236-hash.github.io/data-tool-app/qr-generator.html</loc>
+        <lastmod>2026-11-12</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://dolinin236-hash.github.io/data-tool-app/math-calculator.html</loc>
+        <lastmod>2026-11-12</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://dolinin236-hash.github.io/data-tool-app/time-converter.html</loc>
+        <lastmod>2026-11-12</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://dolinin236-hash.github.io/data-tool-app/number-words.html</loc>
+        <lastmod>2026-11-12</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://dolinin236-hash.github.io/data-tool-app/palette-generator.html</loc>
+        <lastmod>2026-11-12</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
 </urlset>
