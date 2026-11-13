@@ -63,9 +63,12 @@
         .support{background:var(--surface);padding:1.5rem;border-radius:12px;margin-top:2rem;text-align:center;border:1px solid var(--border)}
         .wallet{font-family:monospace;background:#0a0e1a;padding:0.7rem;border-radius:8px;word-break:break-all;font-size:0.8rem;color:var(--success);margin-top:0.5rem;border:1px solid var(--border)}
         footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--text-muted);font-size:0.8rem}
+        .progress-bar{position:fixed;top:0;left:0;width:0%;height:3px;background:linear-gradient(135deg,#3b82f6,#8b5cf6,#ec4899);z-index:10000;transition:width 0.1s}
+        .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease-out,transform 0.6s ease-out}.reveal.visible{opacity:1;transform:translateY(0)}
     </style>
 </head>
 <body>
+    <div class="progress-bar" id="progressBar"></div>
     <div class="bg-gradient"></div>
     <header>
         <a href="index.html" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none">
@@ -154,6 +157,10 @@
         else{cls='heavy';status='🔴 Ожирение'}
         st.className='bmi-status '+cls;st.textContent=status;
         const minW=(18.5*h*h).toFixed(1),maxW=(25*h*h).toFixed(1);nw.querySelector('div').textContent=minW+' — '+maxW+' кг'}
+        // Progress Bar
+        window.addEventListener('scroll',()=>{const winScroll=document.body.scrollTop||document.documentElement.scrollTop;const height=document.documentElement.scrollHeight-document.documentElement.clientHeight;const scrolled=(winScroll/height)*100;const pb=document.getElementById('progressBar');if(pb)pb.style.width=scrolled+'%'});
+        // Scroll Reveal
+        const revealObserver=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible')}})},{};document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
     </script>
 </body>
 </html>
