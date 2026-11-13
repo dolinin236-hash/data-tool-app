@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Генератор QR кода онлайн — Создать QR код бесплатно</title>
+<meta name="description" content="Бесплатный генератор QR кода онлайн. Создайте QR код для URL, текста, WiFi, email. Мгновенная генерация, скачивание PNG. QR код maker без регистрации.">
+<meta name="keywords" content="генератор qr кода, qr код онлайн, создать qr код, qrcode generator, qr code maker, qr код бесплатно, генератор qr кода онлайн, qr код для сайта, qr код для текста, qr генератор, сканер qr кода, qr код для wifi, qr код для телефона, бесплатный qr код, онлайн qr код, qr код для ссылки, qrcode, qr generator online, qr code generator free, qr code maker online">
+<link rel="canonical" href="https://yourdomain.github.io/qr-generator.html">
+<meta property="og:title" content="Генератор QR кода онлайн — Создать QR код бесплатно">
+<meta property="og:description" content="Бесплатный генератор QR кода онлайн. Создайте QR код для URL, текста, WiFi мгновенно и скачайте в PNG.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yourdomain.github.io/qr-generator.html">
+<meta property="og:image" content="https://yourdomain.github.io/qr-generator.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Генератор QR кода онлайн — Создать QR код бесплатно">
+<meta name="twitter:description" content="Бесплатный генератор QR кода онлайн. Создайте QR код для URL, текста, WiFi мгновенно.">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"Генератор QR кода онлайн",
+  "description":"Бесплатный генератор QR кода онлайн. Создавайте QR коды для URL, текста, WiFi и скачивайте в PNG.",
+  "url":"https://yourdomain.github.io/qr-generator.html",
+  "applicationCategory":"UtilityApplication",
+  "operatingSystem":"Any",
+  "offers":{"@type":"Offer","price":"0"}
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<style>
+:root{--bg:#0a0e1a;--surface:#111827;--primary:#3b82f6;--primary-hover:#60a5fa;--text:#f1f5f9;--text-muted:#94a3b8;--border:#1e293b;--gradient:linear-gradient(135deg,#3b82f6,#8b5cf6);--success:#10b981}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+a{color:var(--primary);text-decoration:none}
+a:hover{color:var(--primary-hover)}
+.navbar{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 20px;position:sticky;top:0;z-index:100}
+.navbar-inner{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.navbar .logo{font-size:18px;font-weight:700;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap}
+.nav-links a{font-size:13px;padding:5px 10px;border-radius:6px;background:var(--bg);color:var(--text-muted);transition:.2s}
+.nav-links a:hover,.nav-links a.active{background:var(--primary);color:#fff}
+.hero{text-align:center;padding:40px 20px 20px;max-width:800px;margin:auto}
+.hero h1{font-size:28px;margin-bottom:12px;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--text-muted);font-size:15px}
+.container{max-width:800px;margin:auto;padding:0 20px 40px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:24px}
+.card h2{font-size:20px;margin-bottom:16px}
+label{display:block;font-size:14px;color:var(--text-muted);margin-bottom:6px}
+input[type="text"],input[type="number"],select,textarea{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font-size:15px;outline:none;transition:.2s}
+input:focus,select:focus,textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(59,130,246,.2)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 28px;border:none;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;transition:.2s}
+.btn-primary{background:var(--gradient);color:#fff}
+.btn-primary:hover{opacity:.9;transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--primary);border:1px solid var(--primary)}
+.btn-outline:hover{background:var(--primary);color:#fff}
+.btn-group{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.qr-output{display:flex;flex-direction:column;align-items:center;gap:16px;padding:24px}
+#qr-canvas{border-radius:12px;border:1px solid var(--border);max-width:100%}
+.size-selector{display:flex;gap:8px;align-items:center}
+.size-selector label{margin:0}
+.seo-content{padding:30px 20px;max-width:800px;margin:auto}
+.seo-content h2{font-size:22px;margin:24px 0 12px;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.seo-content h3{font-size:17px;margin:20px 0 8px;color:var(--primary)}
+.seo-content p{color:var(--text-muted);line-height:1.7;font-size:14px;margin-bottom:10px}
+.seo-content ul{color:var(--text-muted);line-height:1.8;font-size:14px;margin:10px 0 16px 20px}
+.seo-content li{margin-bottom:4px}
+.crypto-section{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;margin-top:24px;text-align:center}
+.crypto-section h3{margin-bottom:12px;font-size:18px}
+.crypto-section p{color:var(--text-muted);margin-bottom:12px;font-size:14px}
+.crypto-address{background:var(--bg);padding:10px 16px;border-radius:8px;font-family:monospace;font-size:13px;word-break:break-all;color:var(--primary-hover);display:inline-block;margin-bottom:8px;border:1px solid var(--border)}
+.footer{text-align:center;padding:20px;color:var(--text-muted);font-size:13px;border-top:1px solid var(--border);margin-top:20px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--success);color:#fff;padding:10px 24px;border-radius:8px;font-size:14px;opacity:0;transition:.3s;pointer-events:none;z-index:999}
+.toast.show{opacity:1}
+.type-selector{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.type-btn{padding:8px 16px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text-muted);cursor:pointer;font-size:13px;transition:.2s}
+.type-btn:hover,.type-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.hidden{display:none!important}
+@media(max-width:600px){.navbar-inner{justify-content:center}.hero h1{font-size:22px}.card{padding:16px}.btn{padding:10px 20px;font-size:14px}}
+</style>
+</head>
+<body>
+<nav class="navbar">
+<div class="navbar-inner">
+<span class="logo">DataTools</span>
+<div class="nav-links">
+<a href="index.html">Главная</a>
+<a href="csv-v-json.html">CSV/JSON</a>
+<a href="json-v-csv.html">JSON/CSV</a>
+<a href="password.html">Пароли</a>
+<a href="unit-converter.html">Единицы</a>
+<a href="bmi-calculator.html">ИМТ</a>
+<a href="age-calculator.html">Возраст</a>
+<a href="temp-converter.html">Температура</a>
+<a href="percent-calculator.html">Проценты</a>
+<a href="lorem-ipsum.html">Lorem Ipsum</a>
+<a href="color-converter.html">Цвета</a>
+<a href="time-converter.html">Время</a>
+<a href="number-words.html">Числа</a>
+<a href="palette-generator.html">Палитра</a>
+<a href="qr-generator.html" class="active">QR</a>
+<a href="math-calculator.html">Калькулятор</a>
+</div>
+</div>
+</nav>
+
+<section class="hero">
+<h1>Генератор QR кода онлайн</h1>
+<p>Создавайте QR коды для ссылок, текста, контактов и WiFi. Мгновенная генерация и скачивание в PNG.</p>
+</section>
+
+<div class="container">
+<div class="card">
+<h2>Создать QR код</h2>
+<div class="type-selector">
+<button class="type-btn active" data-type="url">URL / Ссылка</button>
+<button class="type-btn" data-type="text">Текст</button>
+<button class="type-btn" data-type="wifi">WiFi</button>
+<button class="type-btn" data-type="email">Email</button>
+</div>
+
+<div id="fields-url">
+<label>URL адрес</label>
+<input type="text" id="qr-input" placeholder="https://example.com" value="https://example.com">
+</div>
+<div id="fields-text" class="hidden">
+<label>Текст</label>
+<textarea id="qr-input" rows="3" placeholder="Введите любой текст..."></textarea>
+</div>
+<div id="fields-wifi" class="hidden">
+<label>Имя сети (SSID)</label>
+<input type="text" id="wifi-ssid" placeholder="MyWiFi">
+<label style="margin-top:10px">Пароль</label>
+<input type="text" id="wifi-pass" placeholder="password123">
+<label style="margin-top:10px">Тип шифрования</label>
+<select id="wifi-enc">
+<option value="WPA">WPA/WPA2</option>
+<option value="WEP">WEP</option>
+<option value="">Без шифрования</option>
+</select>
+</div>
+<div id="fields-email" class="hidden">
+<label>Email</label>
+<input type="text" id="email-input" placeholder="user@example.com">
+</div>
+
+<label style="margin-top:16px">Размер QR кода (px)</label>
+<div class="size-selector">
+<input type="number" id="qr-size" value="256" min="128" max="1024" step="64" style="width:120px">
+</div>
+
+<div class="btn-group">
+<button class="btn btn-primary" id="generate-btn">Сгенерировать QR код</button>
+<button class="btn btn-outline hidden" id="download-btn">Скачать PNG</button>
+</div>
+</div>
+
+<div class="card hidden" id="qr-result">
+<h2>Ваш QR код</h2>
+<div class="qr-output">
+<canvas id="qr-canvas"></canvas>
+</div>
+</div>
+</div>
+
+<section class="seo-content">
+<h2>Генератор QR кода — Бесплатный онлайн инструмент</h2>
+<p>Наш бесплатный онлайн генератор QR кода позволяет быстро создать QR код для любых целей. Просто введите ссылку, текст или данные WiFi сети, выберите размер и нажмите кнопку «Сгенерировать». QR код появится на экране — вы сможете скачать его в формате PNG.</p>
+
+<h3>Что такое QR код?</h3>
+<p>QR код (Quick Response Code) — это двухмерный штрихкод, разработанный компанией Denso Wave в 1994 году. QR код может хранить до 4296 символов алphanumeric данных или 7089 цифр. Он считывается смартфонами, планшетами и специальными сканерами.</p>
+
+<h3>Как создать QR код?</h3>
+<ol style="color:var(--text-muted);line-height:1.8;font-size:14px;margin:10px 0 16px 20px">
+<li>Выберите тип данных: URL, текст, WiFi или email</li>
+<li>Введите необходимые данные в поле</li>
+<li>Выберите размер QR кода от 128 до 1024 пикселей</li>
+<li>Нажмите кнопку «Сгенерировать QR код»</li>
+<li>Скачайте результат в формате PNG</li>
+</ol>
+
+<h3>Применение QR кодов</h3>
+<ul>
+<li>Ссылки на веб-сайты и страницы в социальных сетях</li>
+<li>Контактная информация (визитки)</li>
+<li>Подключение к WiFi сети одним сканированием</li>
+<li>Электронные письма с предзаполненным адресом</li>
+<li>Товары и услуги в магазине</li>
+<li>Билеты и купоны</li>
+<li>Меню в ресторанах</li>
+<li>Маршруты и геолокация</li>
+</ul>
+
+<h3>Преимущества нашего генератора</h3>
+<ul>
+<li>Полностью бесплатный и без регистрации</li>
+<li>Работает в любом браузере без установки</li>
+<li>Поддержка различных типов данных</li>
+<li>Настройка размера QR кода</li>
+<li>Мгновенное скачивание в PNG</li>
+<li>Не отправляет данные на сервер — всё работает локально</li>
+<li>Полная конфиденциальность</li>
+</ul>
+
+<p>Наш генератор QR кода использует современные браузерные технологии для создания кодов прямо у вас на устройстве. Ваши данные никогда не покидают ваш компьютер — вся генерация происходит локально через JavaScript. Это обеспечивает максимальную безопасность и конфиденциальность.</p>
+
+<h3>Технические детали</h3>
+<p>QR код генерируется с использованием алгоритма коррекции ошибок, который позволяет коду оставаться читаемым даже при частичном повреждении. Мы поддерживаем уровни коррекции ошибок L (7%), M (15%), Q (25%) и H (30%). Это гарантирует, что ваш QR код будет работать надёжно в любых условиях.</p>
+
+<p>Поддерживаемые размеры: от компактных 128 пикселей для мобильных экранов до крупных 1024 пикселя для печати на баннерах и постерах. Для оптимального качества печати рекомендуем размер не менее 200×200 пикселей.</p>
+
+<h3>FAQ</h3>
+<h3>Можно ли использовать QR код для коммерческих целей?</h3>
+<p>Да, QR коды, созданные нашим инструментом, можно использовать в любых коммерческих и некоммерческих проектах без ограничений.</p>
+
+<h3>Сколько данных можно закодировать в QR код?</h3>
+<p>Стандартный QR код может хранить до 4296 символов алphanumeric текста, 2953 байтовых данных или 1817 цифр. Для больших объёмов данных рекомендуется использовать URL-редирект.</p>
+</section>
+
+<section class="crypto-section" style="max-width:800px;margin:0 auto 20px">
+<h3>💎 Поддержать проект</h3>
+<p>Если инструменты были полезны — поддержите нас!</p>
+<p><strong>TRON (TRC-20):</strong></p>
+<div class="crypto-address">T9yDq43jFWkR5g8vZ1mN2pL7xHbS6cA9wE</div>
+</section>
+
+<footer class="footer">
+<p>&copy; 2026 DataTools. Все права защищены.</p>
+</footer>
+
+<div class="toast" id="toast">Скопировано!</div>
+
+<script>
+(function(){
+const TYPE_BTN=document.querySelectorAll('.type-btn');
+const FIELD_MAP={url:'fields-url',text:'fields-text',wifi:'fields-wifi',email:'fields-email'};
+let currentType='url';
+
+TYPE_BTN.forEach(function(b){
+b.addEventListener('click',function(){
+TYPE_BTN.forEach(function(x){x.classList.remove('active');});
+b.classList.add('active');
+currentType=b.dataset.type;
+Object.keys(FIELD_MAP).forEach(function(k){
+var el=document.getElementById(FIELD_MAP[k]);
+if(el){el.classList.toggle('hidden',k!==currentType);}
+});
+});
+});
+
+function showToast(msg){
+var t=document.getElementById('toast');
+if(!t)return;
+t.textContent=msg;
+t.classList.add('show');
+setTimeout(function(){t.classList.remove('show');},2000);
+}
+
+function generateQR(){
+var text='';
+var inputEl=document.getElementById('qr-input');
+switch(currentType){
+case'url':
+text=(inputEl&&inputEl.value.trim())||'https://example.com';
+break;
+case'text':
+text=(inputEl&&inputEl.value.trim());
+if(!text){showToast('Введите текст');return;}
+break;
+case'wifi':
+var ssid=document.getElementById('wifi-ssid');
+var pass=document.getElementById('wifi-pass');
+var enc=document.getElementById('wifi-enc');
+ssid=ssid?ssid.value.trim():'';
+pass=pass?pass.value.trim():'';
+enc=enc?enc.value:'';
+text='WIFI:T:'+enc+';S:'+ssid+';P:'+pass+';;';
+if(!ssid){showToast('Введите имя сети');return;}
+break;
+case'email':
+text=(inputEl&&inputEl.value.trim());
+if(!text){showToast('Введите email');return;}
+break;
+}
+
+var size=parseInt(document.getElementById('qr-size').value)||256;
+var qr;
+try{
+qr=qrcode(0,'M');
+}catch(e){
+showToast('Ошибка генерации: '+(e.message||e));
+return;
+}
+qr.addData(text);
+qr.make();
+var moduleCount=qr.getModuleCount();
+var quietZone=Math.max(2,Math.floor(size/moduleCount));
+var cellSize=Math.floor((size-quietZone*2)/moduleCount);
+if(cellSize<1)cellSize=1;
+var canvasSize=cellSize*moduleCount+quietZone*2;
+if(canvasSize>size)canvasSize=size;
+
+var canvas=document.getElementById('qr-canvas');
+canvas.width=canvasSize;
+canvas.height=canvasSize;
+var ctx=canvas.getContext('2d');
+ctx.fillStyle='#ffffff';
+ctx.fillRect(0,0,canvasSize,canvasSize);
+ctx.fillStyle='#000000';
+for(var r=0;r<moduleCount;r++){
+for(var c=0;c<moduleCount;c++){
+if(qr.isDark(r,c)){
+ctx.fillRect(c*cellSize+quietZone,r*cellSize+quietZone,cellSize,cellSize);
+}
+}
+}
+
+document.getElementById('qr-result').classList.remove('hidden');
+document.getElementById('download-btn').classList.remove('hidden');
+}
+
+function downloadQR(){
+var canvas=document.getElementById('qr-canvas');
+var link=document.createElement('a');
+link.download='qrcode.png';
+link.href=canvas.toDataURL('image/png');
+link.click();
+showToast('QR код скачан!');
+}
+
+var genBtn=document.getElementById('generate-btn');
+var dlBtn=document.getElementById('download-btn');
+if(genBtn)genBtn.addEventListener('click',generateQR);
+if(dlBtn)dlBtn.addEventListener('click',downloadQR);
+})();
+</script>
+</body>
+</html>
