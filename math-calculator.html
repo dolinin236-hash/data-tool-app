@@ -75,12 +75,15 @@ a:hover{color:var(--primary-hover)}
 .crypto-address{background:var(--bg);padding:10px 16px;border-radius:8px;font-family:monospace;font-size:13px;word-break:break-all;color:var(--primary-hover);display:inline-block;margin-bottom:8px;border:1px solid var(--border)}
 .footer{text-align:center;padding:20px;color:var(--text-muted);font-size:13px;border-top:1px solid var(--border);margin-top:20px}
 .mode-toggle{display:flex;gap:8px;margin-bottom:16px}
+.progress-bar{position:fixed;top:0;left:0;width:0%;height:3px;background:linear-gradient(135deg,#3b82f6,#8b5cf6,#ec4899);z-index:10000;transition:width 0.1s}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease-out,transform 0.6s ease-out}.reveal.visible{opacity:1;transform:translateY(0)}
 .mode-btn{padding:8px 16px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text-muted);cursor:pointer;font-size:13px;transition:.2s}
 .mode-btn:hover,.mode-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
 @media(max-width:600px){.navbar-inner{justify-content:center}.hero h1{font-size:22px}.card{padding:16px}.calc-btn{padding:14px 6px;font-size:16px}}
 </style>
 </head>
 <body>
+    <div class="progress-bar" id="progressBar"></div>
     <div class="bg-gradient"></div>
     <header>
         <a href="index.html" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none">
@@ -417,6 +420,10 @@ gridSci.classList.add('hidden');
 });
 
 updateDisplay();
+// Progress Bar
+window.addEventListener('scroll',()=>{const winScroll=document.body.scrollTop||document.documentElement.scrollTop;const height=document.documentElement.scrollHeight-document.documentElement.clientHeight;const scrolled=(winScroll/height)*100;const pb=document.getElementById('progressBar');if(pb)pb.style.width=scrolled+'%'});
+// Scroll Reveal
+const revealObserver=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible')}})},{});document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
 })();
 </script>
 </body>
