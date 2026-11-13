@@ -76,14 +76,22 @@
             overflow-x: hidden;
         }
         
-        /* Animated Background */
-        .bg-pattern {
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: var(--gradient-hero);
+            z-index: 10000;
+            transition: width 0.1s;
+        }
+        
+        /* Animated Background with Particles */
+        .bg-canvas {
             position: fixed;
             inset: 0;
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 50% 20%, rgba(236, 72, 153, 0.08) 0%, transparent 40%);
             z-index: 0;
             pointer-events: none;
         }
@@ -138,6 +146,12 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
         }
         
         .logo-icon {
@@ -150,6 +164,7 @@
             justify-content: center;
             -webkit-text-fill-color: white;
             font-size: 1.1rem;
+            box-shadow: var(--glow-primary);
         }
         
         .nav-links {
@@ -171,6 +186,19 @@
         .nav-links a:hover {
             color: var(--text);
             background: rgba(59, 130, 246, 0.1);
+            transform: translateY(-1px);
+        }
+        
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.5rem;
+            cursor: pointer;
+            color: var(--text);
+            font-size: 1.5rem;
         }
         
         /* Main Content */
@@ -201,6 +229,7 @@
             color: var(--primary-light);
             margin-bottom: 2rem;
             animation: fadeInDown 0.6s ease-out;
+            backdrop-filter: blur(10px);
         }
         
         .hero-badge-dot {
@@ -217,7 +246,7 @@
         }
         
         .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 1.5rem;
@@ -242,8 +271,8 @@
         .hero-subtitle {
             font-size: 1.25rem;
             color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto 2rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
             animation: fadeInUp 0.6s ease-out 0.2s both;
         }
         
@@ -256,21 +285,40 @@
         
         .hero-stat {
             text-align: center;
+            position: relative;
+        }
+        
+        .hero-stat::after {
+            content: '';
+            position: absolute;
+            right: -1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 40px;
+            background: var(--border);
+        }
+        
+        .hero-stat:last-child::after {
+            display: none;
         }
         
         .hero-stat-value {
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: 800;
             background: var(--gradient-hero);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            line-height: 1;
         }
         
         .hero-stat-label {
             font-size: 0.85rem;
             color: var(--text-muted);
-            margin-top: 0.25rem;
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         @keyframes fadeInUp {
@@ -303,26 +351,14 @@
             text-decoration: none;
             color: inherit;
             display: block;
-            animation: fadeInUp 0.6s ease-out both;
+            opacity: 0;
+            transform: translateY(30px);
         }
         
-        .tool-card:nth-child(1) { animation-delay: 0.05s; }
-        .tool-card:nth-child(2) { animation-delay: 0.1s; }
-        .tool-card:nth-child(3) { animation-delay: 0.15s; }
-        .tool-card:nth-child(4) { animation-delay: 0.2s; }
-        .tool-card:nth-child(5) { animation-delay: 0.25s; }
-        .tool-card:nth-child(6) { animation-delay: 0.3s; }
-        .tool-card:nth-child(7) { animation-delay: 0.35s; }
-        .tool-card:nth-child(8) { animation-delay: 0.4s; }
-        .tool-card:nth-child(9) { animation-delay: 0.45s; }
-        .tool-card:nth-child(10) { animation-delay: 0.5s; }
-        .tool-card:nth-child(11) { animation-delay: 0.55s; }
-        .tool-card:nth-child(12) { animation-delay: 0.6s; }
-        .tool-card:nth-child(13) { animation-delay: 0.65s; }
-        .tool-card:nth-child(14) { animation-delay: 0.7s; }
-        .tool-card:nth-child(15) { animation-delay: 0.75s; }
-        .tool-card:nth-child(16) { animation-delay: 0.8s; }
-        .tool-card:nth-child(17) { animation-delay: 0.85s; }
+        .tool-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
         
         .tool-card::before {
             content: '';
@@ -346,7 +382,7 @@
         }
         
         .tool-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-8px);
             border-color: var(--border-light);
             box-shadow: var(--shadow-hover);
         }
@@ -357,6 +393,15 @@
         
         .tool-card:hover::after {
             opacity: 1;
+        }
+        
+        .tool-card:hover .tool-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: var(--glow-primary);
+        }
+        
+        .tool-card:hover .tool-link-arrow {
+            transform: translateX(8px);
         }
         
         .tool-card-content {
@@ -376,11 +421,6 @@
             font-size: 1.5rem;
             margin-bottom: 1.25rem;
             transition: var(--transition);
-        }
-        
-        .tool-card:hover .tool-icon {
-            background: rgba(59, 130, 246, 0.2);
-            transform: scale(1.05);
         }
         
         .tool-card h2 {
@@ -412,8 +452,16 @@
             transition: var(--transition);
         }
         
-        .tool-card:hover .tool-link-arrow {
-            transform: translateX(4px);
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         /* Footer */
@@ -446,12 +494,16 @@
         
         .footer-links a:hover {
             color: var(--text);
+            transform: translateY(-2px);
         }
         
         /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+            }
+            .mobile-menu-btn {
+                display: block;
             }
             .main {
                 padding: 80px 1rem 1rem;
@@ -463,7 +515,14 @@
                 font-size: 2rem;
             }
             .hero-stats {
-                gap: 1.5rem;
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+            .hero-stat::after {
+                display: none;
+            }
+            .hero-stat-value {
+                font-size: 1.5rem;
             }
             .tools-grid {
                 grid-template-columns: 1fr;
@@ -491,16 +550,17 @@
     </style>
 </head>
 <body>
-    <div class="bg-pattern"></div>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="bg-canvas" id="bgCanvas"></div>
     <div class="grid-overlay"></div>
     
     <!-- Navigation -->
     <nav class="nav" id="nav">
         <div class="nav-inner">
-            <div class="logo">
+            <a href="index.html" class="logo">
                 <div class="logo-icon">⚡</div>
                 DataTool
-            </div>
+            </a>
             <div class="nav-links">
                 <a href="csv-v-json.html">CSV в JSON</a>
                 <a href="json-v-csv.html">JSON в CSV</a>
@@ -520,6 +580,7 @@
                 <a href="number-words.html">Числа</a>
                 <a href="palette-generator.html">Палитры</a>
             </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
         </div>
     </nav>
     
@@ -540,23 +601,23 @@
             </p>
             <div class="hero-stats">
                 <div class="hero-stat">
-                    <div class="hero-stat-value">17</div>
+                    <div class="hero-stat-value" data-target="17">0</div>
                     <div class="hero-stat-label">Инструментов</div>
                 </div>
                 <div class="hero-stat">
-                    <div class="hero-stat-value">300+</div>
+                    <div class="hero-stat-value" data-target="300">0</div>
                     <div class="hero-stat-label">Поисковых запросов</div>
                 </div>
                 <div class="hero-stat">
-                    <div class="hero-stat-value">100%</div>
-                    <div class="hero-stat-label">Бесплатно</div>
+                    <div class="hero-stat-value" data-target="100">0</div>
+                    <div class="hero-stat-label">Процентов бесплатно</div>
                 </div>
             </div>
         </section>
         
         <!-- Tools Grid -->
         <section class="tools-grid">
-            <a href="csv-v-json.html" class="tool-card">
+            <a href="csv-v-json.html" class="tool-card reveal">
                 <div class="tool-card-content">
                     <div class="tool-icon">📊</div>
                     <h2>CSV в JSON</h2>
@@ -565,7 +626,7 @@
                 </div>
             </a>
             
-            <a href="json-v-csv.html" class="tool-card">
+            <a href="json-v-csv.html" class="tool-card reveal">
                 <div class="tool-card-content">
                     <div class="tool-icon">📋</div>
                     <h2>JSON в CSV</h2>
@@ -574,7 +635,7 @@
                 </div>
             </a>
             
-            <a href="json-v-table.html" class="tool-card">
+            <a href="json-v-table.html" class="tool-card reveal">
                 <div class="tool-card-content">
                     <div class="tool-icon">📑</div>
                     <h2>JSON в HTML-таблицу</h2>
@@ -583,7 +644,7 @@
                 </div>
             </a>
             
-            <a href="base64.html" class="tool-card">
+            <a href="base64.html" class="tool-card reveal">
                 <div class="tool-card-content">
                     <div class="tool-icon">🔐</div>
                     <h2>Base64 Конвертер</h2>
@@ -592,7 +653,7 @@
                 </div>
             </a>
             
-            <a href="password.html" class="tool-card">
+            <a href="password.html" class="tool-card reveal">
                 <div class="tool-card-content">
                     <div class="tool-icon">🔑</div>
                     <h2>Генератор паролей</h2>
@@ -601,7 +662,7 @@
                 </div>
             </a>
             
-            <a href="temp-converter.html" class="tool-card">
+            <a href="temp-converter.html" class="tool-card reveal">
                 <div class="tool-card-content">
                     <div class="tool-icon">🌡️</div>
                     <h2>Конвертер температуры</h2>
@@ -610,7 +671,7 @@
                 </div>
             </a>
             
-            <a href="percent-calculator.html" class="tool-card">
+            <a href="percent-calculator.html" class="tool-card reveal">
                 <div class="tool-card-content">
                     <div class="tool-icon">📐</div>
                     <h2>Калькулятор процентов</h2>
@@ -619,7 +680,7 @@
                 </div>
             </a>
             
-            <a href="lorem-ipsum.html" class="tool-card">
+            <a href="lorem-ipsum.html" class="tool-card reveal">
                 <div class="tool-card-content">
                     <div class="tool-icon">📝</div>
                     <h2>Генератор Lorem Ipsum</h2>
@@ -628,7 +689,7 @@
                 </div>
             </a>
             
-            <a href="color-converter.html" class="tool-card">
+            <a href="color-converter.html" class="tool-card reveal">
                 <div class="tool-card-content">
                     <div class="tool-icon">🎨</div>
                     <h2>Конвертер цветов</h2>
@@ -637,7 +698,7 @@
                 </div>
             </a>
             
-            <a href="unit-converter.html" class="tool-card">
+            <a href="unit-converter.html" class="tool-card reveal">
                 <div class="tool-card-content">
                     <div class="tool-icon">📏</div>
                     <h2>Конвертер единиц</h2>
@@ -646,7 +707,7 @@
                 </div>
             </a>
             
-            <a href="bmi-calculator.html" class="tool-card">
+            <a href="bmi-calculator.html" class="tool-card reveal">
                 <div class="tool-card-content">
                     <div class="tool-icon">⚖️</div>
                     <h2>Калькулятор ИМТ</h2>
@@ -655,7 +716,7 @@
                 </div>
             </a>
             
-            <a href="age-calculator.html" class="tool-card">
+            <a href="age-calculator.html" class="tool-card reveal">
                 <div class="tool-card-content">
                     <div class="tool-icon">🎂</div>
                     <h2>Калькулятор возраста</h2>
@@ -664,7 +725,7 @@
                 </div>
             </a>
             
-            <a href="qr-generator.html" class="tool-card">
+            <a href="qr-generator.html" class="tool-card reveal">
                 <div class="tool-card-content">
                     <div class="tool-icon">📱</div>
                     <h2>Генератор QR-кодов</h2>
@@ -673,7 +734,7 @@
                 </div>
             </a>
             
-            <a href="math-calculator.html" class="tool-card">
+            <a href="math-calculator.html" class="tool-card reveal">
                 <div class="tool-card-content">
                     <div class="tool-icon">🔢</div>
                     <h2>Математический калькулятор</h2>
@@ -682,7 +743,7 @@
                 </div>
             </a>
             
-            <a href="time-converter.html" class="tool-card">
+            <a href="time-converter.html" class="tool-card reveal">
                 <div class="tool-card-content">
                     <div class="tool-icon">🕐</div>
                     <h2>Конвертер времени</h2>
@@ -691,7 +752,7 @@
                 </div>
             </a>
             
-            <a href="number-words.html" class="tool-card">
+            <a href="number-words.html" class="tool-card reveal">
                 <div class="tool-card-content">
                     <div class="tool-icon">🔤</div>
                     <h2>Числа прописью</h2>
@@ -700,7 +761,7 @@
                 </div>
             </a>
             
-            <a href="palette-generator.html" class="tool-card">
+            <a href="palette-generator.html" class="tool-card reveal">
                 <div class="tool-card-content">
                     <div class="tool-icon">🎨</div>
                     <h2>Генератор палитр</h2>
@@ -726,6 +787,14 @@
     </footer>
 
     <script>
+        // Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+        
         // Navigation scroll effect
         const nav = document.getElementById('nav');
         window.addEventListener('scroll', () => {
@@ -735,6 +804,133 @@
                 nav.classList.remove('scrolled');
             }
         });
+        
+        // Scroll Reveal
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 50);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        
+        // Animated Counters
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseInt(entry.target.getAttribute('data-target'));
+                    animateCounter(entry.target, target);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        document.querySelectorAll('.hero-stat-value').forEach(el => counterObserver.observe(el));
+        
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current);
+            }, 30);
+        }
+        
+        // Particle Background
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        
+        function createParticles() {
+            particles = [];
+            const particleCount = Math.min(80, Math.floor(window.innerWidth / 15));
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 2 + 0.5,
+                    speedX: (Math.random() - 0.5) * 0.5,
+                    speedY: (Math.random() - 0.5) * 0.5,
+                    opacity: Math.random() * 0.5 + 0.1
+                });
+            }
+        }
+        
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach((particle, i) => {
+                particle.x += particle.speedX;
+                particle.y += particle.speedY;
+                
+                if (particle.x < 0 || particle.x > canvas.width) particle.speedX *= -1;
+                if (particle.y < 0 || particle.y > canvas.height) particle.speedY *= -1;
+                
+                ctx.beginPath();
+                ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(59, 130, 246, ${particle.opacity})`;
+                ctx.fill();
+                
+                // Draw connections
+                particles.slice(i + 1).forEach(other => {
+                    const dx = particle.x - other.x;
+                    const dy = particle.y - other.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 150) {
+                        ctx.beginPath();
+                        ctx.moveTo(particle.x, particle.y);
+                        ctx.lineTo(other.x, other.y);
+                        ctx.strokeStyle = `rgba(59, 130, 246, ${0.1 * (1 - distance / 150)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                });
+            });
+            
+            requestAnimationFrame(animateParticles);
+        }
+        
+        resizeCanvas();
+        createParticles();
+        animateParticles();
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            createParticles();
+        });
+        
+        // Mobile Menu
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '72px';
+            navLinks.style.left = '0';
+            navLinks.style.right = '0';
+            navLinks.style.background = 'rgba(2, 6, 23, 0.98)';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.padding = '1rem';
+            navLinks.style.borderBottom = '1px solid var(--border)';
+            navLinks.style.backdropFilter = 'blur(20px)';
+        }
     </script>
 </body>
 </html>
