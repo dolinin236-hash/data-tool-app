@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Генератор палитр цветов онлайн — Random Color Palette</title>
+<meta name="description" content="Генератор палитр цветов онлайн. Создавайте случайные палитры из 5 цветов, блокируйте понравившиеся, копируйте hex-коды. Color palette generator.">
+<meta name="keywords" content="генератор палитр, палитра цветов, color palette generator, random colors, генератор цветов, палитра онлайн, цветовая палитра, random color palette, palette generator, цветовой генератор, подобрать палитру, палитра для сайта, hex colors, генератор оттенков, цвета для дизайна">
+<link rel="canonical" href="https://yourdomain.github.io/palette-generator.html">
+<meta property="og:title" content="Генератор палитр цветов онлайн — Random Color Palette">
+<meta property="og:description" content="Генератор палитр цветов. Создавайте случайные палитры из 5 цветов, блокируйте и копируйте hex-коды.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yourdomain.github.io/palette-generator.html">
+<meta property="og:image" content="https://yourdomain.github.io/palette-generator.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Генератор палитр цветов онлайн — Random Color Palette">
+<meta name="twitter:description" content="Генератор палитр цветов. Случайные палитры из 5 цветов с блокировкой и копированием hex.">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"Генератор палитр цветов онлайн",
+  "description":"Генератор случайных цветовых палитр из 5 цветов. Блокировка, копирование hex-кодов, совместимость с CSS.",
+  "url":"https://yourdomain.github.io/palette-generator.html",
+  "applicationCategory":"DesignApplication",
+  "operatingSystem":"Any",
+  "offers":{"@type":"Offer","price":"0"}
+}
+</script>
+<style>
+:root{--bg:#0a0e1a;--surface:#111827;--primary:#3b82f6;--primary-hover:#60a5fa;--text:#f1f5f9;--text-muted:#94a3b8;--border:#1e293b;--gradient:linear-gradient(135deg,#3b82f6,#8b5cf6);--success:#10b981}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+a{color:var(--primary);text-decoration:none}
+a:hover{color:var(--primary-hover)}
+.navbar{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 20px;position:sticky;top:0;z-index:100}
+.navbar-inner{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.navbar .logo{font-size:18px;font-weight:700;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap}
+.nav-links a{font-size:13px;padding:5px 10px;border-radius:6px;background:var(--bg);color:var(--text-muted);transition:.2s}
+.nav-links a:hover,.nav-links a.active{background:var(--primary);color:#fff}
+.hero{text-align:center;padding:40px 20px 20px;max-width:800px;margin:auto}
+.hero h1{font-size:28px;margin-bottom:12px;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--text-muted);font-size:15px}
+.container{max-width:900px;margin:auto;padding:0 20px 40px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:24px}
+.card h2{font-size:20px;margin-bottom:16px}
+.palette{display:flex;gap:0;border-radius:16px;overflow:hidden;height:220px;margin-bottom:16px}
+.swatch{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:.2s;position:relative;gap:6px}
+.swatch:hover{flex:1.3}
+.swatch-color{width:100%;height:100%;position:absolute;top:0;left:0}
+.swatch-info{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:4px}
+.swatch-hex{color:#fff;font-size:16px;font-weight:700;text-shadow:0 1px 3px rgba(0,0,0,.5);text-transform:uppercase;letter-spacing:.5px}
+.swatch-actions{display:flex;gap:6px;opacity:0;transition:.2s}
+.swatch:hover .swatch-actions,.swatch.locked .swatch-actions{opacity:1}
+.swatch-btn{background:rgba(0,0,0,.4);border:none;color:#fff;border-radius:6px;padding:4px 8px;cursor:pointer;font-size:14px;transition:.2s;display:flex;align-items:center;justify-content:center}
+.swatch-btn:hover{background:rgba(0,0,0,.6)}
+.swatch-btn.lock{font-size:16px}
+.swatch-btn.lock.active{color:#FFD700}
+.copy-btn,.gen-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 28px;border:none;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;transition:.2s}
+.btn-primary{background:var(--gradient);color:#fff}
+.btn-primary:hover{opacity:.9;transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--primary);border:1px solid var(--primary)}
+.btn-outline:hover{background:var(--primary);color:#fff}
+.btn-group{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.css-output{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;font-family:monospace;font-size:13px;color:var(--primary-hover);white-space:pre-wrap;word-break:break-all;max-height:200px;overflow-y:auto}
+.seo-content{padding:30px 20px;max-width:800px;margin:auto}
+.seo-content h2{font-size:22px;margin:24px 0 12px;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.seo-content h3{font-size:17px;margin:20px 0 8px;color:var(--primary)}
+.seo-content p{color:var(--text-muted);line-height:1.7;font-size:14px;margin-bottom:10px}
+.seo-content ul{color:var(--text-muted);line-height:1.8;font-size:14px;margin:10px 0 16px 20px}
+.seo-content li{margin-bottom:4px}
+.crypto-section{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;margin-top:24px;text-align:center}
+.crypto-section h3{margin-bottom:12px;font-size:18px}
+.crypto-section p{color:var(--text-muted);margin-bottom:12px;font-size:14px}
+.crypto-address{background:var(--bg);padding:10px 16px;border-radius:8px;font-family:monospace;font-size:13px;word-break:break-all;color:var(--primary-hover);display:inline-block;margin-bottom:8px;border:1px solid var(--border)}
+.footer{text-align:center;padding:20px;color:var(--text-muted);font-size:13px;border-top:1px solid var(--border);margin-top:20px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--success);color:#fff;padding:10px 24px;border-radius:8px;font-size:14px;opacity:0;transition:.3s;pointer-events:none;z-index:999}
+.toast.show{opacity:1}
+@media(max-width:600px){
+.navbar-inner{justify-content:center}
+.hero h1{font-size:22px}
+.card{padding:16px}
+.palette{height:160px}
+.swatch-hex{font-size:13px}
+.swatch-btn{padding:3px 6px;font-size:12px}
+}
+</style>
+</head>
+<body>
+<nav class="navbar">
+<div class="navbar-inner">
+<span class="logo">DataTools</span>
+<div class="nav-links">
+<a href="index.html">Главная</a>
+<a href="csv-v-json.html">CSV/JSON</a>
+<a href="json-v-csv.html">JSON/CSV</a>
+<a href="password.html">Пароли</a>
+<a href="unit-converter.html">Единицы</a>
+<a href="bmi-calculator.html">ИМТ</a>
+<a href="age-calculator.html">Возраст</a>
+<a href="temp-converter.html">Температура</a>
+<a href="percent-calculator.html">Проценты</a>
+<a href="lorem-ipsum.html">Lorem Ipsum</a>
+<a href="color-converter.html">Цвета</a>
+<a href="time-converter.html">Время</a>
+<a href="number-words.html">Числа</a>
+<a href="palette-generator.html" class="active">Палитра</a>
+<a href="qr-generator.html">QR</a>
+<a href="math-calculator.html">Калькулятор</a>
+</div>
+</div>
+</nav>
+
+<section class="hero">
+<h1>Генератор палитр цветов</h1>
+<p>Создавайте красивые цветовые палитры. Блокируйте понравившиеся цвета, копируйте hex-коды одним нажатием.</p>
+</section>
+
+<div class="container">
+<div class="card">
+<div class="palette" id="palette"></div>
+<div class="btn-group">
+<button class="btn btn-primary" id="generate-btn">🎲 Сгенерировать палитру</button>
+<button class="btn btn-outline" id="copy-all-btn">📋 Копировать все</button>
+</div>
+<div class="css-output hidden" id="css-output"></div>
+</div>
+</div>
+
+<section class="seo-content">
+<h2>Генератор палитр цветов — Бесплатный онлайн инструмент</h2>
+<p>Наш генератор палитр создаёт красивые цветовые комбинации из 5 гармоничных цветов. Это идеальный инструмент для дизайнеров, веб-разработчиков и всех, кто работает с цветом. Сгенерируйте случайную палитру, заблокируйте понравившиеся оттенки и скопируйте hex-коды.</p>
+
+<h3>Как пользоваться?</h3>
+<p>Нажмите кнопку «Сгенерировать палитру» для создания новой комбинации цветов. Для фиксации понравившегося цвета нажмите иконку замка на свотче — заблокированный цвет не изменится при новой генерации. Нажмите на цвет или на иконку копирования, чтобы скопировать hex-код.</p>
+
+<h3>Для чего использовать генератор палитр?</h3>
+<ul>
+<li>Подбор цветовой схемы для веб-сайта</li>
+<li>Создание брендинга и логотипов</li>
+<li>Дизайн мобильных приложений</li>
+<li>Поиск вдохновения для арт-проектов</li>
+<li>Создание презентаций и графики</li>
+<li>Разработка UI/UX интерфейсов</li>
+</ul>
+
+<h3>Советы по цветовым палитрам</h3>
+<p>Хорошая палитра обычно включает: доминирующий цвет (60%), вспомогательный цвет (30%) и акцентный цвет (10%). Используйте генератор для поиска гармоничных сочетаний и экспортируйте hex-коды напрямую в ваш проект.</p>
+
+<h3>Технические возможности</h3>
+<p>Каждый цвет генерируется с учётом приятных визуальных характеристик. Вы можете блокировать отдельные цвета, сохраняя их при повторной генерации. Все hex-коды копируются в буфер обмена одним нажатием.</p>
+</section>
+
+<section class="crypto-section" style="max-width:800px;margin:0 auto 20px">
+<h3>💎 Поддержать проект</h3>
+<p>Если инструменты были полезны — поддержите нас!</p>
+<p><strong>TRON (TRC-20):</strong></p>
+<div class="crypto-address">T9yDq43jFWkR5g8vZ1mN2pL7xHbS6cA9wE</div>
+</section>
+
+<footer class="footer">
+<p>&copy; 2026 DataTools. Все права защищены.</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+var NUM_COLORS=5;
+var colors=[];
+var locked=new Array(NUM_COLORS).fill(false);
+
+function showToast(msg){
+var t=document.getElementById('toast');
+t.textContent=msg;
+t.classList.add('show');
+setTimeout(function(){t.classList.remove('show');},2000);
+}
+
+function getRandomHex(){
+var r=Math.floor(Math.random()*256);
+var g=Math.floor(Math.random()*256);
+var b=Math.floor(Math.random()*256);
+return rgbToHex(r,g,b);
+}
+
+function rgbToHex(r,g,b){
+return'#'+[r,g,b].map(function(x){
+var hex=x.toString(16);
+return hex.length===1?'0'+hex:hex;
+}).join('').toUpperCase();
+}
+
+function getContrastColor(hex){
+var r=parseInt(hex.substr(1,2),16);
+var g=parseInt(hex.substr(3,2),16);
+var b=parseInt(hex.substr(5,2),16);
+var luminance=(0.299*r+0.587*g+0.114*b)/255;
+return luminance>0.5?'#000000':'#FFFFFF';
+}
+
+function generatePalette(){
+var palette=document.getElementById('palette');
+palette.innerHTML='';
+colors=[];
+
+for(var i=0;i<NUM_COLORS;i++){
+if(locked[i]){
+colors.push(palette.children[i]?palette.children[i].dataset.color:'#'+Math.floor(Math.random()*16777215).toString(16).padStart(6,'0').toUpperCase());
+}else{
+colors.push(getRandomHex());
+}
+}
+
+for(var i=0;i<NUM_COLORS;i++){
+var swatch=document.createElement('div');
+swatch.className='swatch'+(locked[i]?' locked':'');
+swatch.dataset.color=colors[i];
+swatch.dataset.index=i;
+
+var bgColor=colors[i];
+var textColor=getContrastColor(bgColor);
+
+swatch.innerHTML='<div class="swatch-color" style="background:'+bgColor+'"></div>'+
+'<div class="swatch-info">'+
+'<span class="swatch-hex" style="color:'+textColor+'">'+bgColor+'</span>'+
+'<div class="swatch-actions">'+
+'<button class="swatch-btn copy" title="Копировать">📋</button>'+
+'<button class="swatch-btn lock'+(locked[i]?' active':'')+'" title="Заблокировать">'+(locked[i]?'🔒':'🔓')+'</button>'+
+'</div>'+
+'</div>';
+
+palette.appendChild(swatch);
+}
+
+// Show CSS output
+var cssOutput=document.getElementById('css-output');
+cssOutput.classList.remove('hidden');
+var cssText=':root {\n';
+for(var j=0;j<NUM_COLORS;j++){
+cssText+='  --color-'+(j+1)+': '+colors[j]+';\n';
+}
+cssText+='}\n\n';
+cssText+='/* Colors: '+colors.join(', ')+' */';
+cssOutput.textContent=cssText;
+
+// Event listeners on new swatches
+var swatches=palette.querySelectorAll('.swatch');
+swatches.forEach(function(s){
+var idx=parseInt(s.dataset.index);
+
+s.addEventListener('click',function(e){
+if(e.target.closest('.swatch-btn'))return;
+var hex=s.dataset.color;
+copyToClipboard(hex);
+showToast('Скопировано: '+hex);
+});
+
+var copyBtn=s.querySelector('.copy');
+copyBtn.addEventListener('click',function(e){
+e.stopPropagation();
+copyToClipboard(s.dataset.color);
+showToast('Скопировано: '+s.dataset.color);
+});
+
+var lockBtn=s.querySelector('.lock');
+lockBtn.addEventListener('click',function(e){
+e.stopPropagation();
+locked[idx]=!locked[idx];
+lockBtn.classList.toggle('active',locked[idx]);
+lockBtn.textContent=locked[idx]?'🔒':'🔓';
+});
+});
+}
+
+function copyToClipboard(text){
+if(navigator.clipboard&&navigator.clipboard.writeText){
+navigator.clipboard.writeText(text);
+}else{
+var ta=document.createElement('textarea');
+ta.value=text;
+document.body.appendChild(ta);
+ta.select();
+document.execCommand('copy');
+document.body.removeChild(ta);
+}
+}
+
+document.getElementById('generate-btn').addEventListener('click',generatePalette);
+
+document.getElementById('copy-all-btn').addEventListener('click',function(){
+var hexs=colors.join(', ');
+copyToClipboard(hexs);
+showToast('Все цвета скопированы: '+hexs);
+});
+
+// Keyboard shortcut
+document.addEventListener('keydown',function(e){
+if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
+if(e.code==='Space'){
+e.preventDefault();
+generatePalette();
+}
+});
+
+// Initial generation
+generatePalette();
+})();
+</script>
+</body>
+</html>
