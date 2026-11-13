@@ -30,8 +30,10 @@
 <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
 <style>
 :root{--bg:#0a0e1a;--surface:#111827;--primary:#3b82f6;--primary-hover:#60a5fa;--text:#f1f5f9;--text-muted:#94a3b8;--border:#1e293b;--gradient:linear-gradient(135deg,#3b82f6,#8b5cf6);--success:#10b981}
-body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif}
-*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#020617;--surface:#0f172a;--surface-light:#1e293b;--primary:#3b82f6;--primary-light:#60a5fa;--accent:#8b5cf6;--text:#f8fafc;--text-secondary:#cbd5e1;--text-muted:#64748b;--border:#1e293b;--gradient-hero:linear-gradient(135deg,#3b82f6,#8b5cf6,#ec4899)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.6;min-height:100vh;padding-top:70px}
+.bg-gradient{position:fixed;inset:0;background-image:radial-gradient(circle at 20% 30%,rgba(59,130,246,.15) 0%,transparent 40%),radial-gradient(circle at 80% 70%,rgba(139,92,246,.15) 0%,transparent 40%);z-index:0;pointer-events:none}
 a{color:var(--primary);text-decoration:none}
 a:hover{color:var(--primary-hover)}
 .navbar{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 20px;position:sticky;top:0;z-index:100}
@@ -80,36 +82,31 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);box-shadow:0
 </style>
 </head>
 <body>
-<nav class="navbar">
-<div class="navbar-inner">
-<span class="logo">DataTools</span>
-<div class="nav-links">
-<a href="index.html">Главная</a>
-<a href="csv-v-json.html">CSV/JSON</a>
-<a href="json-v-csv.html">JSON/CSV</a>
-<a href="password.html">Пароли</a>
-<a href="unit-converter.html">Единицы</a>
-<a href="bmi-calculator.html">ИМТ</a>
-<a href="age-calculator.html">Возраст</a>
-<a href="temp-converter.html">Температура</a>
-<a href="percent-calculator.html">Проценты</a>
-<a href="lorem-ipsum.html">Lorem Ipsum</a>
-<a href="color-converter.html">Цвета</a>
-<a href="time-converter.html">Время</a>
-<a href="number-words.html">Числа</a>
-<a href="palette-generator.html">Палитра</a>
-<a href="qr-generator.html" class="active">QR</a>
-<a href="math-calculator.html">Калькулятор</a>
-</div>
-</div>
-</nav>
-
-<section class="hero">
-<h1>Генератор QR кода онлайн</h1>
-<p>Создавайте QR коды для ссылок, текста, контактов и WiFi. Мгновенная генерация и скачивание в PNG.</p>
+    <div class="bg-gradient"></div>
+    <header>
+        <a href="index.html" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none">
+            <div style="width:32px;height:32px;background:linear-gradient(135deg,#3b82f6,#8b5cf6,#ec4899);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem">⚡</div>
+            <span style="font-size:1.5rem;font-weight:900;background:linear-gradient(135deg,#3b82f6,#8b5cf6,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-0.5px">DataTool</span>
+        </a>
+        <nav style="display:flex;gap:0.25rem;flex-wrap:wrap;justify-content:flex-end;flex:1;margin-left:2rem">
+            <a href="index.html" style="color:#cbd5e1;text-decoration:none;font-size:0.85rem;font-weight:500;padding:0.5rem 0.8rem;border-radius:8px;transition:all 0.3s">🏠 Главная</a>
+            <a href="csv-v-json.html" style="color:#cbd5e1;text-decoration:none;font-size:0.85rem;font-weight:500;padding:0.5rem 0.8rem;border-radius:8px;transition:all 0.3s">CSV</a>
+            <a href="json-v-csv.html" style="color:#cbd5e1;text-decoration:none;font-size:0.85rem;font-weight:500;padding:0.5rem 0.8rem;border-radius:8px;transition:all 0.3s">JSON</a>
+            <a href="base64.html" style="color:#cbd5e1;text-decoration:none;font-size:0.85rem;font-weight:500;padding:0.5rem 0.8rem;border-radius:8px;transition:all 0.3s">Base64</a>
+            <a href="password.html" style="color:#cbd5e1;text-decoration:none;font-size:0.85rem;font-weight:500;padding:0.5rem 0.8rem;border-radius:8px;transition:all 0.3s">Пароли</a>
+            <a href="temp-converter.html" style="color:#cbd5e1;text-decoration:none;font-size:0.85rem;font-weight:500;padding:0.5rem 0.8rem;border-radius:8px;transition:all 0.3s">Темп.</a>
+            <a href="unit-converter.html" style="color:#cbd5e1;text-decoration:none;font-size:0.85rem;font-weight:500;padding:0.5rem 0.8rem;border-radius:8px;transition:all 0.3s">Единицы</a>
+            <a href="bmi-calculator.html" style="color:#cbd5e1;text-decoration:none;font-size:0.85rem;font-weight:500;padding:0.5rem 0.8rem;border-radius:8px;transition:all 0.3s">ИМТ</a>
+            <a href="qr-generator.html" style="color:#cbd5e1;text-decoration:none;font-size:0.85rem;font-weight:500;padding:0.5rem 0.8rem;border-radius:8px;transition:all 0.3s">QR</a>
+            <a href="math-calculator.html" style="color:#cbd5e1;text-decoration:none;font-size:0.85rem;font-weight:500;padding:0.5rem 0.8rem;border-radius:8px;transition:all 0.3s">Мат.</a>
+        </nav>
+    </header>
+    <main style="position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:2rem">
+<section class="hero" style="text-align:center;padding:40px 20px 20px;max-width:800px;margin:0 auto 20px">
+<h1 style="font-size:28px;margin-bottom:12px;background:linear-gradient(135deg,#3b82f6,#8b5cf6,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Генератор QR кода онлайн</h1>
+<p style="color:var(--text-muted);font-size:15px">Создавайте QR коды для ссылок, текста, WiFi, email. Мгновенная генерация и скачивание в PNG.</p>
 </section>
-
-<div class="container">
+<div style="max-width:800px;margin:auto;padding:0 20px 40px">
 <div class="card">
 <h2>Создать QR код</h2>
 <div class="type-selector">
@@ -223,9 +220,9 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);box-shadow:0
 <p><strong>TRON (TRC-20):</strong></p>
 <div class="crypto-address">T9yDq43jFWkR5g8vZ1mN2pL7xHbS6cA9wE</div>
 </section>
-
-<footer class="footer">
-<p>&copy; 2026 DataTools. Все права защищены.</p>
+</main>
+<footer style="position:relative;z-index:1;text-align:center;padding:3rem 2rem;border-top:1px solid var(--border);color:var(--text-muted);font-size:0.85rem;margin-top:4rem;background:var(--surface)">
+    <p>DataTool © 2026 — Бесплатный онлайн конвертер данных. Все вычисления в браузере. Сервер не используется.</p>
 </footer>
 
 <div class="toast" id="toast">Скопировано!</div>
