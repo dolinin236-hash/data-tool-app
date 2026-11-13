@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Математический калькулятор онлайн — Научный калькулятор</title>
+<meta name="description" content="Бесплатный научный калькулятор онлайн. Основные операции +−×÷ и продвинутые: sin, cos, tan, sqrt, pow, log. Мгновенные вычисления.">
+<meta name="keywords" content="калькулятор онлайн, математический калькулятор, вычисления, научный калькулятор, калькулятор sin cos tan, калькулятор логарифм, калькулятор корней, онлайн калькулятор, калькулятор степени, scientific calculator, calculator online, math calculator, calc, калькулятор функций, калькулятор тригонометрия">
+<link rel="canonical" href="https://yourdomain.github.io/math-calculator.html">
+<meta property="og:title" content="Математический калькулятор онлайн — Научный калькулятор">
+<meta property="og:description" content="Бесплатный научный калькулятор. sin, cos, tan, sqrt, pow, log — все основные и продвинутые функции.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yourdomain.github.io/math-calculator.html">
+<meta property="og:image" content="https://yourdomain.github.io/math-calculator.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Математический калькулятор онлайн — Научный калькулятор">
+<meta name="twitter:description" content="Бесплатный научный калькулятор. sin, cos, tan, sqrt, pow, log.">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"Математический калькулятор онлайн",
+  "description":"Научный калькулятор с функциями sin, cos, tan, sqrt, pow, log и базовыми операциями.",
+  "url":"https://yourdomain.github.io/math-calculator.html",
+  "applicationCategory":"UtilityApplication",
+  "operatingSystem":"Any",
+  "offers":{"@type":"Offer","price":"0"}
+}
+</script>
+<style>
+:root{--bg:#0a0e1a;--surface:#111827;--primary:#3b82f6;--primary-hover:#60a5fa;--text:#f1f5f9;--text-muted:#94a3b8;--border:#1e293b;--gradient:linear-gradient(135deg,#3b82f6,#8b5cf6);--success:#10b981}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+a{color:var(--primary);text-decoration:none}
+a:hover{color:var(--primary-hover)}
+.navbar{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 20px;position:sticky;top:0;z-index:100}
+.navbar-inner{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.navbar .logo{font-size:18px;font-weight:700;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap}
+.nav-links a{font-size:13px;padding:5px 10px;border-radius:6px;background:var(--bg);color:var(--text-muted);transition:.2s}
+.nav-links a:hover,.nav-links a.active{background:var(--primary);color:#fff}
+.hero{text-align:center;padding:40px 20px 20px;max-width:800px;margin:auto}
+.hero h1{font-size:28px;margin-bottom:12px;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--text-muted);font-size:15px}
+.container{max-width:600px;margin:auto;padding:0 20px 40px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:24px}
+.card h2{font-size:20px;margin-bottom:16px}
+.calc-display{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin-bottom:16px;text-align:right;min-height:80px;display:flex;flex-direction:column;justify-content:flex-end}
+.calc-expression{color:var(--text-muted);font-size:14px;min-height:20px;word-break:break-all}
+.calc-result{color:var(--text);font-size:32px;font-weight:700;word-break:break-all}
+.calc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.calc-btn{padding:16px 8px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font-size:18px;font-weight:500;cursor:pointer;transition:.15s;text-align:center}
+.calc-btn:hover{background:var(--border);transform:translateY(-1px)}
+.calc-btn:active{transform:translateY(0)}
+.calc-btn.op{background:rgba(59,130,246,.15);color:var(--primary);border-color:rgba(59,130,246,.3)}
+.calc-btn.op:hover{background:rgba(59,130,246,.25)}
+.calc-btn.fn{background:rgba(139,92,246,.1);color:#a78bfa;border-color:rgba(139,92,246,.2)}
+.calc-btn.fn:hover{background:rgba(139,92,246,.2)}
+.calc-btn.eq{background:var(--gradient);color:#fff;border:none}
+.calc-btn.eq:hover{opacity:.9}
+.calc-btn.clear{color:#ef4444;border-color:rgba(239,68,68,.3)}
+.calc-btn.clear:hover{background:rgba(239,68,68,.1)}
+.calc-btn.span2{grid-column:span 2}
+.seo-content{padding:30px 20px;max-width:800px;margin:auto}
+.seo-content h2{font-size:22px;margin:24px 0 12px;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.seo-content h3{font-size:17px;margin:20px 0 8px;color:var(--primary)}
+.seo-content p{color:var(--text-muted);line-height:1.7;font-size:14px;margin-bottom:10px}
+.seo-content ul{color:var(--text-muted);line-height:1.8;font-size:14px;margin:10px 0 16px 20px}
+.seo-content li{margin-bottom:4px}
+.crypto-section{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;margin-top:24px;text-align:center}
+.crypto-section h3{margin-bottom:12px;font-size:18px}
+.crypto-section p{color:var(--text-muted);margin-bottom:12px;font-size:14px}
+.crypto-address{background:var(--bg);padding:10px 16px;border-radius:8px;font-family:monospace;font-size:13px;word-break:break-all;color:var(--primary-hover);display:inline-block;margin-bottom:8px;border:1px solid var(--border)}
+.footer{text-align:center;padding:20px;color:var(--text-muted);font-size:13px;border-top:1px solid var(--border);margin-top:20px}
+.mode-toggle{display:flex;gap:8px;margin-bottom:16px}
+.mode-btn{padding:8px 16px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text-muted);cursor:pointer;font-size:13px;transition:.2s}
+.mode-btn:hover,.mode-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+@media(max-width:600px){.navbar-inner{justify-content:center}.hero h1{font-size:22px}.card{padding:16px}.calc-btn{padding:14px 6px;font-size:16px}}
+</style>
+</head>
+<body>
+<nav class="navbar">
+<div class="navbar-inner">
+<span class="logo">DataTools</span>
+<div class="nav-links">
+<a href="index.html">Главная</a>
+<a href="csv-v-json.html">CSV/JSON</a>
+<a href="json-v-csv.html">JSON/CSV</a>
+<a href="password.html">Пароли</a>
+<a href="unit-converter.html">Единицы</a>
+<a href="bmi-calculator.html">ИМТ</a>
+<a href="age-calculator.html">Возраст</a>
+<a href="temp-converter.html">Температура</a>
+<a href="percent-calculator.html">Проценты</a>
+<a href="lorem-ipsum.html">Lorem Ipsum</a>
+<a href="color-converter.html">Цвета</a>
+<a href="time-converter.html">Время</a>
+<a href="number-words.html">Числа</a>
+<a href="palette-generator.html">Палитра</a>
+<a href="qr-generator.html">QR</a>
+<a href="math-calculator.html" class="active">Калькулятор</a>
+</div>
+</div>
+</nav>
+
+<section class="hero">
+<h1>Математический калькулятор</h1>
+<p>Научный калькулятор с тригонометрией, логарифмами, степенями и корнями</p>
+</section>
+
+<div class="container">
+<div class="card">
+<div class="mode-toggle">
+<button class="mode-btn active" data-mode="basic">Обычный</button>
+<button class="mode-btn" data-mode="scientific">Научный</button>
+</div>
+
+<div class="calc-display">
+<div class="calc-expression" id="expression"></div>
+<div class="calc-result" id="result">0</div>
+</div>
+
+<div class="calc-grid" id="calc-grid">
+<!-- Row 1: Clear, Backspace, %, / -->
+<button class="calc-btn clear" data-action="clear">C</button>
+<button class="calc-btn clear" data-action="backspace">⌫</button>
+<button class="calc-btn op" data-action="percent">%</button>
+<button class="calc-btn op" data-action="op" data-val="/">÷</button>
+
+<!-- Row 2: 7, 8, 9, × -->
+<button class="calc-btn" data-action="num" data-val="7">7</button>
+<button class="calc-btn" data-action="num" data-val="8">8</button>
+<button class="calc-btn" data-action="num" data-val="9">9</button>
+<button class="calc-btn op" data-action="op" data-val="*">×</button>
+
+<!-- Row 3: 4, 5, 6, − -->
+<button class="calc-btn" data-action="num" data-val="4">4</button>
+<button class="calc-btn" data-action="num" data-val="5">5</button>
+<button class="calc-btn" data-action="num" data-val="6">6</button>
+<button class="calc-btn op" data-action="op" data-val="-">−</button>
+
+<!-- Row 4: 1, 2, 3, + -->
+<button class="calc-btn" data-action="num" data-val="1">1</button>
+<button class="calc-btn" data-action="num" data-val="2">2</button>
+<button class="calc-btn" data-action="num" data-val="3">3</button>
+<button class="calc-btn op" data-action="op" data-val="+">+</button>
+
+<!-- Row 5: ±, 0, ., = -->
+<button class="calc-btn op" data-action="negate">±</button>
+<button class="calc-btn" data-action="num" data-val="0">0</button>
+<button class="calc-btn" data-action="decimal">.</button>
+<button class="calc-btn eq" data-action="equals">=</button>
+</div>
+
+<div class="calc-grid hidden" id="calc-grid-sci">
+<!-- Scientific row 1 -->
+<button class="calc-btn fn" data-action="func" data-val="sin">sin</button>
+<button class="calc-btn fn" data-action="func" data-val="cos">cos</button>
+<button class="calc-btn fn" data-action="func" data-val="tan">tan</button>
+<button class="calc-btn fn" data-action="func" data-val="log">log</button>
+
+<!-- Scientific row 2 -->
+<button class="calc-btn fn" data-action="func" data-val="sqrt">√</button>
+<button class="calc-btn fn" data-action="func" data-val="pow">x²</button>
+<button class="calc-btn fn" data-action="func" data-val="exp">eˣ</button>
+<button class="calc-btn fn" data-action="func" data-val="ln">ln</button>
+
+<!-- Scientific row 3 -->
+<button class="calc-btn fn" data-action="func" data-val="abs">|x|</button>
+<button class="calc-btn fn" data-action="func" data-val="cbrt">³√</button>
+<button class="calc-btn fn" data-action="func" data-val="exp2">xʸ</button>
+<button class="calc-btn fn" data-action="func" data-val="pi">π</button>
+
+<!-- Scientific row 4 (spans) -->
+<button class="calc-btn fn span2" data-action="func" data-val="e">e</button>
+<button class="calc-btn fn" data-action="func" data-val="fact">n!</button>
+<button class="calc-btn fn" data-action="func" data-val="inv">1/x</button>
+
+<!-- Scientific row 5 -->
+<button class="calc-btn fn span2" data-action="func" data-val="asin">sin⁻¹</button>
+<button class="calc-btn fn" data-action="func" data-val="acos">cos⁻¹</button>
+<button class="calc-btn fn" data-action="func" data-val="atan">tan⁻¹</button>
+</div>
+</div>
+</div>
+
+<section class="seo-content">
+<h2>Математический калькулятор — Бесплатный онлайн инструмент</h2>
+<p>Наш математический калькулятор — это мощный онлайн инструмент для выполнения как простых, так и сложных вычислений. Поддерживаются базовые арифметические операции: сложение, вычитание, умножение, деление, а также продвинутые математические функции.</p>
+
+<h3>Базовые операции</h3>
+<p>Калькулятор выполняет все стандартные арифметические действия: сложение (+), вычитание (−), умножение (×) и деление (÷). Также доступна операция взятия остатка от деления (%) и перемена знака числа (±).</p>
+
+<h3>Тригонометрические функции</h3>
+<p>Научный режим включает полные тригонометрические функции: синус (sin), косинус (cos), тангенс (tan), а также обратные функции: арксинус (sin⁻¹), арккосинус (cos⁻¹) и арктангенс (tan⁻¹). Все вычисления выполняются в радианах.</p>
+
+<h3>Логарифмы и степени</h3>
+<p>Доступны десятичный логарифм (log), натуральный логарифм (ln), возведение в степень (x², xʸ), экспонента (eˣ), квадратный корень (√), кубический корень (³√), обратное число (1/x) и факториал (n!).</p>
+
+<h3>Преимущества нашего калькулятора</h3>
+<ul>
+<li>Полностью бесплатный без регистрации</li>
+<li>Работает в любом браузере</li>
+<li>Два режима: обычный и научный</li>
+<li>Отображение текущего выражения</li>
+<li>Удаление последнего символа</li>
+<li>Поддержка клавиатуры</li>
+<li>Работает на мобильных устройствах</li>
+</ul>
+
+<h3>Как пользоваться</h3>
+<p>Выберите режим: обычный для базовых вычислений или научный для тригонометрии и логарифмов. Нажимайте кнопки с цифрами и операциями или используйте клавиатуру. Нажимайте «=» для результата. Выражение отображается над результатом.</p>
+</section>
+
+<section class="crypto-section" style="max-width:800px;margin:0 auto 20px">
+<h3>💎 Поддержать проект</h3>
+<p>Если инструменты были полезны — поддержите нас!</p>
+<p><strong>TRON (TRC-20):</strong></p>
+<div class="crypto-address">T9yDq43jFWkR5g8vZ1mN2pL7xHbS6cA9wE</div>
+</section>
+
+<footer class="footer">
+<p>&copy; 2026 DataTools. Все права защищены.</p>
+</footer>
+
+<script>
+(function(){
+var currentInput='';
+var expression='';
+var lastResult=null;
+var justCalculated=false;
+
+var exprEl=document.getElementById('expression');
+var resEl=document.getElementById('result');
+var grid=document.getElementById('calc-grid');
+var gridSci=document.getElementById('calc-grid-sci');
+
+function updateDisplay(){
+exprEl.textContent=expression;
+if(currentInput==='')currentInput='0';
+resEl.textContent=currentInput;
+}
+
+function calculate(expr){
+try{
+var e=expr.replace(/×/g,'*').replace(/÷/g,'/').replace(/−/g,'-');
+var result=Function('"use strict";return ('+e+')')();
+if(!isFinite(result))return 'Ошибка';
+var r=parseFloat(result.toFixed(10));
+return String(r);
+}catch(err){return 'Ошибка';}
+}
+
+function inputNum(val){
+if(justCalculated){currentInput='';expression='';justCalculated=false;}
+currentInput+=val;
+updateDisplay();
+}
+
+function inputOp(op){
+justCalculated=false;
+if(currentInput==='')return;
+if(expression!==''&&!justCalculated){
+var fullExpr=currentInput;
+var res=calculate(fullExpr);
+if(res==='Ошибка'){currentInput='0';expression='';updateDisplay();return;}
+currentInput=res;
+}
+if(expression!==''){
+expression+=currentInput;
+}else{
+expression=currentInput;
+}
+var displayOp=op==='/'?'÷':op==='*'?'×':op==='-'?'−':op;
+expression+=displayOp;
+currentInput='';
+updateDisplay();
+}
+
+function inputDecimal(){
+if(justCalculated){currentInput='';expression='';justCalculated=false;}
+if(!currentInput.includes('.')){
+currentInput+=currentInput==='.'?'0':'';
+if(currentInput==='')currentInput='0.';
+updateDisplay();
+}
+}
+
+function inputEquals(){
+var fullExpr=expression+currentInput;
+if(!fullExpr)return;
+var res=calculate(fullExpr);
+expression=fullExpr+' =';
+currentInput=res==='Ошибка'?'0':res;
+justCalculated=true;
+updateDisplay();
+}
+
+function inputClear(){
+currentInput='';
+expression='';
+lastResult=null;
+justCalculated=false;
+updateDisplay();
+}
+
+function inputBackspace(){
+if(justCalculated){inputClear();return;}
+if(currentInput.length>0){
+currentInput=currentInput.slice(0,-1);
+if(currentInput==='')currentInput='0';
+updateDisplay();
+}
+}
+
+function inputPercent(){
+var val=parseFloat(currentInput)||0;
+currentInput=String(val/100);
+updateDisplay();
+}
+
+function inputNegate(){
+if(currentInput&&currentInput!=='0'){
+if(currentInput.startsWith('-')){
+currentInput=currentInput.substring(1);
+}else{
+currentInput='-'+currentInput;
+}
+updateDisplay();
+}
+}
+
+function inputFunc(fn){
+var val=parseFloat(currentInput)||0;
+var result;
+switch(fn){
+case'sin':result=Math.sin(val*Math.PI/180);break;
+case'cos':result=Math.cos(val*Math.PI/180);break;
+case'tan':result=Math.tan(val*Math.PI/180);break;
+case'asin':result=Math.asin(val)*180/Math.PI;break;
+case'acos':result=Math.acos(val)*180/Math.PI;break;
+case'atan':result=Math.atan(val)*180/Math.PI;break;
+case'log':result=Math.log10(val);break;
+case'ln':result=Math.log(val);break;
+case'sqrt':result=Math.sqrt(val);break;
+case'cbrt':result=Math.cbrt(val);break;
+case'pow':result=val*val;break;
+case'abs':result=Math.abs(val);break;
+case'exp':result=Math.exp(val);break;
+case'exp2':result=Math.pow(10,val);break;
+case'inv':result=1/val;break;
+case'pi':result=Math.PI;break;
+case'e':result=Math.E;break;
+case'fact':
+if(val<0||val>170||val%1!==0){result='Ошибка';}
+else{result=1;for(var i=2;i<=val;i++)result*=i;}
+break;
+default:result=val;
+}
+if(typeof result==='number'){
+if(!isFinite(result)||isNaN(result)){currentInput='Ошибка';}
+else{currentInput=String(parseFloat(result.toFixed(10)));}
+justCalculated=true;
+}else{
+currentInput=result;
+}
+expression='';
+updateDisplay();
+}
+
+// Button click handling
+grid.addEventListener('click',function(e){
+var btn=e.target.closest('.calc-btn');
+if(!btn)return;
+var action=btn.dataset.action;
+var val=btn.dataset.val||'';
+switch(action){
+case'num':inputNum(val);break;
+case'op':inputOp(val);break;
+case'decimal':inputDecimal();break;
+case'equals':inputEquals();break;
+case'clear':inputClear();break;
+case'backspace':inputBackspace();break;
+case'percent':inputPercent();break;
+case'negate':inputNegate();break;
+case'func':inputFunc(val);break;
+}
+});
+
+// Keyboard support
+document.addEventListener('keydown',function(e){
+var key=e.key;
+if(key>='0'&&key<='9'){inputNum(key);e.preventDefault();}
+else if(key==='+'){inputOp('+');e.preventDefault();}
+else if(key==='-'){inputOp('-');e.preventDefault();}
+else if(key==='*'){inputOp('*');e.preventDefault();}
+else if(key==='/'){inputOp('/');e.preventDefault();}
+else if(key==='Enter'||key==='='){inputEquals();e.preventDefault();}
+else if(key==='Backspace'){inputBackspace();e.preventDefault();}
+else if(key==='Escape'){inputClear();e.preventDefault();}
+else if(key==='.'){inputDecimal();e.preventDefault();}
+else if(key==='%'){inputPercent();e.preventDefault();}
+});
+
+// Mode toggle
+var modeBtns=document.querySelectorAll('.mode-btn');
+modeBtns.forEach(function(btn){
+btn.addEventListener('click',function(){
+modeBtns.forEach(function(b){b.classList.remove('active');});
+btn.classList.add('active');
+var mode=btn.dataset.mode;
+if(mode==='scientific'){
+grid.classList.add('hidden');
+gridSci.classList.remove('hidden');
+}else{
+grid.classList.remove('hidden');
+gridSci.classList.add('hidden');
+}
+});
+});
+
+updateDisplay();
+})();
+</script>
+</body>
+</html>
