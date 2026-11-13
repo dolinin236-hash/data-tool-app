@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор ИМТ — индекс массы тела онлайн бесплатно</title>
+    <meta name="description" content="Бесплатный калькулятор ИМТ (индекс массы тела). Узнайте свой ИМТ, норму веса, получите рекомендации. Для мужчин и женщин.">
+    <meta name="keywords" content="калькулятор имт, индекс массы тела, имт онлайн, bmi calculator, норма веса, здоровый вес, калории в день, сколько весить, калькулятор нормы веса, имт калькулятор, bmi, body mass index, калькулятор массы тела, определение веса, норма веса для женщин, норма веса для мужчин, ожирение, недобор веса, калькулятор калорий, суточная норма калорий, как рассчитать имт, индекс массы тела онлайн бесплатно">
+    <meta name="robots" content="index, follow, max-snippet:-1">
+    <link rel="canonical" href="https://dolinin236-hash.github.io/data-tool-app/bmi-calculator.html">
+    <meta property="og:title" content="Калькулятор ИМТ — DataTool">
+    <meta property="og:description" content="Бесплатный калькулятор индекса массы тела">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dolinin236-hash.github.io/data-tool-app/bmi-calculator.html">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebApplication","name":"DataTool — Калькулятор ИМТ","url":"https://dolinin236-hash.github.io/data-tool-app/bmi-calculator.html","description":"Бесплатный калькулятор индекса массы тела","applicationCategory":"Utility","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"RUB"}}
+    </script>
+    <style>
+        *{box-sizing:border-box;margin:0;padding:0}
+        :root{--bg:#0a0e1a;--surface:#111827;--primary:#3b82f6;--primary-hover:#60a5fa;--text:#f1f5f9;--text-muted:#94a3b8;--border:#1e293b;--gradient:linear-gradient(135deg,#3b82f6,#8b5cf6);--success:#10b981;--warning:#f59e0b;--danger:#ef4444}
+        body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column}
+        header{padding:1.5rem 2rem;text-align:center;border-bottom:1px solid var(--border)}
+        .logo{font-size:1.6rem;font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        nav{display:flex;justify-content:center;gap:0.5rem;margin-top:1rem;flex-wrap:wrap}
+        nav a{color:var(--text-muted);text-decoration:none;font-size:0.85rem;padding:0.3rem 0.8rem;border-radius:6px;border:1px solid var(--border);transition:0.3s}
+        nav a:hover{color:var(--primary-hover);border-color:var(--primary)}
+        main{flex:1;max-width:900px;margin:0 auto;padding:2rem 1.5rem;width:100%}
+        h1{font-size:1.8rem;margin-bottom:0.5rem;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .subtitle{color:var(--text-muted);margin-bottom:2rem}
+        .input-group{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+        .input-field{background:var(--surface);padding:1.2rem;border-radius:12px;border:1px solid var(--border)}
+        .input-field label{display:block;margin-bottom:0.5rem;font-weight:600;font-size:0.9rem}
+        .input-field input{width:100%;background:#0a0e1a;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:0.8rem;font-size:1rem}
+        .input-field input:focus{outline:none;border-color:var(--primary)}
+        button{background:var(--gradient);color:white;border:none;padding:0.8rem 1.5rem;border-radius:10px;font-weight:600;cursor:pointer;transition:0.3s;width:100%}
+        button:hover{transform:translateY(-2px);box-shadow:0 0 20px rgba(59,130,246,0.3)}
+        .result-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2rem;margin:1.5rem 0;text-align:center}
+        .bmi-value{font-size:4rem;font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .bmi-status{font-size:1.2rem;margin:0.5rem 0;padding:0.5rem 1.5rem;border-radius:8px;display:inline-block}
+        .bmi-status.normal{background:rgba(16,185,129,0.15);color:var(--success)}
+        .bmi-status.light{background:rgba(245,158,11,0.15);color:var(--warning)}
+        .bmi-status.heavy{background:rgba(239,68,68,0.15);color:var(--danger)}
+        .norms{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin:1.5rem 0}
+        .norm{background:#0a0e1a;border:1px solid var(--border);border-radius:8px;padding:1rem;text-align:center}
+        .norm h4{font-size:0.9rem;margin-bottom:0.3rem;color:var(--text)}
+        .norm p{font-size:0.85rem;color:var(--text-muted)}
+        .seo{margin-top:2rem;padding:2rem;background:var(--surface);border-radius:12px;border:1px solid var(--border)}
+        .seo h2{font-size:1.3rem;margin-bottom:1rem;color:var(--text);padding-left:1rem;position:relative}
+        .seo h2::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gradient);border-radius:2px}
+        .seo h3{font-size:1.1rem;margin:1.2rem 0 0.6rem;color:var(--text)}
+        .seo p,.seo li{font-size:0.95rem;line-height:1.7;color:var(--text-muted);margin-bottom:0.5rem}
+        .seo ul,.seo ol{padding-left:1.3rem;margin:0.5rem 0}
+        .support{background:var(--surface);padding:1.5rem;border-radius:12px;margin-top:2rem;text-align:center;border:1px solid var(--border)}
+        .wallet{font-family:monospace;background:#0a0e1a;padding:0.7rem;border-radius:8px;word-break:break-all;font-size:0.8rem;color:var(--success);margin-top:0.5rem;border:1px solid var(--border)}
+        footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--text-muted);font-size:0.8rem}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">DataTool</div>
+        <nav>
+            <a href="index.html">Главная</a>
+            <a href="csv-v-json.html">CSV в JSON</a>
+            <a href="json-v-csv.html">JSON в CSV</a>
+            <a href="unit-converter.html">Единицы</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Калькулятор ИМТ</h1>
+        <p class="subtitle">Узнайте свой индекс массы тела и нормы веса</p>
+        
+        <div class="input-group">
+            <div class="input-field">
+                <label>Рост (см):</label>
+                <input type="number" id="height" placeholder="170" min="100" max="250">
+            </div>
+            <div class="input-field">
+                <label>Вес (кг):</label>
+                <input type="number" id="weight" placeholder="70" min="20" max="300">
+            </div>
+        </div>
+        
+        <button onclick="calcBMI()">Рассчитать ИМТ</button>
+        
+        <div class="result-card" id="resultCard" style="display:none">
+            <div class="bmi-value" id="bmiValue">—</div>
+            <div class="bmi-status" id="bmiStatus">—</div>
+        </div>
+        
+        <div class="norms">
+            <div class="norm"><h4>Недостаточный вес</h4><p>16 — 18.5</p></div>
+            <div class="norm"><h4>Нормальный вес</h4><p>18.5 — 25</p></div>
+            <div class="norm"><h4>Избыточный вес</h4><p>25 — 30</p></div>
+            <div class="norm"><h4>Ожирение</h4><p>30+</p></div>
+        </div>
+        
+        <div id="normWeight" style="display:none" class="result-card">
+            <h3 style="margin-bottom:1rem">Ваш нормальный вес:</h3>
+            <div style="font-size:2rem;font-weight:800;color:var(--success)">— — кг</div>
+        </div>
+        
+        <section class="seo">
+            <h2>Калькулятор ИМТ — индекс массы тела онлайн</h2>
+            <p>Индекс массы тела (ИМТ) — это показатель, который позволяет определить, соответствует ли ваш вес норме. Рассчитывается по формуле: вес (кг) / рост (м)².</p>
+            
+            <h3>Расшифровка ИМТ</h3>
+            <ul>
+                <li><strong>Менее 18.5</strong> — недостаточный вес (рекомендуется набрать)</li>
+                <li><strong>18.5 — 25</strong> — нормальный вес (здоровый диапазон)</li>
+                <li><strong>25 — 30</strong> — избыточный вес (предупреждение)</li>
+                <li><strong>30 и более</strong> — ожирение (необходима консультация врача)</li>
+            </ul>
+            
+            <h3>Калькулятор нормы веса</h3>
+            <p>Помимо ИМТ, мы показываем диапазон нормального веса для вашего роста: от минимального (ИМТ 18.5) до максимального (ИМТ 25) значения.</p>
+            
+            <h3>Важно</h3>
+            <p>ИМТ не учитывает состав тела (мышцы/жир), возраст и пол. Спортсмены с большой мышечной массой могут иметь высокий ИМТ при нормальном здоровье.</p>
+        </section>
+        
+        <div class="support">
+            <h3>💙 Поддержите проект</h3>
+            <div class="wallet">T9yDq43jFWkR5g8vZ1mN2pL7xHbS6cA9wE</div>
+        </div>
+    </main>
+    <footer>DataTool &copy; 2026 | Калькулятор ИМТ онлайн.</footer>
+    <script>
+        function calcBMI(){const h=parseFloat(document.getElementById('height').value)/100,w=parseFloat(document.getElementById('weight').value);if(!h||!w)return;const bmi=w/(h*h);document.getElementById('bmiValue').textContent=bmi.toFixed(1);const card=document.getElementById('resultCard'),st=document.getElementById('bmiStatus'),nw=document.getElementById('normWeight');card.style.display='block';nw.style.display='block';let cls,status;
+        if(bmi<18.5){cls='light';status='⚠️ Недостаточный вес'}
+        else if(bmi<25){cls='normal';status='✅ Нормальный вес'}
+        else if(bmi<30){cls='light';status='⚠️ Избыточный вес'}
+        else{cls='heavy';status='🔴 Ожирение'}
+        st.className='bmi-status '+cls;st.textContent=status;
+        const minW=(18.5*h*h).toFixed(1),maxW=(25*h*h).toFixed(1);nw.querySelector('div').textContent=minW+' — '+maxW+' кг'}
+    </script>
+</body>
+</html>
